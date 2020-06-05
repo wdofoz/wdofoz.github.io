@@ -15,15 +15,15 @@
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="첫 화면 바꾸기 index.html" />
 <meta property="og:locale" content="ko_KR" />
-<meta name="description" content="이제 본격적으로 홈페이지를 내 스타일로 바꿔 봅시다. 먼저 서버를 구동 시키고 bundle exec jekyll serve 테마 폴더로 이동한다. 그리고 브라우저 창에 http://127.0.0.1:4000으로 접속해서 홈페이지 첫화면을 .감상해 보자" />
-<meta property="og:description" content="이제 본격적으로 홈페이지를 내 스타일로 바꿔 봅시다. 먼저 서버를 구동 시키고 bundle exec jekyll serve 테마 폴더로 이동한다. 그리고 브라우저 창에 http://127.0.0.1:4000으로 접속해서 홈페이지 첫화면을 .감상해 보자" />
+<meta name="description" content="이제 본격적으로 홈페이지를 내 스타일로 바꿔 봅시다. 먼저 서버를 구동 시키고 bundle exec jekyll serve 테마 폴더로 이동한다. 그리고 브라우저 창에 http://127.0.0.1:4000으로 접속해서 홈페이지 첫화면을 .감상해 보자 홈페이지 글자 바꾸기 글자 바꾸는 건 간단하다. 브라킷으로 테마 폴더의 index.html을 파일을 열어 본다. 브라우저에서 바꾸고 싶은 글자 드래그 해서 카피 index에서 찾기누르고 바꾸면 된다. 바꾸면서 구조가 어떻게 되어 있는지 찬찬히 뜯어 보면 좋다. 일단 메인 이미지 있는 영역, 아래 문구와 이미지 있는 부분, 하단에 3단으로 나뉜 영역이 있다. 홈페이지 메인 이미지 이미지를 바꾸려면 먼저 바꾸고 싶은 이미지가 있어야 겠죠? 나는 제부도에서 새벽에 찍은 밤하늘 사진을 준비 했다. (사진 크기는 500k 이하로 해야 홈페이지 속도가 그럭저럭 나오겠죠? ) 이미지를 바꾸는 건 코드를 수정하는 방법과 기존의 이미지를 단순히 교체 하는 방법이 있다. 기존의 이미지를 교체 하는 방법 내가 준비한 이미지의 파일 이름을 bg.jpg로 저장한다. /assets/img/ 에 넣어 덮어쓰기 해 준다. 코드를 수정하는 방법은 내가 준비한 이미지를 테마 폴더의 /assets/img/ 폴더 안에 에 넣는다. _scss/_jekyll-doc-theme.scss 파일에서 .header-container { background-color: black; background: url(&#39;../img/bg.jpg&#39;) no-repeat 50% 0; color: #fff; 부분의 /assets/img/bg.jpg를 내가 준비한 이미지로 변경한다. 참고로 페이지 중간 이미지는 index.html에서 /assets/img/jekyll-dark.png 를 찾아 수정하면 되고 페이지 상단 로고는 /_includes/topnav.html/ 파일에서 /assets/img/logonav.png를 찾아 수정 하면 된다. 코드를 수정하는 방법은 지킬 버전에 따라 달라 질 수 있기 때문에 그냥 이미지 파일을 교체 하는 방법을 추천한다. 제일 위에 있는 로고는 /assets/img/logonav.png 가운데 지킬 로고는 /assets/img/jekyll-dark.png 브라우저에 나타나는 파비콘은 /favicon.ico 파일이다. 크기 등이 변경되면 이미지 레이아웃이 깨질 수 있기 때문에 내가 가장 자주 사용하는 방법은 원본이미지 그대로 이미지 편집프로그램을 연다음 내가 원하는 이미지를 가져와 덮어 쓴다. 이렇게 편집하면 캔버스 크기 변경 없이 편집이 가능하기 때문에 레이아웃이 잘 뒤틀리지 않는다." />
+<meta property="og:description" content="이제 본격적으로 홈페이지를 내 스타일로 바꿔 봅시다. 먼저 서버를 구동 시키고 bundle exec jekyll serve 테마 폴더로 이동한다. 그리고 브라우저 창에 http://127.0.0.1:4000으로 접속해서 홈페이지 첫화면을 .감상해 보자 홈페이지 글자 바꾸기 글자 바꾸는 건 간단하다. 브라킷으로 테마 폴더의 index.html을 파일을 열어 본다. 브라우저에서 바꾸고 싶은 글자 드래그 해서 카피 index에서 찾기누르고 바꾸면 된다. 바꾸면서 구조가 어떻게 되어 있는지 찬찬히 뜯어 보면 좋다. 일단 메인 이미지 있는 영역, 아래 문구와 이미지 있는 부분, 하단에 3단으로 나뉜 영역이 있다. 홈페이지 메인 이미지 이미지를 바꾸려면 먼저 바꾸고 싶은 이미지가 있어야 겠죠? 나는 제부도에서 새벽에 찍은 밤하늘 사진을 준비 했다. (사진 크기는 500k 이하로 해야 홈페이지 속도가 그럭저럭 나오겠죠? ) 이미지를 바꾸는 건 코드를 수정하는 방법과 기존의 이미지를 단순히 교체 하는 방법이 있다. 기존의 이미지를 교체 하는 방법 내가 준비한 이미지의 파일 이름을 bg.jpg로 저장한다. /assets/img/ 에 넣어 덮어쓰기 해 준다. 코드를 수정하는 방법은 내가 준비한 이미지를 테마 폴더의 /assets/img/ 폴더 안에 에 넣는다. _scss/_jekyll-doc-theme.scss 파일에서 .header-container { background-color: black; background: url(&#39;../img/bg.jpg&#39;) no-repeat 50% 0; color: #fff; 부분의 /assets/img/bg.jpg를 내가 준비한 이미지로 변경한다. 참고로 페이지 중간 이미지는 index.html에서 /assets/img/jekyll-dark.png 를 찾아 수정하면 되고 페이지 상단 로고는 /_includes/topnav.html/ 파일에서 /assets/img/logonav.png를 찾아 수정 하면 된다. 코드를 수정하는 방법은 지킬 버전에 따라 달라 질 수 있기 때문에 그냥 이미지 파일을 교체 하는 방법을 추천한다. 제일 위에 있는 로고는 /assets/img/logonav.png 가운데 지킬 로고는 /assets/img/jekyll-dark.png 브라우저에 나타나는 파비콘은 /favicon.ico 파일이다. 크기 등이 변경되면 이미지 레이아웃이 깨질 수 있기 때문에 내가 가장 자주 사용하는 방법은 원본이미지 그대로 이미지 편집프로그램을 연다음 내가 원하는 이미지를 가져와 덮어 쓴다. 이렇게 편집하면 캔버스 크기 변경 없이 편집이 가능하기 때문에 레이아웃이 잘 뒤틀리지 않는다." />
 <link rel="canonical" href="https://wdofoz.qhop.org/docs/aboutme/Mainpage/" />
 <meta property="og:url" content="https://wdofoz.qhop.org/docs/aboutme/Mainpage/" />
 <meta property="og:site_name" content="WizardOfOz" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-03-14T17:24:52+00:00" />
+<meta property="article:published_time" content="2020-06-06T01:36:04+09:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"https://wdofoz.qhop.org/docs/aboutme/Mainpage/","headline":"첫 화면 바꾸기 index.html","dateModified":"2020-03-14T17:24:52+00:00","datePublished":"2020-03-14T17:24:52+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wdofoz.qhop.org/docs/aboutme/Mainpage/"},"description":"이제 본격적으로 홈페이지를 내 스타일로 바꿔 봅시다. 먼저 서버를 구동 시키고 bundle exec jekyll serve 테마 폴더로 이동한다. 그리고 브라우저 창에 http://127.0.0.1:4000으로 접속해서 홈페이지 첫화면을 .감상해 보자","@context":"https://schema.org"}</script>
+{"headline":"첫 화면 바꾸기 index.html","url":"https://wdofoz.qhop.org/docs/aboutme/Mainpage/","dateModified":"2020-06-06T01:36:04+09:00","datePublished":"2020-06-06T01:36:04+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wdofoz.qhop.org/docs/aboutme/Mainpage/"},"description":"이제 본격적으로 홈페이지를 내 스타일로 바꿔 봅시다. 먼저 서버를 구동 시키고 bundle exec jekyll serve 테마 폴더로 이동한다. 그리고 브라우저 창에 http://127.0.0.1:4000으로 접속해서 홈페이지 첫화면을 .감상해 보자 홈페이지 글자 바꾸기 글자 바꾸는 건 간단하다. 브라킷으로 테마 폴더의 index.html을 파일을 열어 본다. 브라우저에서 바꾸고 싶은 글자 드래그 해서 카피 index에서 찾기누르고 바꾸면 된다. 바꾸면서 구조가 어떻게 되어 있는지 찬찬히 뜯어 보면 좋다. 일단 메인 이미지 있는 영역, 아래 문구와 이미지 있는 부분, 하단에 3단으로 나뉜 영역이 있다. 홈페이지 메인 이미지 이미지를 바꾸려면 먼저 바꾸고 싶은 이미지가 있어야 겠죠? 나는 제부도에서 새벽에 찍은 밤하늘 사진을 준비 했다. (사진 크기는 500k 이하로 해야 홈페이지 속도가 그럭저럭 나오겠죠? ) 이미지를 바꾸는 건 코드를 수정하는 방법과 기존의 이미지를 단순히 교체 하는 방법이 있다. 기존의 이미지를 교체 하는 방법 내가 준비한 이미지의 파일 이름을 bg.jpg로 저장한다. /assets/img/ 에 넣어 덮어쓰기 해 준다. 코드를 수정하는 방법은 내가 준비한 이미지를 테마 폴더의 /assets/img/ 폴더 안에 에 넣는다. _scss/_jekyll-doc-theme.scss 파일에서 .header-container { background-color: black; background: url(&#39;../img/bg.jpg&#39;) no-repeat 50% 0; color: #fff; 부분의 /assets/img/bg.jpg를 내가 준비한 이미지로 변경한다. 참고로 페이지 중간 이미지는 index.html에서 /assets/img/jekyll-dark.png 를 찾아 수정하면 되고 페이지 상단 로고는 /_includes/topnav.html/ 파일에서 /assets/img/logonav.png를 찾아 수정 하면 된다. 코드를 수정하는 방법은 지킬 버전에 따라 달라 질 수 있기 때문에 그냥 이미지 파일을 교체 하는 방법을 추천한다. 제일 위에 있는 로고는 /assets/img/logonav.png 가운데 지킬 로고는 /assets/img/jekyll-dark.png 브라우저에 나타나는 파비콘은 /favicon.ico 파일이다. 크기 등이 변경되면 이미지 레이아웃이 깨질 수 있기 때문에 내가 가장 자주 사용하는 방법은 원본이미지 그대로 이미지 편집프로그램을 연다음 내가 원하는 이미지를 가져와 덮어 쓴다. 이렇게 편집하면 캔버스 크기 변경 없이 편집이 가능하기 때문에 레이아웃이 잘 뒤틀리지 않는다.","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -48,7 +48,7 @@
 
     
 <body>
-<!-- 하단 진행바 시작 -->
+<!-- 상단 진행바 시작 -->
 <style>
 .progress-bar {
     background: linear-gradient(to right, white var(--scroll), transparent 0);
@@ -128,24 +128,34 @@ document.addEventListener('scroll', function() {
           
            <li><a href="/blog/2020/02/29/shapeoflove.html"> essay<span class="badge pull-right">1 </span></a> 
            </li>            
+          
+          
+           <li><a href="/blog/2020/06/06/Publii.html"> Cms<span class="badge pull-right">1 </span></a> 
+           </li>            
             
         </ul>
      </li>        
           
-     <li><a href="/allposts.html">AllPosts</a></li>       
+     <li><a href="/allposts.html">AllPosts</a></li>   
+                          
 <!--     
-         <li ><a href="/blog/2020/02/29/shapeoflove.html">AllPosts</a></li>
+         <li ><a href="/blog/2020/06/06/Publii.html">AllPosts</a></li>
             
 -->                    
 
             </ul>
+            
+            
+    
             <div class="navbar-right">
+
                 <form class="navbar-form navbar-left">
                     <div class="form-group has-feedback">
                         <input id="search-box" type="search" class="form-control" placeholder="Search...">
                         <i class="fa fa-search form-control-feedback"></i>
                     </div>
                 </form>
+
                 <ul class="nav navbar-nav">
                     <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
                 </ul>
@@ -210,7 +220,7 @@ document.addEventListener('scroll', function() {
                             
                             
                             
-                            <a class="list-group-item " href="/docs/aboutme/Docs/">문서 페이지를 수정해 봅시다.
+                            <a class="list-group-item " href="/docs/aboutme/Docs/">문서와 포스트를 수정해 봅시다.
                             </a>
                             
                         </div>
@@ -392,10 +402,10 @@ document.addEventListener('scroll', function() {
     
 <script type="text/javascript" src="/js/lightbox.js"></script>
 <link rel="stylesheet" href="/css/lightbox.css">  
-<!-- 하단 진행바 스크립트 시작  -->    
+<!-- 진행바 스크립트 시작  -->    
 <script type="text/javascript" src="/js/nanobar.min.js"></script>
 
-<!-- 하단 진행바 스크립트 끝 --> 
+<!-- 진행바 스크립트 끝 --> 
 
     
 </body>
