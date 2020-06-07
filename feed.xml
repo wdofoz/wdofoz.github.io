@@ -1,5 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2020-06-07T19:49:42+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기</title><link href="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html" rel="alternate" type="text/html" title="무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기" /><published>2020-06-06T00:00:00+09:00</published><updated>2020-06-06T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/06/Publii</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html">&lt;h2 id=&quot;솔루션-찾아-헤매기&quot;&gt;솔루션 찾아 헤매기&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2020-06-08T04:45:36+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">구글 맞춤 검색(CSE)을 활용해 내 홈페이지 검색을 구글로 해보자</title><link href="https://wdofoz.qhop.org/blog/2020/06/07/search-CSE.html" rel="alternate" type="text/html" title="구글 맞춤 검색(CSE)을 활용해 내 홈페이지 검색을 구글로 해보자" /><published>2020-06-07T00:00:00+09:00</published><updated>2020-06-07T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/07/search-CSE</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/07/search-CSE.html">&lt;h1 id=&quot;내-홈페이지-검색을-구글로-해보자&quot;&gt;내 홈페이지 검색을 구글로 해보자&lt;/h1&gt;
+&lt;p&gt;홈페이지 내의 검색기능을 사용해 보려고 했는데… 아직 지식이 부족한 지라 이해하질 못하겠다. (어떻게 된거죠? 밥아저씨???)
+그래서 어차피 구글에서도 검색 되는거 구글 검색 기능을 사이트에 넣어 보기로 했다. 다행이 구글에서 지원하는 기능이 있어서 쉽게 가나 싶었는데….&lt;/p&gt;
+
+&lt;p&gt;내가 원하는 기능은 메뉴바에서 검색하면 오버레이고 검색 결과가 뜨는 것이었다. 그러나 구글 기본 색감과 사이즈가 있다보니 아무리  css를 커스텀 해도 만족스런 모양이 나오지 않았다. (밥아쩌씨….)
+그리하여 결국 클릭을 하면 별도의 검색 페이지로 이동하게 만들기로 했다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;먼저 구글에서 검색이 되어야 하니까 구글 웹마스터 도구로 사이트를 등록한다. (선행되어야 한다. 구글에서 검색이 안되면 뭔 소용이겠나???) &lt;a href=&quot;https://search.google.com/search-console/&quot;&gt;구글웹마스터도구-콘솔&lt;/a&gt; - 사용법은 구글링을 통해 확인하세요.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cse.google.co.kr/cse/all&quot;&gt;구글맞춤검색(CSE)&lt;/a&gt;사이트로 간다. 어째서인지 구글맞춤검색이라고 검색하면 사용법을 소개하는 사이트만 뜨고 내용은 뜨지 않는다. 이상허네그려 ㅎ &lt;strong&gt;cse google&lt;/strong&gt;로 검색하면 나오긴 한다.&lt;/li&gt;
+  &lt;li&gt;로그인하고 검색앤진 추가 한다.&lt;/li&gt;
+  &lt;li&gt;사이트 도메인 입력, 언어선택 후 만들기를 클릭한다.&lt;/li&gt;
+  &lt;li&gt;코드 가저오기를 클릭하면 코드가나오는데 그 코드를 본문에 삽입한다.
+    &lt;ol&gt;
+      &lt;li&gt;일단 검색 페이지를 만들자. 거의 포스트나 문서 부분을 검색하기 때문에 포스트 레이아웃을 그대로 가져와 검색내용을 삽입 하기로 했다.&lt;/li&gt;
+      &lt;li&gt;루트 디렉토리에 search.html파일을 만든다.&lt;/li&gt;
+      &lt;li&gt;내용을 다음과 같이 입력한다.
+```
+—
+title: Search
+layout: post
+sectionid: search
+—&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;main-search&quot;&gt;
+&lt;script async=&quot;&quot; src=&quot;https://cse.google.com/cse.js?cx=FDS$G@RAFADF:afwfaf&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;gcse-search&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;```
+타이틀 레이아웃 섹션아이디는 해드부분이니 사이트에 맞게 적당히 편집하면 되고 본문 내용은 위에서 코드 가져오기를 그대로 붙여 넣기 한부분이다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;이대로 실행하면 각자 사이트와 색감이 맞지 않게 된다. &lt;a href=&quot;https://cse.google.co.kr/cse/all&quot;&gt;구글맞춤검색(CSE)&lt;/a&gt;로 돌아가 &lt;strong&gt;검색앤진 수정&lt;/strong&gt;에서 사이트를 선택후 &lt;strong&gt;디자인&lt;/strong&gt;을 클릭한다.&lt;/li&gt;
+  &lt;li&gt;레이아웃을 선택하고 &lt;strong&gt;저장 및 코드보기&lt;/strong&gt;버튼을 누른다.  해당 코드를 위에서 처럼 붙여 넣는다.  방법을 모르겠다면 &lt;strong&gt;html에제보기&lt;/strong&gt; 를 클릭해서 어디에 붙여 넣어야 하는지 확인하다. 나는 전체 화면으로 했지만 검색창과 결과창을 분리 하거나 검색 결과를 오베레이로 띄우는등 다양한 레이아웃이 있다.&lt;/li&gt;
+  &lt;li&gt;원하는 태마를 누르고 &lt;strong&gt;저장&lt;/strong&gt;버튼을 누른다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;맞춤 설정&lt;/strong&gt;에 가면 내 사이트 색감과 맞출 수 있는 여러가지 옵션이 나온다. 검색 결과 배경화면 색 부터 글자 색까지 지정할 수 있으니 여기서 설정을 내 사이트에 맞추면 된다. (사이트 배경색이 흰색이면 비교적 쉽고 적은 옵션 변경으로도 어울리는 디자인을 찾을 수 있을 것이다.)  저장하면 내 사이트에 반영 된 것을 알수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;사이트 내 구글 검색이 검색 결과에 어떤 영향을 미치는지는 모르겠지만 지킬용 검색앤진을 찾아 번들및 루비를 추가로 설치하고 이해하고 여러가지 공부를 하기 너무너무너무너무너무 귀찮아서 이 방법을 사용했다. 만일 지킬에 대해 추가로 공부하고 사용하면 이보다 더 나은 방법이 있을 것이다. (속도도 빠른. 난 뭐 귀찮다.)&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">내 홈페이지 검색을 구글로 해보자 홈페이지 내의 검색기능을 사용해 보려고 했는데… 아직 지식이 부족한 지라 이해하질 못하겠다. (어떻게 된거죠? 밥아저씨???) 그래서 어차피 구글에서도 검색 되는거 구글 검색 기능을 사이트에 넣어 보기로 했다. 다행이 구글에서 지원하는 기능이 있어서 쉽게 가나 싶었는데….</summary></entry><entry><title type="html">무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기</title><link href="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html" rel="alternate" type="text/html" title="무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기" /><published>2020-06-06T00:00:00+09:00</published><updated>2020-06-06T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/06/Publii</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html">&lt;h2 id=&quot;솔루션-찾아-헤매기&quot;&gt;솔루션 찾아 헤매기&lt;/h2&gt;
 &lt;p&gt;코로나가 심각해 지면서 모든 사람이 가내 수공업을 하게 되었다.&lt;/p&gt;
 
 &lt;p&gt;나도 반 강제 가네수공업자가 되었다.&lt;/p&gt;
@@ -285,6 +326,4 @@ at 3am, jebu island&lt;/p&gt;</content><author><name>wizardofoz</name></author><
 열정이 이불 킥이 되어 되어버리고
 유치함이 촌스러움이 되어버린 이시대니까…&lt;/p&gt;
 
-&lt;p&gt;나는 여전히 모르겠다고 말 할 수 밖에…&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Diary" /><summary type="html">사이트를 만들었다 실패했다를 반복하다 결국 처음으로 올리게 되는 글…</summary></entry><entry><title type="html">Jekyll Doc Theme is published!</title><link href="https://wdofoz.qhop.org/blog/2017/05/03/jekyll-doc-theme.html" rel="alternate" type="text/html" title="Jekyll Doc Theme is published!" /><published>2017-05-03T00:00:00+09:00</published><updated>2017-05-03T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2017/05/03/jekyll-doc-theme</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2017/05/03/jekyll-doc-theme.html">&lt;p&gt;A new custom Jekyll theme for documentation and blogging is out. It is ideal for Open Source Software projects to publish under &lt;a href=&quot;https://pages.github.com&quot;&gt;GitHub Pages&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Your contribution is welcome!&lt;/p&gt;</content><author><name>aksakalli</name></author><summary type="html">A new custom Jekyll theme for documentation and blogging is out. It is ideal for Open Source Software projects to publish under GitHub Pages.</summary></entry></feed>
+&lt;p&gt;나는 여전히 모르겠다고 말 할 수 밖에…&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Diary" /><summary type="html">사이트를 만들었다 실패했다를 반복하다 결국 처음으로 올리게 되는 글…</summary></entry></feed>
