@@ -1,0 +1,73 @@
+<!-- 모바일 숨은 메뉴 시작 -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>   
+                
+      </button>
+            <a class="navbar-brand" href="{{ site.baseurl }}/">
+                <span><img src="{{site.baseurl}}/img/logonav.png" alt="Logo"></span> {{ site.title }}
+            </a>
+        </div>
+<!-- 모바일 숨은 메뉴 끝 -->        
+        
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+<!-- DOCS 메뉴 가져오기 시작 -->      
+              {% for item in site.data.topnav.topnav %}
+     <li {% if page.sectionid==item.sectionid %} class="active" {% endif %}><a href="{{ item.path }}/index/">{{ item.title }}</a></li>
+              {% endfor %}    
+
+         
+     <li><a id="catemenu" class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Category <span class="caret"></span></a> 
+ <!-- id="dropdownMenuLink" -->                 
+        <ul class="dropdown-menu" aria-labelledby="catemenu" >
+          {% for category in site.categories %}
+          {% for post in category[1] limit:1 %}
+           <li><a href="{{ post.url }}"> {{ category | first }}<span class="badge pull-right">{{ category | last | size }} </span></a> 
+           </li>         {% endfor %}   
+          {% endfor %}  
+        </ul>
+     </li>        
+          
+     <li><a href="{{ "/allposts.html" | relative_url }}">AllPosts</a></li>   
+                          
+<!--     
+         <li {% if page.sectionid=='posts' %} class="active" {% endif %}><a href="{{ site.posts.first.url | relative_url }}">AllPosts</a></li>
+            
+-->                    
+
+            </ul>
+            
+            
+    
+            <div class="navbar-right">
+ <!--  
+                <form class="navbar-form navbar-left">
+                    
+
+                    
+                  <div class="form-group has-feedback">
+                        <input id="search-box" type="search" class="form-control" placeholder="Search...">
+                        <i class="fa fa-search form-control-feedback"></i>
+                    </div>
+
+                </form>
+             
+
+                
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ site.git_address }}"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                </ul>
+--> 
+                <ul class="nav navbar-nav">
+                    <li><a href="/search.html"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

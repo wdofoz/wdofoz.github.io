@@ -1,0 +1,85 @@
+# Site settings
+title: WizardOfOz
+email: wdofoz@qhop.org
+description: >
+  Anyone who will accept me without trying to hide my poor soul.
+lang: ko-KR
+
+baseurl:  # the subpath of your site, e.g. /blog/
+url: https://wdofoz.qhop.org # the base hostname & protocol for your site
+git_address:
+git_edit_address:
+
+# theme options from https://bootswatch.com/
+# comment out this to use default Bootstrap
+bootwatch: slate
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+gems:
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-toc
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .idea/
+  - .gitignore
+  - README.md
+timezone: Asia/Seoul
+
+
+defaults:
+
+- scope:
+    path: _docs/it
+    type: docs
+  values:
+    layout: it
+    sectionid: it
+- scope:
+    path: _docs/aboutme
+    type: docs
+  values:
+    layout: aboutme
+    sectionid: aboutme
+    toc: true
+#- scope:
+#    path: _docs
+#    type: docs
+#  values:
+#    layout: docs
+#    sectionid: docs
+- scope:
+    path: _posts
+    type: posts
+  values:
+    layout: categories
+    sectionid: posts
+    toc: true
+- scope:
+    path: _docs/novel
+    type: novel
+  values:
+    layout: novel
+    sectionid: novel
+    toc: true
+
+
+
+collections:
+  docs:
+    permalink: /:collection/:path/
+    output: true
+
+  posts:
+    permalink: /blog/:year/:month/:day/:title:output_ext
+    output: true
+
+
+
+#category_list: [ portfolio, post ]
