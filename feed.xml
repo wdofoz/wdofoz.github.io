@@ -1,13 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2020-06-16T22:54:41+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 심폐소생 프로젝트 - 5만원</title><link href="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html" rel="alternate" type="text/html" title="윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 심폐소생 프로젝트 - 5만원" /><published>2020-06-16T00:00:00+09:00</published><updated>2020-06-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html">&lt;h1 id=&quot;윈도우로-구형-흰둥이에-high-sierra하이시에라-이상-설치-하기----심폐소생-프로젝트---5만원&quot;&gt;윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 심폐소생 프로젝트 - 5만원&lt;/h1&gt;
-&lt;p&gt;흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다.  이런 걸 되살릴 수 있을 까? 했지만…  살려내어 기쁘기에  이 기쁨을 나누고자 포스트를 작성한다. 
-이미 성공한 뒤 기억을 더듬어 적는 거라 혹여 미흡할 순 있지만 지금 은 성공 후 잘 사용하고 있다. 사실 el capitan까지만 설치 해도 될 것 같았는데 윈도우 유저가 맥북을 쓰기 위해서 꼭필요한게 있다. 맥북에 윈도우를 설치하는 게 아니라. 24시 서버처럼 켜둔 윈도우 pc에 원격 접속하는 것… 그러기 위해 설치 해야 하는 프로그램이 바로 마이크로소프트에서 제공하는 Microsoft Remote Desktop이라는 앱이다. 이 앱이 el capitan 이후 버전부터 설치가 가능하기에 어쩔수 없이 high Sierra까지 설치를 감행 하게 되었다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2020-06-16T23:13:21+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 맥할아버지 심폐소생기 - 5만원</title><link href="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html" rel="alternate" type="text/html" title="윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 맥할아버지 심폐소생기 - 5만원" /><published>2020-06-16T00:00:00+09:00</published><updated>2020-06-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html">&lt;p&gt;흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다.  이런 걸 되살릴 수 있을 까? 했지만…  살려내어 기쁘기에  이 기쁨을 나누고자 포스트를 작성한다.&lt;/p&gt;
+
+&lt;p&gt;이미 성공한 뒤 기억을 더듬어 적는 거라 혹여 미흡할 순 있지만 지금 은 성공 후 잘 사용하고 있다.&lt;/p&gt;
+
+&lt;p&gt;사실 el capitan까지만 설치 해도 될 것 같았는데 윈도우 유저가 맥북을 쓰기 위해서 꼭필요한게 있다. 맥북에 윈도우를 설치하는 게 아니라. 24시 서버처럼 켜둔 윈도우 pc에 원격 접속하는 것… 그러기 위해 설치 해야 하는 프로그램이 바로 마이크로소프트에서 제공하는 Microsoft Remote Desktop이라는 앱이다. 이 앱이 el capitan 이후 버전부터 설치가 가능하기에 어쩔수 없이 high Sierra까지 설치를 감행 하게 되었다.&lt;/p&gt;
 
 &lt;p&gt;단순히 성공기를 기록하기 보다 실패 했던 경우를 적어 다른 사람들은 나 같은 실수 없이 성공하길 바란다.&lt;/p&gt;
 
 &lt;h2 id=&quot;서론---깡통을-컴퓨터로-업그레이드&quot;&gt;서론 - 깡통을 컴퓨터로 업그레이드&lt;/h2&gt;
-&lt;p&gt;내가 얻은 맥북은 a1181모델로 Macbook(13-inch,2009 mid)로 나온다. 램은 2기가이고 하드는 HDD인데다 하드가 텅텅 비어 있었다. 복구 모드는 커녕 하드가 전체 포맷 되어 있다. (사연이 길어 생략…) 
-나는 윈도우 유저이기 때문에 맥북에 대한 상식이 전혀 없기 때문에 맥북을 글로 배우기 시작했다. 열심히 구글링을 한뒤 이 모델의 정식 최종 OS는 el capitan 이라길레  이걸로 시도했다. 낭패를 봤다.  수십번의 도전 끝에 성공한 사항을 기록한다.&lt;/p&gt;
+&lt;p&gt;내가 얻은 맥북은 a1181모델로 Macbook(13-inch,2009 mid)로 나온다. 램은 2기가이고 하드는 HDD인데다 하드가 텅텅 비어 있었다. 복구 모드는 커녕 하드가 전체 포맷 되어 있다. (사연이 길어 생략…)&lt;br /&gt;
+나는 윈도우 유저이기 때문에 맥북에 대한 상식이 전혀 없어서 맥북을 글로 배우기 시작했다. 열심히 구글링을 한 뒤 이 모델의 정식 최종 OS는 el capitan 이란 걸 알아냈다. 그리고 설치를 시도했다. 그러나 낭패를 봤다.&lt;/p&gt;
+
+&lt;p&gt;수십번의 도전 끝에 성공한 사항을 기록한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;하드웨어-맞추기&quot;&gt;하드웨어 맞추기&lt;/h2&gt;
 &lt;p&gt;준비물 - ssd, ram 2G *2개,  8g이상 USB
@@ -15,14 +19,14 @@
 모두 설치 된 뒤라 하는 이야기지만 시스템엔ㄴ 3기가로 밖에 나오지 않는다. 요상타&lt;/p&gt;
 
 &lt;h2 id=&quot;설치를-위한-소프트-웨어-준비하기&quot;&gt;설치를 위한 소프트 웨어 준비하기&lt;/h2&gt;
-&lt;p&gt;이 부분이 좀 애해 했는데 인터넷을 아무리 뒤져봐도 적당한 자료가 나오지 않는다. 일단 &lt;a href=&quot;https://www.fmkorea.com/best/1673359202&quot;&gt;성공했다는 분&lt;/a&gt;은 복구 cd를 중고로 구매하셨다고 했는데…  이는 내가 추구하는 바가 아니다. 라기 보다는 뭘 사야할지 모르겠다. 사놓고 잘못 샀네? 한 뒤엔 환불도 안되니…
-그래서 &lt;a href=&quot;https://blog.naver.com/PostView.nhn?blogId=hankboy&amp;amp;logNo=221319542347&quot;&gt;이분&lt;/a&gt;을 참고 삼아 윈도우에 &lt;strong&gt;트랜스맥(TransMac)&lt;/strong&gt;을 설치해서 USB를 굽기 (말그대로 굽는 수준… 발열…ㅠㅠ) 시작했는데 이때부터 지옥이 시작되었다.&lt;/p&gt;
+&lt;p&gt;이 부분이 좀 애해 했는데 인터넷을 아무리 뒤져봐도 적당한 자료가 나오지 않는다. 일단 &lt;a href=&quot;https://www.fmkorea.com/best/1673359202&quot;&gt;성공했다는 분 - Post&lt;/a&gt;은 복구 cd를 중고로 구매하셨다고 했는데…  이는 내가 추구하는 바가 아니다. 라기 보다는 뭘 사야할지 모르겠다. 사놓고 잘못 샀네? 한 뒤엔 환불도 안되니… 
+그래서 &lt;a href=&quot;https://blog.naver.com/PostView.nhn?blogId=hankboy&amp;amp;logNo=221319542347&quot;&gt;이분 - Post&lt;/a&gt;을 참고 삼아 윈도우에 &lt;strong&gt;트랜스맥(TransMac)&lt;/strong&gt;을 설치해서 USB를 굽기 (말그대로 굽는 수준… 발열…ㅠㅠ) 시작했는데 이때부터 지옥이 시작되었다.&lt;/p&gt;
 
 &lt;p&gt;가지고 있는 모든 USB를 포맷하고 구워 봤는데  아무리 해도 …&lt;/p&gt;
 &lt;h2 id=&quot;맥북-부팅시-usb-인식이-안된다&quot;&gt;맥북 부팅시 usb 인식이 안된다.&lt;/h2&gt;
 &lt;p&gt;맥북 유저가 아니라 그런지 아무해도 이해가 부족하다 보니 왜 안돼는지 구글링을 엄청 하는데 성공했다는 포스트만 잔뜩 올라오고 도무지 실패 극복기가 없어서 해외 사이트 까지 뒤지다가… 원인을 알아냈다.&lt;/p&gt;
 
-&lt;p&gt;일단 내가 이해한 대로는 이렇다. (꼭 맞는 건 아닐 수 있다.)  내가 주워온 맥북이 너무너무너무너무 오래된 모델이다 보니 라이언 이후의 os는 트랜스 맥으로 제작시 부팅인식이 되지 않았다. 도 닦는 심정으로 os 버전을 내려 구워 보기 시작 ( &lt;a href=&quot;https://namu.wiki/w/macOS/%EB%B2%84%EC%A0%84&quot;&gt;macOS/버전 - 나무위키&lt;/a&gt;따라서 전 os 를 다 다운 받았었다) 어렵게 구한 snow Leopard를 구운 usb가 부팅에 반응을 보였다. ㅎㄷㄷ
+&lt;p&gt;일단 내가 이해한 대로는 이렇다. (꼭 맞는 건 아닐 수 있다.)  내가 주워온 맥북이 너무너무너무너무 오래된 모델이다 보니 라이언 이후의 os는 트랜스 맥으로 제작시 부팅인식이 되지 않았다. 도 닦는 심정으로 os 버전을 내려 구워 보기 시작 ( &lt;a href=&quot;https://namu.wiki/w/macOS/%EB%B2%84%EC%A0%84&quot;&gt;macOS/버전 - 나무위키&lt;/a&gt;따라서 전 os 를 다 다운 받았었다) 어렵게 구한 snow Leopard를 구운 usb가 부팅에 반응을 보였다. ㅎㄷㄷ 
 그런데 이것도 usb를 가리는지 sandisk 2.0 블레이드 usb에서는 인식이 안되었는데 3.0 울트라 16G usb로 구운 버전은 인식이 되었다.  최신  os 순정으로 설치한다고  el capitan을 바로 굽는다면 나와 같은 지옥을 맛볼…. (2.0 usb가 고장인지 아니면 그모델이 다 그런지 그런건 모르겠다.)&lt;/p&gt;
 
 &lt;p&gt;그리하여 샌디스크 3.0 울트라 16G USB에 레오파드 OS를 구해서 트랜스맥으로 구운뒤 맥에 넣고 부팅했더니 되었다…. (어라? 포스트가 한줄로 요약됬네???)&lt;/p&gt;
@@ -40,18 +44,20 @@
     &lt;ol&gt;
       &lt;li&gt;&lt;a href=&quot;http://dosdude1.com/software.html&quot;&gt;여기&lt;/a&gt;에서 다운받고 싶은 os를 선택한뒤 프로그램을 다운로드 한다.  기종별로 설치 가능한 버전들이 쫙 나와 있다.  나는  &lt;a href=&quot;https://gateway.pinata.cloud/ipfs/QmYTUKf6b3dg2gRwMAi6DpUDFBEGUQfgBkyuyD2AFY9Trh/macOS%20High%20Sierra%20Patcher.dmg&quot;&gt;high Sierra patcher tool&lt;/a&gt;을 다운로드 해서 실행 하였다.&lt;/li&gt;
       &lt;li&gt;Tool에서 download MacOS high Sierra 를 클릭 후 다운로드 받는다.  &lt;a href=&quot;http://dosdude1.com/highsierra/tutorialimages/downloadMacOS.png&quot;&gt;&lt;img src=&quot;http://dosdude1.com/highsierra/tutorialimages/downloadMacOS.png&quot; alt=&quot;high Sierra patcher tool&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;다운로드가 되면  3.0 울트라 16G usb에 굽는다.
-        &lt;ul&gt;
-          &lt;li&gt;참고 영상 &amp;lt;iframe width=&quot;745&quot; height=&quot;419&quot; src=&quot;https://www.youtube.com/embed/v9sE_FhSdT8&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
+      &lt;li&gt;다운로드가 되면  3.0 울트라 16G usb에 굽는다.&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;위의 USB면 와 같이 진행하면 맥북 흰둥이에서 high Sierra를 설치할 수 있다. 나같은 경우는 다시 하드를 갈아야 될 경우를 대비해서 snow leopard USB 1개와 high Sierra patcher 로 만든 USB 총 2개를 완성본 상태로 사장 시켜 두었다. 일반적으로는  high Sierra patcher 로 만든 USB 만 있으면 하드를 교체하는 상황에서도 쉽게 설치가 가능할 것 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;참고 영상
+    &lt;iframe width=&quot;745&quot; height=&quot;419&quot; src=&quot;https://www.youtube.com/embed/v9sE_FhSdT8&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;여전히 의문으로 남는 점은 high Sierra patcher이전 버전의 순정 os는 트랜스맥으로 작업했을 때 부팅이 안되었는데 맥에서 high Sierra patcher 로 만든 USB 는 부팅이 되는가 하는 의문점이 아직 남지만… 뭐 앞으로 하드가 돌아가셔도 high Sierra patcher 로 만든 USB 로 재설치해서 사용할 것 같으니까  그따위 영양가 없는 호기심은 처박아 두고 맘편하지 지내기로 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 심폐소생 프로젝트 - 5만원 흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다. 이런 걸 되살릴 수 있을 까? 했지만… 살려내어 기쁘기에 이 기쁨을 나누고자 포스트를 작성한다. 이미 성공한 뒤 기억을 더듬어 적는 거라 혹여 미흡할 순 있지만 지금 은 성공 후 잘 사용하고 있다. 사실 el capitan까지만 설치 해도 될 것 같았는데 윈도우 유저가 맥북을 쓰기 위해서 꼭필요한게 있다. 맥북에 윈도우를 설치하는 게 아니라. 24시 서버처럼 켜둔 윈도우 pc에 원격 접속하는 것… 그러기 위해 설치 해야 하는 프로그램이 바로 마이크로소프트에서 제공하는 Microsoft Remote Desktop이라는 앱이다. 이 앱이 el capitan 이후 버전부터 설치가 가능하기에 어쩔수 없이 high Sierra까지 설치를 감행 하게 되었다.</summary></entry><entry><title type="html">벌써 일년 전 - 라오스 여름</title><link href="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html" rel="alternate" type="text/html" title="벌써 일년 전 - 라오스 여름" /><published>2020-06-12T00:00:00+09:00</published><updated>2020-06-12T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html">&lt;style&gt;
+&lt;p&gt;위의 USB로 처음과 같이 진행하면 맥북 흰둥이에서 high Sierra를 설치할 수 있다. 나같은 경우는 다시 하드를 갈아야 될 경우를 대비해서 snow leopard USB 1개와 high Sierra patcher 로 만든 USB 총 2개를 완성본 상태로 사장 시켜 두었다. 일반적으로는  high Sierra patcher 로 만든 USB 만 있으면 하드를 교체하는 상황에서도 쉽게 설치가 가능할 것 같다.&lt;/p&gt;
+
+&lt;p&gt;여전히 의문으로 남는 점은 high Sierra patcher이전 버전의 순정 os는 트랜스맥으로 작업했을 때 부팅이 안되었는데 맥에서 high Sierra patcher 로 만든 USB 는 부팅이 되는가 하는 의문점이 아직 남지만… 뭐 앞으로 하드가 돌아가셔도 high Sierra patcher 로 만든 USB 로 재설치해서 사용할 것 같으니까  그따위 영양가 없는 호기심은 처박아 두고 맘편하지 지내기로 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다. 이런 걸 되살릴 수 있을 까? 했지만… 살려내어 기쁘기에 이 기쁨을 나누고자 포스트를 작성한다.</summary></entry><entry><title type="html">벌써 일년 전 - 라오스 여름</title><link href="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html" rel="alternate" type="text/html" title="벌써 일년 전 - 라오스 여름" /><published>2020-06-12T00:00:00+09:00</published><updated>2020-06-12T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html">&lt;style&gt;
   .image-gallery {overflow: auto; margin-left: -1%!important;}
   .image-gallery a {float: left; display: block; margin: 0 0 1% 1%; width: 19%; text-align: center; text-decoration: none!important;}
   .image-gallery a span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 3px 0;}
