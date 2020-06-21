@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2020-06-16T23:13:21+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 맥할아버지 심폐소생기 - 5만원</title><link href="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html" rel="alternate" type="text/html" title="윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 맥할아버지 심폐소생기 - 5만원" /><published>2020-06-16T00:00:00+09:00</published><updated>2020-06-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html">&lt;p&gt;흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다.  이런 걸 되살릴 수 있을 까? 했지만…  살려내어 기쁘기에  이 기쁨을 나누고자 포스트를 작성한다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2020-06-22T01:45:51+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">지킬에서 글작성시 미리보기에만 글이 보이는 경우</title><link href="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html" rel="alternate" type="text/html" title="지킬에서 글작성시 미리보기에만 글이 보이는 경우" /><published>2020-06-21T00:00:00+09:00</published><updated>2020-06-21T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html">&lt;h2 id=&quot;미리보기에서는-글이-모이는데-jekyll-serve-빌드해서-깃허브에-올리면-없는-페이지로-나와서-황당황당&quot;&gt;미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당…&lt;/h2&gt;
+&lt;p&gt;할때가 간혹 있다. 왜 그럴까?
+문제는 파일명의 대소문자 차이에 있다. 
+jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로 바뀌면서 내가 쓸 글이 반영 된다. 그런데 깃허브로 푸시할 경우 폴더나 파일명이 대소문자로 바뀔 경우 바뀐 버전을 인식하지 않고 기존의 형식대로 진행 되는 경우가 있다. 서버 주소는 대소문자를 구분해서 불러 들이는데 정작 서버에 올라간 폴더는 이전 대소문자 그대로 유지되어서 없는 페이지가 된다. 
+그럴때 두가지 해결 방법이 있다. 하나는 수동으로 대 소문자를 변경해 주던지 
+간단한 방법은 삭제 푸시후 다시 재업 푸시하는 방법이다.&lt;/p&gt;
+
+&lt;p&gt;이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당… 할때가 간혹 있다. 왜 그럴까? 문제는 파일명의 대소문자 차이에 있다. jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로 바뀌면서 내가 쓸 글이 반영 된다. 그런데 깃허브로 푸시할 경우 폴더나 파일명이 대소문자로 바뀔 경우 바뀐 버전을 인식하지 않고 기존의 형식대로 진행 되는 경우가 있다. 서버 주소는 대소문자를 구분해서 불러 들이는데 정작 서버에 올라간 폴더는 이전 대소문자 그대로 유지되어서 없는 페이지가 된다. 그럴때 두가지 해결 방법이 있다. 하나는 수동으로 대 소문자를 변경해 주던지 간단한 방법은 삭제 푸시후 다시 재업 푸시하는 방법이다.</summary></entry><entry><title type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 맥할아버지 심폐소생기 - 5만원</title><link href="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html" rel="alternate" type="text/html" title="윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 맥할아버지 심폐소생기 - 5만원" /><published>2020-06-16T00:00:00+09:00</published><updated>2020-06-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html">&lt;p&gt;흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다.  이런 걸 되살릴 수 있을 까? 했지만…  살려내어 기쁘기에  이 기쁨을 나누고자 포스트를 작성한다.&lt;/p&gt;
 
 &lt;p&gt;이미 성공한 뒤 기억을 더듬어 적는 거라 혹여 미흡할 순 있지만 지금 은 성공 후 잘 사용하고 있다.&lt;/p&gt;
 
@@ -51,8 +58,7 @@
 
 &lt;ul&gt;
   &lt;li&gt;참고 영상
-    &lt;iframe width=&quot;745&quot; height=&quot;419&quot; src=&quot;https://www.youtube.com/embed/v9sE_FhSdT8&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-  &lt;/li&gt;
+&lt;a href=&quot;https://www.youtube.com/embed/v9sE_FhSdT8&quot; title=&quot;이것은 하이퍼링크의 설명을 작성할 수 있습니다.&quot;&gt;Youtube&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;위의 USB로 처음과 같이 진행하면 맥북 흰둥이에서 high Sierra를 설치할 수 있다. 나같은 경우는 다시 하드를 갈아야 될 경우를 대비해서 snow leopard USB 1개와 high Sierra patcher 로 만든 USB 총 2개를 완성본 상태로 사장 시켜 두었다. 일반적으로는  high Sierra patcher 로 만든 USB 만 있으면 하드를 교체하는 상황에서도 쉽게 설치가 가능할 것 같다.&lt;/p&gt;
@@ -445,32 +451,4 @@ at 1am, Trans-Siberian Railway Network&lt;/p&gt;</content><author><name>wizardof
 iso400
 s32
 f100
-at 3am, jebu island&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Portfolio" /><summary type="html"></summary></entry><entry><title type="html">그이가 그렇게 힘들었어?</title><link href="https://wdofoz.qhop.org/blog/2019/11/06/indifference.html" rel="alternate" type="text/html" title="그이가 그렇게 힘들었어?" /><published>2019-11-06T00:00:00+09:00</published><updated>2019-11-06T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2019/11/06/indifference</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2019/11/06/indifference.html">&lt;h2 id=&quot;애매한-위로는-무관심-보다-잔인하다&quot;&gt;애매한 위로는 무관심 보다 잔인하다.&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;‘그이가 그렇게 힘들었었어? 난 몰랐어….’&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;힘들다고 그렇게 외칠때는 알았다고 넘어가더니… 사람들 앞에서 눈물 흘리는 순간에서야… 이런 일이 생겨서 난감하다는 듯이 나에게 와서 물었다.&lt;/p&gt;
-
-&lt;p&gt;마치 죽겠다고 외칠 때는 처다도 보지 않다가 분신 자살 한 뒤에야  ‘이게 이렇게 심간한 수준의 다툼이였어?’ 라고 뉴스를 힐끔 거리던… 그 일 전에도 후에도 관심 갖지 않던 내 모습 같았다.&lt;/p&gt;
-
-&lt;p&gt;말라 죽어 가는 나무에게 무관심은 얼마나 큰 고통일까?
-말라 죽어가는 나무에게 습기 가득한 공기가 고통일까? 누구도 물을 주지 않는 무관심이 고통일까?&lt;/p&gt;
-
-&lt;p&gt;나에게 고통을 주는 사람과 계속된 위로뒤에 고통의 자리로 계속해서 안내 하는 사람과 누가 더 원망스러울까?&lt;/p&gt;
-
-&lt;p&gt;마치…&lt;/p&gt;
-
-&lt;p&gt;부모가 나를 너무 사랑한다고 믿었지만
-친 자식이 아니라는 이유로 사랑하긴 하지만 그 정도까지는 아니라는 부모의 말을 들은 아이처럼…&lt;/p&gt;
-
-&lt;p&gt;사실은 느끼고 있었지만 말을 들어 확인 사살 당하는 순간의 느낌…&lt;/p&gt;
-
-&lt;p&gt;나의 친절과 배려가 그들에겐 그저 편리한 호구 였을 뿐이였단 걸 깨닫는 순간의 느낌…&lt;/p&gt;
-
-&lt;p&gt;그들의 감사는 그저 계속 호구하라는 충전이였다는걸 깨닫는 순간의 느낌&lt;/p&gt;
-
-&lt;p&gt;나는 그렇게 사람으로 살았지만 그런식의 도구로서 다뤄 졌다는 느낌…&lt;/p&gt;
-
-&lt;p&gt;그렇게 결정적이지 못한 순간에 결정적인 대화가 필요한 느낌…&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Leadership" /><summary type="html">애매한 위로는 무관심 보다 잔인하다.</summary></entry></feed>
+at 3am, jebu island&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Portfolio" /><summary type="html"></summary></entry></feed>
