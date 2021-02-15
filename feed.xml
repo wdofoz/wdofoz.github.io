@@ -1,9 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2021-02-14T15:34:13+00:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">가볼만한 글루텐프리 숨은 맛집 메종데쎄종</title><link href="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html" rel="alternate" type="text/html" title="가볼만한 글루텐프리 숨은 맛집 메종데쎄종" /><published>2021-02-14T00:00:00+00:00</published><updated>2021-02-14T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/14/Gluten</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html">&lt;h2 id=&quot;갑자기-몸이-않좋다&quot;&gt;갑자기 몸이 않좋다.&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2021-02-15T20:16:59+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]</title><link href="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html" rel="alternate" type="text/html" title="kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]" /><published>2021-02-15T00:00:00+09:00</published><updated>2021-02-15T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html">&lt;p&gt;운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)&lt;/p&gt;
+
+&lt;p&gt;어떤 사이트는 브라우저 상단에 글의 제목이 들어가 있는 반면 (kboard로 작성한 제목이 검색 노출 제목으로 됨)&lt;/p&gt;
+
+&lt;p&gt;어떤 사이트는 kboard가 어떤 글이던지간에 브라우저 상단에 페이지의 타이틀이 들어가 있다.&lt;/p&gt;
+
+&lt;p&gt;이는 엘레멘터에디터 사용해서 숏코드를 삽입시 나오는 문제로 일반적인 숏코드 사용시 문제 없었다.&lt;/p&gt;
+
+&lt;p&gt;숏코드로 넣은 kboard 상단 타이틀이 페이지로 되어있을 경우 검색 노출은 물론 같은 이름의 페이지가 너무 많아지면 구글에서 크롤링을 제대로 해줄 지 모르겠다.&lt;/p&gt;
+
+&lt;p&gt;원인을 찾아 여러번 설정을 변경한 가운데 한가지 해답을 찾았는데 원인도 모르겠고 왜 그런지도 모르겠다.&lt;/p&gt;
+
+&lt;p&gt;나같은 경우 코드를 전혀 볼줄 모르기 때문에 엘레멘터에디터를 설치해 사용하는데 엘레멘터 펜집이 아닌 페이지 편집에 들어가면 페이지 속성에 3가지가 나온다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;기본템플릿&lt;/li&gt;
+  &lt;li&gt;elementor  전체너비&lt;/li&gt;
+  &lt;li&gt;elementor 캔버스&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;순서는 바뀔 수 있음
+이 중 2번의 &lt;strong&gt;elementor  전체너비&lt;/strong&gt;를 선택했을 때만 kborad 제목이 브라우저 타이틀로 올라간다. (왜그러지??)&lt;/p&gt;
+
+&lt;p&gt;1,3번을 선택했을 경우는 페이지 제목이 브라우저 타이틀로 올라간다.&lt;/p&gt;
+
+&lt;p&gt;원인은 모르겠지만 elementor  전체너비가 아닌 다른 설정을 하면 seo 설정에서 KBOARD설정이  아닌 PAGE 설정이 먹히는데 왠지 앞으로도 해결되지 않을 것만 같은 느낌이다.&lt;/p&gt;
+
+&lt;p&gt;나와 같은 고민으로 kboard 구글 검색에 골머리를 썩었다면 시도해 보기 바란다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="cmd" /><summary type="html">운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)</summary></entry><entry><title type="html">가볼만한 글루텐프리 숨은? 맛집 메종데쎄종</title><link href="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html" rel="alternate" type="text/html" title="가볼만한 글루텐프리 숨은? 맛집 메종데쎄종" /><published>2021-02-14T00:00:00+09:00</published><updated>2021-02-14T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/14/Gluten</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html">&lt;h2 id=&quot;갑자기-몸이-않좋다&quot;&gt;갑자기 몸이 않좋다.&lt;/h2&gt;
 &lt;p&gt;건강검진에서는 늘 있던 지방간에 만성 위염이 추가되었단다. 
 갑자기?? 갑자기는 무슨. 그동안 일한다고 맨날 컴터 앞에 앉아 운동 안한 결과지… 먼저 운동을 해 다이어트를 해야 겠지만… 자꾸만 몸에 생기는 이상증상이 심상치 않아 나의 영원의 단짝 구글에게 물어놨다.&lt;/p&gt;
 
-&lt;p&gt;그랬더니 의외로…
+&lt;p&gt;그랬더니 의외로..
 밀가루가 염증의 원인이라는 놀라운 (믿어도 돼?) 자료들이 쏟아져 나왔다. 라면, 국수, 햄버거, 토스트, 과자, 빵, 떡볶이 내가 사랑하는 모든것이 밀가룬데…&lt;/p&gt;
 
 &lt;p&gt;그래서 글루텐을 좀 줄여보고자 식습관을 좀 바꿔 보기로 했다. (운동은???)&lt;/p&gt;
@@ -22,23 +49,24 @@
 가게 주인도 글루텐에 알러지 같은게 있어서 글루텐 프리 음식을 먹는다고 한다. 
 블로그 내용이 이상하게 자세해서 지인일까 싶었는데 사진 보고 꼭 가봐야 겠다 생각했다.&lt;/p&gt;
 
-&lt;p&gt;나는 먹을때 사진한장 안찍었고 
-남의 블로그 사진을 퍼올 수 없어서 &lt;a href=&quot;https://m.blog.naver.com/seonhee0203/221810918390&quot;&gt;https://m.blog.naver.com/seonhee0203/221810918390&lt;/a&gt; 링크로 대신한다.&lt;/p&gt;
+&lt;p&gt;나는 먹을때 사진 몇장 안찍었고 남의 블로그 사진을 함부로 퍼올 수 없어서 &lt;a href=&quot;https://m.blog.naver.com/seonhee0203/221810918390&quot;&gt;https://m.blog.naver.com/seonhee0203/221810918390&lt;/a&gt; 링크로 대신한다.&lt;/p&gt;
 
-&lt;p&gt;킬링포인트!&lt;/p&gt;
+&lt;h2 id=&quot;킬링포인트&quot;&gt;킬링포인트!&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;내가 알던 빵집이 아니다. - bar형식 카페 같이 주인을 보면서  먹야야 한다.&lt;/li&gt;
-  &lt;li&gt;내가 알던 대문이 아니다. - 빵집이나 카페 입구는 아니다.&lt;/li&gt;
+  &lt;li&gt;내가 알던 대문이 아니다. - 흔히 보던 빵집이나 카페 입구는 아니다.&lt;/li&gt;
   &lt;li&gt;숨은 맛집인지는 모르겠는데… 확실히 숨어 있다. - 2번 그냥 지나쳤다.&lt;/li&gt;
   &lt;li&gt;인테리어가 내 취향 - 우리가 흔히 아는 카페 인테리어가 아니다. 바 형식으로 되어 있어서 여친이 앞이 아니라 옆에 있다. 테이블을 사이에 두고 앞뒤로 앉는것 보다 테이블 없이 옆에 앉아 있는게 더 좋았다. 우리나라 어디에서도 볼수 없는 빵집 느낌인데… 가게 사진을 안찍어 뭐라 설명할 수 없다.  아래 내가 찍은 사진만 봐도 색다름이 느껴지긴 할 거다. 
 물론 화려하거나 갖춰진 걸 좋아 하는 사람은 별로일 수 있지만 2~30대 보통사람은 색다름을 즐길 수 있을 것이다.&lt;/li&gt;
-  &lt;li&gt;글루텐 프리라는데 … 엄청 맛있다. - 물론 좀 건강한 맛을 있다. 내가 아는 완전 촉촉하고 졸긴한 단빵은 아닌데 유럽에서 먹는 빵느낌이다. 가게 이름 때문인가??&lt;/li&gt;
+  &lt;li&gt;글루텐 프리라는데 … 엄청 맛있다. - 물론 좀 건강한 맛은 있다. 내가 아는 완전 촉촉하고 졸긴한 단빵은 아닌데 유럽에서 먹는 빵느낌이다.(가보긴 했고??) 가게 이름 때문인가??&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;나는 단순히 아는 동내라 갔을 뿐인데 썸타는 사이에 데이트로 가기에 
-색다른 느낌이 있다.&lt;/p&gt;
+색다른 느낌이 있을거다.&lt;/p&gt;
 
 &lt;p&gt;글루텐 프리 식당의 특성상 금방 망하기 때문에 없어지기 전에 가보길 추천한다.&lt;/p&gt;
+
+&lt;p&gt;구글에 &lt;strong&gt;메종 데 쎄종&lt;/strong&gt;이라고 치면 나오는듯 하다.&lt;/p&gt;
 
 &lt;p&gt;아래는 내가 찍은 사진…&lt;/p&gt;
 
@@ -194,14 +222,14 @@
 
   
 
-&lt;/div&gt;</content><author><name>wizardofoz</name></author><category term="Diary" /><summary type="html">갑자기 몸이 않좋다. 건강검진에서는 늘 있던 지방간에 만성 위염이 추가되었단다. 갑자기?? 갑자기는 무슨. 그동안 일한다고 맨날 컴터 앞에 앉아 운동 안한 결과지… 먼저 운동을 해 다이어트를 해야 겠지만… 자꾸만 몸에 생기는 이상증상이 심상치 않아 나의 영원의 단짝 구글에게 물어놨다.</summary></entry><entry><title type="html">지킬에서 글작성시 미리보기에만 글이 보이는 경우</title><link href="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html" rel="alternate" type="text/html" title="지킬에서 글작성시 미리보기에만 글이 보이는 경우" /><published>2020-06-21T00:00:00+00:00</published><updated>2020-06-21T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html">&lt;h2 id=&quot;미리보기에서는-글이-모이는데-jekyll-serve-빌드해서-깃허브에-올리면-없는-페이지로-나와서-황당황당&quot;&gt;미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당…&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>wizardofoz</name></author><category term="Diary" /><summary type="html">갑자기 몸이 않좋다. 건강검진에서는 늘 있던 지방간에 만성 위염이 추가되었단다. 갑자기?? 갑자기는 무슨. 그동안 일한다고 맨날 컴터 앞에 앉아 운동 안한 결과지… 먼저 운동을 해 다이어트를 해야 겠지만… 자꾸만 몸에 생기는 이상증상이 심상치 않아 나의 영원의 단짝 구글에게 물어놨다.</summary></entry><entry><title type="html">지킬에서 글작성시 미리보기에만 글이 보이는 경우</title><link href="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html" rel="alternate" type="text/html" title="지킬에서 글작성시 미리보기에만 글이 보이는 경우" /><published>2020-06-21T00:00:00+09:00</published><updated>2020-06-21T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html">&lt;h2 id=&quot;미리보기에서는-글이-모이는데-jekyll-serve-빌드해서-깃허브에-올리면-없는-페이지로-나와서-황당황당&quot;&gt;미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당…&lt;/h2&gt;
 &lt;p&gt;할때가 간혹 있다. 왜 그럴까?&lt;br /&gt;
 문제는 파일명의 대소문자 차이에 있다. &lt;br /&gt;
 jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로 바뀌면서 내가 쓸 글이 반영 된다. 그런데 깃허브로 푸시할 경우 폴더나 파일명이 대소문자로 바뀔 경우 바뀐 버전을 인식하지 않고 기존의 형식대로 진행 되는 경우가 있다. 서버 주소는 대소문자를 구분해서 불러 들이는데 정작 서버에 올라간 폴더는 이전 대소문자 그대로 유지되어서 없는 페이지가 된다. &lt;br /&gt;
 그럴때 두가지 해결 방법이 있다. 하나는 수동으로 대 소문자를 변경해 주던지 &lt;br /&gt;
 간단한 방법은 삭제 푸시후 다시 재업 푸시하는 방법이다.&lt;/p&gt;
 
-&lt;p&gt;이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당… 할때가 간혹 있다. 왜 그럴까? 문제는 파일명의 대소문자 차이에 있다. jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로 바뀌면서 내가 쓸 글이 반영 된다. 그런데 깃허브로 푸시할 경우 폴더나 파일명이 대소문자로 바뀔 경우 바뀐 버전을 인식하지 않고 기존의 형식대로 진행 되는 경우가 있다. 서버 주소는 대소문자를 구분해서 불러 들이는데 정작 서버에 올라간 폴더는 이전 대소문자 그대로 유지되어서 없는 페이지가 된다. 그럴때 두가지 해결 방법이 있다. 하나는 수동으로 대 소문자를 변경해 주던지 간단한 방법은 삭제 푸시후 다시 재업 푸시하는 방법이다. 이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.</summary></entry><entry><title type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 맥할아버지 심폐소생기 - 5만원</title><link href="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html" rel="alternate" type="text/html" title="윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 맥할아버지 심폐소생기 - 5만원" /><published>2020-06-16T00:00:00+00:00</published><updated>2020-06-16T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html">&lt;p&gt;흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다.  이런 걸 되살릴 수 있을 까? 했지만…  살려내어 기쁘기에  이 기쁨을 나누고자 포스트를 작성한다.&lt;/p&gt;
+&lt;p&gt;이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당… 할때가 간혹 있다. 왜 그럴까? 문제는 파일명의 대소문자 차이에 있다. jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로 바뀌면서 내가 쓸 글이 반영 된다. 그런데 깃허브로 푸시할 경우 폴더나 파일명이 대소문자로 바뀔 경우 바뀐 버전을 인식하지 않고 기존의 형식대로 진행 되는 경우가 있다. 서버 주소는 대소문자를 구분해서 불러 들이는데 정작 서버에 올라간 폴더는 이전 대소문자 그대로 유지되어서 없는 페이지가 된다. 그럴때 두가지 해결 방법이 있다. 하나는 수동으로 대 소문자를 변경해 주던지 간단한 방법은 삭제 푸시후 다시 재업 푸시하는 방법이다. 이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.</summary></entry><entry><title type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 맥할아버지 심폐소생기 - 5만원</title><link href="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html" rel="alternate" type="text/html" title="윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 맥할아버지 심폐소생기 - 5만원" /><published>2020-06-16T00:00:00+09:00</published><updated>2020-06-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html">&lt;p&gt;흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다.  이런 걸 되살릴 수 있을 까? 했지만…  살려내어 기쁘기에  이 기쁨을 나누고자 포스트를 작성한다.&lt;/p&gt;
 
 &lt;p&gt;이미 성공한 뒤 기억을 더듬어 적는 거라 혹여 미흡할 순 있지만 지금 은 성공 후 잘 사용하고 있다.&lt;/p&gt;
 
@@ -245,7 +273,8 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
   &lt;li&gt;그 다음은 &lt;a href=&quot;https://m.blog.naver.com/bjjunpark/221585170073&quot;&gt;이 사이트&lt;/a&gt;를 참조해서 &lt;a href=&quot;http://dosdude1.com/&quot;&gt;여기&lt;/a&gt;에서 시키는대로 진행 하였다.
     &lt;ol&gt;
       &lt;li&gt;&lt;a href=&quot;http://dosdude1.com/software.html&quot;&gt;여기&lt;/a&gt;에서 다운받고 싶은 os를 선택한뒤 프로그램을 다운로드 한다.  기종별로 설치 가능한 버전들이 쫙 나와 있다.  나는  &lt;a href=&quot;https://gateway.pinata.cloud/ipfs/QmYTUKf6b3dg2gRwMAi6DpUDFBEGUQfgBkyuyD2AFY9Trh/macOS%20High%20Sierra%20Patcher.dmg&quot;&gt;high Sierra patcher tool&lt;/a&gt;을 다운로드 해서 실행 하였다.&lt;/li&gt;
-      &lt;li&gt;Tool에서 download MacOS high Sierra 를 클릭 후 다운로드 받는다.  &lt;a href=&quot;http://dosdude1.com/highsierra/tutorialimages/downloadMacOS.png&quot;&gt;&lt;img src=&quot;http://dosdude1.com/highsierra/tutorialimages/downloadMacOS.png&quot; alt=&quot;high Sierra patcher tool&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Tool에서 download MacOS high Sierra 를 클릭 후 다운로드 받는다.&lt;br /&gt;
+ &lt;a href=&quot;http://dosdude1.com/highsierra/tutorialimages/downloadMacOS.png&quot;&gt;&lt;img src=&quot;http://dosdude1.com/highsierra/tutorialimages/downloadMacOS.png&quot; alt=&quot;high Sierra patcher tool&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;다운로드가 되면  3.0 울트라 16G usb에 굽는다.&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/li&gt;
@@ -258,7 +287,7 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 
 &lt;p&gt;위의 USB로 처음과 같이 진행하면 맥북 흰둥이에서 high Sierra를 설치할 수 있다. 나같은 경우는 다시 하드를 갈아야 될 경우를 대비해서 snow leopard USB 1개와 high Sierra patcher 로 만든 USB 총 2개를 완성본 상태로 사장 시켜 두었다. 일반적으로는  high Sierra patcher 로 만든 USB 만 있으면 하드를 교체하는 상황에서도 쉽게 설치가 가능할 것 같다.&lt;/p&gt;
 
-&lt;p&gt;여전히 의문으로 남는 점은 high Sierra patcher이전 버전의 순정 os는 트랜스맥으로 작업했을 때 부팅이 안되었는데 맥에서 high Sierra patcher 로 만든 USB 는 부팅이 되는가 하는 의문점이 아직 남지만… 뭐 앞으로 하드가 돌아가셔도 high Sierra patcher 로 만든 USB 로 재설치해서 사용할 것 같으니까  그따위 영양가 없는 호기심은 처박아 두고 맘편하지 지내기로 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다. 이런 걸 되살릴 수 있을 까? 했지만… 살려내어 기쁘기에 이 기쁨을 나누고자 포스트를 작성한다.</summary></entry><entry><title type="html">벌써 일년 전 - 라오스 여름</title><link href="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html" rel="alternate" type="text/html" title="벌써 일년 전 - 라오스 여름" /><published>2020-06-12T00:00:00+00:00</published><updated>2020-06-12T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html">&lt;style&gt;
+&lt;p&gt;여전히 의문으로 남는 점은 high Sierra patcher이전 버전의 순정 os는 트랜스맥으로 작업했을 때 부팅이 안되었는데 맥에서 high Sierra patcher 로 만든 USB 는 부팅이 되는가 하는 의문점이 아직 남지만… 뭐 앞으로 하드가 돌아가셔도 high Sierra patcher 로 만든 USB 로 재설치해서 사용할 것 같으니까  그따위 영양가 없는 호기심은 처박아 두고 맘편하지 지내기로 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다. 이런 걸 되살릴 수 있을 까? 했지만… 살려내어 기쁘기에 이 기쁨을 나누고자 포스트를 작성한다.</summary></entry><entry><title type="html">벌써 일년 전 - 라오스 여름</title><link href="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html" rel="alternate" type="text/html" title="벌써 일년 전 - 라오스 여름" /><published>2020-06-12T00:00:00+09:00</published><updated>2020-06-12T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html">&lt;style&gt;
   .image-gallery {overflow: auto; margin-left: -1%!important;}
   .image-gallery a {float: left; display: block; margin: 0 0 1% 1%; width: 19%; text-align: center; text-decoration: none!important;}
   .image-gallery a span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 3px 0;}
@@ -445,7 +474,7 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 
 &lt;/div&gt;
 
-&lt;p&gt;아주 오랜 추억처럼… 이제 겨우 일년전이라니….&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Portfolio" /><summary type="html">IMG_1347 IMG_1427 IMG_1429 IMG_20190511_190144 IMG_20190512_183931 PANO_20190511_133445</summary></entry><entry><title type="html">무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기</title><link href="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html" rel="alternate" type="text/html" title="무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기" /><published>2020-06-06T00:00:00+00:00</published><updated>2020-06-06T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/06/Publii</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html">&lt;h2 id=&quot;솔루션-찾아-헤매기&quot;&gt;솔루션 찾아 헤매기&lt;/h2&gt;
+&lt;p&gt;아주 오랜 추억처럼… 이제 겨우 일년전이라니….&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Portfolio" /><summary type="html">IMG_1347 IMG_1427 IMG_1429 IMG_20190511_190144 IMG_20190512_183931 PANO_20190511_133445</summary></entry><entry><title type="html">무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기</title><link href="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html" rel="alternate" type="text/html" title="무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기" /><published>2020-06-06T00:00:00+09:00</published><updated>2020-06-06T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/06/Publii</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html">&lt;h2 id=&quot;솔루션-찾아-헤매기&quot;&gt;솔루션 찾아 헤매기&lt;/h2&gt;
 &lt;p&gt;코로나가 심각해 지면서 모든 사람이 가내 수공업을 하게 되었다.&lt;/p&gt;
 
 &lt;p&gt;나도 반 강제 가네수공업자가 되었다.&lt;/p&gt;
@@ -540,7 +569,7 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 몇가지 아쉬운 기능 (page build, side bar)등 완전 커스텀하기 쉽지 않지만 Tool 에 있는 Custom HTML 기능을 활용하면 무궁무진한 적용이 가능할 듯 하다. 
 물론 아직 베타버전이라 저장하지 않으면 가끔 오류를 뿜뿜 하지만 현재 상황으로도 충분하고도 남을 만큼 쓸만하다.&lt;/p&gt;
 
-&lt;p&gt;잘쓰세요.!&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">솔루션 찾아 헤매기 코로나가 심각해 지면서 모든 사람이 가내 수공업을 하게 되었다.</summary></entry><entry><title type="html">사랑의 모양</title><link href="https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove.html" rel="alternate" type="text/html" title="사랑의 모양" /><published>2020-02-29T00:00:00+00:00</published><updated>2020-02-29T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove.html">&lt;p&gt;사랑은 액체다.&lt;/p&gt;
+&lt;p&gt;잘쓰세요.!&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">솔루션 찾아 헤매기 코로나가 심각해 지면서 모든 사람이 가내 수공업을 하게 되었다.</summary></entry><entry><title type="html">사랑의 모양</title><link href="https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove.html" rel="alternate" type="text/html" title="사랑의 모양" /><published>2020-02-29T00:00:00+09:00</published><updated>2020-02-29T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove.html">&lt;p&gt;사랑은 액체다.&lt;/p&gt;
 
 &lt;p&gt;따라서 그 담기는 모양에 따라 사랑의 모습도 달라진다.&lt;/p&gt;
 
@@ -554,7 +583,7 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 
 &lt;p&gt;이성으로 결정한 사랑은 실체가 없기 때문에…&lt;/p&gt;
 
-&lt;p&gt;사랑이 가득 차기 전까지는 그 모양을 알 수 없다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Essay" /><summary type="html">사랑은 액체다.</summary></entry><entry><title type="html">러시아 밤 기차</title><link href="https://wdofoz.qhop.org/blog/2020/02/22/Siberian.html" rel="alternate" type="text/html" title="러시아 밤 기차" /><published>2020-02-22T00:00:00+00:00</published><updated>2020-02-22T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/02/22/Siberian</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/02/22/Siberian.html">&lt;p&gt;&lt;a href=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot;&gt;&lt;img src=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot; alt=&quot;시베리아 횡단 열차&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;사랑이 가득 차기 전까지는 그 모양을 알 수 없다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Essay" /><summary type="html">사랑은 액체다. 따라서 그 담기는 모양에 따라 사랑의 모습도 달라진다. 어떤 그릇에도 담길 수 있기 때문에 어떤 모습도 될 수 있다. 사랑은 농도와 양을 결정할 수 있지만… 사랑의 모양은 사랑으로 결정할 수 없다. 사랑의 모양은 이성으로 결정 된다. 이성으로 결정한 사랑은 실체가 없기 때문에… 사랑이 가득 차기 전까지는 그 모양을 알 수 없다.</summary></entry><entry><title type="html">러시아 밤 기차</title><link href="https://wdofoz.qhop.org/blog/2020/02/22/Siberian.html" rel="alternate" type="text/html" title="러시아 밤 기차" /><published>2020-02-22T00:00:00+09:00</published><updated>2020-02-22T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/02/22/Siberian</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/02/22/Siberian.html">&lt;p&gt;&lt;a href=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot;&gt;&lt;img src=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot; alt=&quot;시베리아 횡단 열차&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;더위였을 지라도&lt;/p&gt;
 
@@ -564,7 +593,7 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 iso19200
 s 1/17
 f 1.9
-at 1am, Trans-Siberian Railway Network&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Portfolio" /><summary type="html"></summary></entry><entry><title type="html">리더십에 대하여..</title><link href="https://wdofoz.qhop.org/blog/2019/11/21/Leadership.html" rel="alternate" type="text/html" title="리더십에 대하여.." /><published>2019-11-21T00:00:00+00:00</published><updated>2019-11-21T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2019/11/21/Leadership</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2019/11/21/Leadership.html">&lt;p&gt;모두가 자기가 생각하는 리더십이 있다.&lt;br /&gt;
+at 1am, Trans-Siberian Railway Network&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Portfolio" /><summary type="html"></summary></entry><entry><title type="html">리더십에 대하여..</title><link href="https://wdofoz.qhop.org/blog/2019/11/21/Leadership.html" rel="alternate" type="text/html" title="리더십에 대하여.." /><published>2019-11-21T00:00:00+09:00</published><updated>2019-11-21T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2019/11/21/Leadership</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2019/11/21/Leadership.html">&lt;p&gt;모두가 자기가 생각하는 리더십이 있다.&lt;br /&gt;
 그 리더십은 그 사람의 경험에 의해 형성된다.&lt;br /&gt;
 그 경험에 영향력은
   -. 좋은 모습을 따라 하는 것과&lt;br /&gt;
@@ -600,7 +629,7 @@ at 1am, Trans-Siberian Railway Network&lt;/p&gt;</content><author><name>wizardof
 이룩한 리더십과
 주어진 리더십의 차이&lt;/p&gt;
 
-&lt;p&gt;(창립 리더와 고용 리더)&lt;/p&gt;</content><author><name></name></author><category term="Leadership" /><summary type="html">모두가 자기가 생각하는 리더십이 있다. 그 리더십은 그 사람의 경험에 의해 형성된다. 그 경험에 영향력은 -. 좋은 모습을 따라 하는 것과 -. 나빴던 경험을 회피하는 것 에 따라 결정된다.</summary></entry><entry><title type="html">판단하지 않는다.</title><link href="https://wdofoz.qhop.org/blog/2019/11/20/conclude.html" rel="alternate" type="text/html" title="판단하지 않는다." /><published>2019-11-20T00:00:00+00:00</published><updated>2019-11-20T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2019/11/20/conclude</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2019/11/20/conclude.html">&lt;h3 id=&quot;직접-겪어-보기-전엔-판단하지-않는다&quot;&gt;직접 겪어 보기 전엔 판단하지 않는다.&lt;/h3&gt;
+&lt;p&gt;(창립 리더와 고용 리더)&lt;/p&gt;</content><author><name></name></author><category term="Leadership" /><summary type="html">모두가 자기가 생각하는 리더십이 있다. 그 리더십은 그 사람의 경험에 의해 형성된다. 그 경험에 영향력은 -. 좋은 모습을 따라 하는 것과 -. 나빴던 경험을 회피하는 것 에 따라 결정된다.</summary></entry><entry><title type="html">판단하지 않는다.</title><link href="https://wdofoz.qhop.org/blog/2019/11/20/conclude.html" rel="alternate" type="text/html" title="판단하지 않는다." /><published>2019-11-20T00:00:00+09:00</published><updated>2019-11-20T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2019/11/20/conclude</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2019/11/20/conclude.html">&lt;h3 id=&quot;직접-겪어-보기-전엔-판단하지-않는다&quot;&gt;직접 겪어 보기 전엔 판단하지 않는다.&lt;/h3&gt;
 
 &lt;p&gt;많은 사람을 상대하고 상담하고 대화하고 겪어 보고 나서 생긴 나의 삶의 규칙.
 뒷말이 너무 많은 세상에서 나름 익힌 처세술.&lt;/p&gt;
@@ -614,30 +643,4 @@ at 1am, Trans-Siberian Railway Network&lt;/p&gt;</content><author><name>wizardof
 
 &lt;p&gt;이미 내 안에서 판단 되어 진 사람은 다시 만나기 전까지는. 나쁜놈, 꼰대남, 별종인간으로 남게 된다.&lt;/p&gt;
 
-&lt;p&gt;이제 변했다 한들… 지금은 바뀐들… 난 내눈으로 확인 하기 전까진 그 나쁜 사람들을 용서 하지 않겠지…&lt;/p&gt;</content><author><name></name></author><category term="Leadership" /><summary type="html">직접 겪어 보기 전엔 판단하지 않는다.</summary></entry><entry><title type="html">사람이 그렇게 무섭더라</title><link href="https://wdofoz.qhop.org/blog/2019/11/18/why-not.html" rel="alternate" type="text/html" title="사람이 그렇게 무섭더라" /><published>2019-11-18T00:00:00+00:00</published><updated>2019-11-18T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2019/11/18/why%20not</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2019/11/18/why-not.html">&lt;h2 id=&quot;내가-시간이-지날-수록-대인관계-능력이-떨어진다는-걸&quot;&gt;내가 시간이 지날 수록 대인관계 능력이 떨어진다는 걸…&lt;/h2&gt;
-
-&lt;p&gt;나는 나의 환경에 대해 말했고 힘들다고 말했다.&lt;br /&gt;
-사람들은 내가 그 말을 꺼내게 된 계기에 대해 말했고 계기가 원인이라고 생각했다.&lt;/p&gt;
-
-&lt;p&gt;사람들이 계기가 원인이기에 계기가 된 사람을 공격할 때…&lt;br /&gt;
-난 아무것도 하고 싶지 않았다.&lt;/p&gt;
-
-&lt;p&gt;내가 슬픈건, 내가 힘든 이유는 그때문이 아니라고 설명하면 되는다.&lt;br /&gt;
-나는 그걸 안했다.&lt;/p&gt;
-
-&lt;p&gt;난 그가 별로 였고, 그를 지켜줄 의리도, 마음도 없었다.
-그는 공격 당할만 했고, 여기저기 이간질 하고 다녔으며, 태도와 심성이 불량했다.
-한마디로 좋은 사람이 아니였다.&lt;/p&gt;
-
-&lt;p&gt;나랑 엮이지 않았으면 그저 그런 좋은 사람이 아닌 사람이였을 텐데
-나랑 엮이며 나에게 나쁜 사람이 되었다.&lt;/p&gt;
-
-&lt;p&gt;그가 나를 무시해서 나를 치운걸 안다.&lt;br /&gt;
-요즘 나를 무시하지 않고 신경 쓰기 시작한 것도 안다.&lt;br /&gt;
-나도 착한 사람이 아닌지라 그냥 내버려 두었다.&lt;/p&gt;
-
-&lt;p&gt;보통의 나는 챙기는 사람이지만
-화가난 나는 내버려 두는 사람이다.&lt;/p&gt;
-
-&lt;p&gt;난&lt;br /&gt;
-그냥 내버려 두었다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Diary" /><summary type="html">내가 시간이 지날 수록 대인관계 능력이 떨어진다는 걸…</summary></entry></feed>
+&lt;p&gt;이제 변했다 한들… 지금은 바뀐들… 난 내눈으로 확인 하기 전까진 그 나쁜 사람들을 용서 하지 않겠지…&lt;/p&gt;</content><author><name></name></author><category term="Leadership" /><summary type="html">직접 겪어 보기 전엔 판단하지 않는다.</summary></entry></feed>
