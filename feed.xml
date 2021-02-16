@@ -1,5 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2021-02-15T20:28:08+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]</title><link href="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html" rel="alternate" type="text/html" title="kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]" /><published>2021-02-15T00:00:00+09:00</published><updated>2021-02-15T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html">&lt;p&gt;운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2021-02-16T20:14:26+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">마크다운 이미지 링그걸기 (클릭시 원본 뜨기)</title><link href="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html" rel="alternate" type="text/html" title="마크다운 이미지 링그걸기 (클릭시 원본 뜨기)" /><published>2021-02-16T00:00:00+09:00</published><updated>2021-02-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html">&lt;p&gt;의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.&lt;/p&gt;
+
+&lt;p&gt;나도 예전에 검색해 봤는데 아무리 찾아도 없길래 잔머리를 좀 썼더니 되었다. 
+모든 환경에서 다 된다고 보장할 수는 없다.&lt;/p&gt;
+
+&lt;h2 id=&quot;먼저-우리가-보통-알고-있는-링크형식은-다음과-같다&quot;&gt;먼저 우리가 보통 알고 있는 링크형식은 다음과 같다.&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot;&gt;시베리아 횡단 열차&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;우리가-아는-이미지-삽입은-다음과-같다&quot;&gt;우리가 아는 이미지 삽입은 다음과 같다.&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot; alt=&quot;시베리아 횡단 열차&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;이를-합쳐서-사용해-다음과-같이-쓴다&quot;&gt;이를 합쳐서 사용해 다음과 같이 쓴다.&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[![시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)](/assets/img/Trans-Siberian Railway Network.jpg)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot;&gt;&lt;img src=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot; alt=&quot;시베리아 횡단 열차&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;찾아보니-다음과-같이-같은-방법을-제시하는-사람도-있었다&quot;&gt;찾아보니 다음과 같이 같은 방법을 제시하는 사람도 있었다.&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&quot;&gt;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&lt;/a&gt;&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.</summary></entry><entry><title type="html">kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]</title><link href="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html" rel="alternate" type="text/html" title="kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]" /><published>2021-02-15T00:00:00+09:00</published><updated>2021-02-15T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html">&lt;p&gt;운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)&lt;/p&gt;
 
 &lt;p&gt;어떤 사이트는 브라우저 상단에 글의 제목이 들어가 있는 반면 (kboard로 작성한 제목이 검색 노출 제목으로 됨)&lt;/p&gt;
 
@@ -11,7 +42,8 @@
 
 &lt;p&gt;원인을 찾아 여러번 설정을 변경한 가운데 한가지 해답을 찾았는데 원인도 모르겠고 왜 그런지도 모르겠다.&lt;/p&gt;
 
-&lt;p&gt;나같은 경우 코드를 전혀 볼줄 모르기 때문에 엘레멘터에디터를 설치해 사용하는데 엘레멘터 펜집이 아닌 페이지 편집에 들어가면 페이지 속성에 3가지가 나온다.&lt;/p&gt;
+&lt;p&gt;나같은 경우 코드를 전혀 볼줄 모르기 때문에 엘레멘터에디터를 설치해 사용하는데 
+엘레멘터 편집이 아닌 페이지 편집에 들어가면 페이지 속성에 3가지가 나온다.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;기본템플릿&lt;/li&gt;
@@ -629,18 +661,4 @@ at 1am, Trans-Siberian Railway Network&lt;/p&gt;</content><author><name>wizardof
 이룩한 리더십과
 주어진 리더십의 차이&lt;/p&gt;
 
-&lt;p&gt;(창립 리더와 고용 리더)&lt;/p&gt;</content><author><name></name></author><category term="Leadership" /><summary type="html">모두가 자기가 생각하는 리더십이 있다. 그 리더십은 그 사람의 경험에 의해 형성된다. 그 경험에 영향력은 -. 좋은 모습을 따라 하는 것과 -. 나빴던 경험을 회피하는 것 에 따라 결정된다.</summary></entry><entry><title type="html">판단하지 않는다.</title><link href="https://wdofoz.qhop.org/blog/2019/11/20/conclude.html" rel="alternate" type="text/html" title="판단하지 않는다." /><published>2019-11-20T00:00:00+09:00</published><updated>2019-11-20T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2019/11/20/conclude</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2019/11/20/conclude.html">&lt;h3 id=&quot;직접-겪어-보기-전엔-판단하지-않는다&quot;&gt;직접 겪어 보기 전엔 판단하지 않는다.&lt;/h3&gt;
-
-&lt;p&gt;많은 사람을 상대하고 상담하고 대화하고 겪어 보고 나서 생긴 나의 삶의 규칙.
-뒷말이 너무 많은 세상에서 나름 익힌 처세술.&lt;/p&gt;
-
-&lt;p&gt;한 사람 앞에서 다른 사람 이야기를 들었을 때. 좋은 점이든 싫은 점이든. 그 어떤 점도 판단하지 않는다.&lt;br /&gt;
-그 사람을 만나 사실 여부를 파악하기 전까지 기억만 해 둔다.&lt;/p&gt;
-
-&lt;p&gt;오랜 시간 동안 잘 지키며 살아 왔고 생각했는데…&lt;/p&gt;
-
-&lt;p&gt;그 규칙이 ‘직접 격어 판단한 것은 그 어떤 설득에도 바뀌지 않는다’는 아집이 되어 돌아올 미처 생각하지 못했다.&lt;/p&gt;
-
-&lt;p&gt;이미 내 안에서 판단 되어 진 사람은 다시 만나기 전까지는. 나쁜놈, 꼰대남, 별종인간으로 남게 된다.&lt;/p&gt;
-
-&lt;p&gt;이제 변했다 한들… 지금은 바뀐들… 난 내눈으로 확인 하기 전까진 그 나쁜 사람들을 용서 하지 않겠지…&lt;/p&gt;</content><author><name></name></author><category term="Leadership" /><summary type="html">직접 겪어 보기 전엔 판단하지 않는다.</summary></entry></feed>
+&lt;p&gt;(창립 리더와 고용 리더)&lt;/p&gt;</content><author><name></name></author><category term="Leadership" /><summary type="html">모두가 자기가 생각하는 리더십이 있다. 그 리더십은 그 사람의 경험에 의해 형성된다. 그 경험에 영향력은 -. 좋은 모습을 따라 하는 것과 -. 나빴던 경험을 회피하는 것 에 따라 결정된다.</summary></entry></feed>
