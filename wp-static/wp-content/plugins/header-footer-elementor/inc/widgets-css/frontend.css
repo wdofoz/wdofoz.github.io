@@ -21,7 +21,9 @@ ul.hfe-nav-menu,
     position: relative;
     background: inherit;
 }
-
+.hfe-nav-menu__theme-icon-yes button.sub-menu-toggle {
+    display: none;
+}
 div.hfe-nav-menu,
 .elementor-widget-hfe-nav-menu .elementor-widget-container {
     -js-display: flex;
@@ -1735,7 +1737,7 @@ div.hfe-nav-menu,
     font-weight: normal; 
 }
 
-.hfe-menu-cart--empty-indicator-hide .hfe-menu-cart__toggle .elementor-button .elementor-button-icon[data-counter]:before {
+.hfe-menu-cart--empty-indicator-hide .hfe-menu-cart__toggle .elementor-button .elementor-button-icon[data-counter="0"]:before {
     content: none;
     display: none; 
 }
