@@ -12,7 +12,7 @@
 	<atom:link href="http://192.168.100.11/feed/" rel="self" type="application/rss+xml" />
 	<link>./../index.html</link>
 	<description></description>
-	<lastBuildDate>Wed, 27 Apr 2022 11:52:43 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 27 Apr 2022 13:24:31 +0000</lastBuildDate>
 	<language>ko-KR</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,6 +28,53 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상</title>
+		<link>./../2022/04/27/260/index.html</link>
+		
+		<dc:creator><![CDATA[hmyeom]]></dc:creator>
+		<pubDate>Wed, 27 Apr 2022 13:24:31 +0000</pubDate>
+				<category><![CDATA[미분류]]></category>
+		<guid isPermaLink="false">./../index.html?p=260</guid>
+
+					<description><![CDATA[<p>홈페이지 제작 공장장이 되었다. 요즘 홈페이지를 공장처럼 만들기 시작했다. 어렵게 만드는 건 아니고 도커로 워드프레스 기본 폼 만든다음 복사해놨다가 여행이나 행사 사진 정리용으로 홈페이지 하나 만들어서 정적 페이지로 내보내고 끝!!!(나중에 한번에 정리해서 블로깅 할까??) 보관용으로 내보내면 제작된 여행후기 홈페이지를 usb에 넣어서 선물로 줄수도 있어서 유용하게 사용하고 있다. 하루 이틀에 홈페이지 하나씩 만들어서 찍어 내다보니 몇가지 &#8230; </p>
+<p class="link-more"><a href="./../2022/04/27/260/index.html" class="more-link">더 보기<span class="screen-reader-text"> "워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상"</span></a></p>
+<p>The post <a rel="nofollow" href="./../2022/04/27/260/index.html">워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상</a> appeared first on <a rel="nofollow" href="./../index.html">wizardofoz</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<h2>홈페이지 제작 공장장이 되었다.</h2>
+<p>요즘 홈페이지를 공장처럼 만들기 시작했다.<br />
+어렵게 만드는 건 아니고<br />
+도커로 워드프레스 기본 폼 만든다음 복사해놨다가 여행이나 행사 사진 정리용으로 홈페이지 하나 만들어서 정적 페이지로 내보내고 끝!!!(나중에 한번에 정리해서 블로깅 할까??)<br />
+보관용으로 내보내면 제작된 여행후기 홈페이지를 usb에 넣어서 선물로 줄수도 있어서 유용하게 사용하고 있다. </p>
+<p>하루 이틀에 홈페이지 하나씩 만들어서 찍어 내다보니 몇가지 에러가 발생하는데 이를 해결한 팀을 공유하려 한다. </p>
+<h2>워드프레스에서 정적 페이지를 내보냈는데 css 가 깨진다.</h2>
+<p>나처럼 코찔이(코드찌질이-코드를 보지 못한단 이야기)가 홈페이지를 만드는 유일한 방법은 엘레멘터플러그인을 사용해서 손쉽게 만드는 것 뿐이다. 그러기 위해서 필요한 것이 3개 있다. (항상 설치한 플러그인)</p>
+<ol>
+<li>당연한 elementor 플러그인</li>
+<li>작성 완료한 홈페이지를 내보내 줄 simply static 플러그인 </li>
+<li>페이지 내에 있는 파일들을 정리할 수 있는 wp파일관리자 플러그인</li>
+</ol>
+<p>일단 엘레멘터(elementor)를 사용해 홈페이지를 예쁘게 구축한다. 그런 다음 simply static 플러그인으로 내보냈는데 css를 제대로 불러오지 못하는지 화면이 계속 깨진다. </p>
+<p>해결 방법은 간단하다. </p>
+<h2>엘레멘터 설정의 css 단축 관련 옵션을 기본에서 비활성화로 바꾼다.</h2>
+<p>엘레멘터 - 설정을 클릭하면 <strong>Experiments</strong> 이라는 탭이 보인다. 이를 클릭하면 상위 두개에 <strong>Improved Asset Loading</strong> 과 <strong>Improved CSS Loading</strong> 옵션이 보인다. 크롬의 번역이 알려준 바에 따르면 <strong>기본적으로 페이지에 로드되는 코드의 양을 줄여준다.</strong> 의 기능이 있다.<br />
+코드의 빈공간이나 안쓰는 코드등을 제거하고 쓰는것만 내보내는 것 같다. 그러나 simply static 플러그인과 만나면 제대로불러 오지 못하는 것 같으니 이를 비활성화 (Inactive)로 바꿔주면 정적페이지로 내 보낼 때 깨지는 현상이 사라진다. </p>
+<h2>이미지가 안불러와지는 오류는 Lazyload 옵션을 꺼주자</h2>
+<p>여행사진 중 특별한 사진을 모아서 회전목마처럼 돌려보려고 하면 가끔 이미지가 안불러와 지는 경우가 있다. 이는 이미지 기능중에 Lazyload이라는 기능을 꺼주면 된다. 이 기능은 이미지를 한번에 불러왔을 경우 보여지는 페이지에 비해 로딩 속도가 너무 느려지는 경우가 생기기 때문에 이미지 로딩을 가장 마지막으로 해주는 기능이....려나?? 아무튼 그렇다. </p>
+<p>이 기능을 켜 놓으면 simply static 플러그인의경우 아에 안가져와 버린다. 기능을 꺼주면 된다. </p>
+<h2>아직 풀리지 않은 미스테리....</h2>
+<p>simply static 플러그인으로 마치 홈페이지 전문가 처럼 홒페이지를 정적 페이지로 마구마구 찍어내고 있는데... 간혹 풀리지 않는 미스테리가 있다. </p>
+<ol>
+<li>간혹 용량 큰 파일은 내보내기가 되지 않아 수동으로 내보내 준경우가 있다. 아예 안된 것도 아니다. 처음 몇번 잘 내보내지다가 수정하기 위해 다시 내보냈는데 100메가 넘는 동영상이 간혹 안나갈 대가 있다. (되다 안되다) 아마 서버로 사용하고 있는 pc의 성능이 듀얼코어...게다가 노트북... 이라서 (노인학대 죄송) 램도 2기가... 게다가 당시 다른 프로그램 사용중 그런지는 모르겠으나... 내보낸 홈페이지에 대용량 단일 파일이 빠져 있어서 수동으로 카피해주었다. </li>
+<li>주소가 한글이면 간혹 깨진다. 이거는 지킬도 그렇고 여기저기 다 그렇다고 하니까 패스</li>
+</ol>
+<p>혹시 나처럼 워드프레스로 정적페이지 만드는 사람이 있다면 참고하세요. </p>
+<p>The post <a rel="nofollow" href="./../2022/04/27/260/index.html">워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상</a> appeared first on <a rel="nofollow" href="./../index.html">wizardofoz</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
 		<title>PDF 날짜 지난 파일 열기 및 날짜 제한 삭제</title>
 		<link>./../2022/04/27/258/index.html</link>
 		
