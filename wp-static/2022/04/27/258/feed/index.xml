@@ -7,11 +7,11 @@
 	>
 <channel>
 	<title>
-	wizardofoz의 댓글	</title>
-	<atom:link href="http://192.168.100.11/comments/feed/" rel="self" type="application/rss+xml" />
-	<link>./../../index.html</link>
+	댓글: PDF 날짜 지난 파일 열기 및 날짜 제한 삭제	</title>
+	<atom:link href="http://192.168.100.11/2022/04/27/258/feed/" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
 	<description></description>
-	<lastBuildDate>Wed, 27 Apr 2022 11:52:43 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 27 Apr 2022 06:39:40 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>

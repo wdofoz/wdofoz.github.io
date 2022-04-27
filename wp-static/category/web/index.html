@@ -186,12 +186,61 @@ img.emoji {
 		<main id="main" class="site-main" role="main">
 
 					
+<article id="post-258" class="post-258 post type-post status-publish format-standard hentry category-web">
+		<header class="entry-header">
+		<div class="entry-meta">
+<span class="screen-reader-text">작성일자</span> <a href="./../../2022/04/27/258/index.html" rel="bookmark"><time class="entry-date published" datetime="2022-04-27T15:38:41+09:00">2022년 04월 27일</time><time class="updated" datetime="2022-04-27T15:39:40+09:00">2022년 04월 27일</time></a>
+</div>
+<!-- .entry-meta --><h2 class="entry-title"><a href="./../../2022/04/27/258/index.html" rel="bookmark">PDF 날짜 지난 파일 열기 및 날짜 제한 삭제</a></h2>	</header><!-- .entry-header -->
+
+	
+	<div class="entry-content">
+		<h2>서론</h2>
+<p>PDF는 편집을 위한 파일이 아니다. 완성본이다. 그렇기 때문에 PDF를 편집한다는 건 수많은 에러와 마주할 각오를 하고 진행 해야 한다. </p>
+<p>거래처에서 오는 파일 보고용으로 돌리는 파일 등 업무에서 많은 부분의 파일이 PDF로 만들어 진다. 이유는 간단. 인쇄용이기 때문이다. 한글,워드 파워포인트는 폰트를 첨부해야 하는데 이것이 버전에 따라 읽히기도 아니기도 한다. 그러나 pdf는 언제나 비슷한 퀄리티로 페이지를 보여주기 때문에 나는 편집할 일이 없는 파일은 무조건 pdf 로 달라고 해서 받는 편이다. </p>
+<p>그런데 간혹 아주 간혹 pdf 를 수정해야 할 경우가 생긴다. 그럴때는 어도비 아크로뱃(Acrobat pro, 유료)로 한두글자나 그림 한두개 정도 편집 하는 편이다.<br>
+각설하고..</p>
+<h2>날짜 기한이 정해진 파일 날짜 지나서 안열릴 때</h2>
+<p>pdf는 대단한 보안 툴이 포함된 파일이 아니다. 대부분의 열람 날짜 제한은 JAVA로 작성된다. 인터넷연결해서 시간을 보는게 아니라 PC시간 기준으로 시간을 측정한다. 그렇다. <strong>&quot;pc기준&quot;</strong>이다. </p>
+<p>그럼 아주아주 간단한 방법은 pc의 시간을 열람 가능한 날짜로 변경 하는 것...</p>
+<ol>
+<li>윈도우 오른쪽 날짜 부분에서 마우스 우클릭을 한다. </li>
+<li>날짜/시간 조정 을 클릭한다. </li>
+<li>자동으로 시간 설정을 끈다.</li>
+<li>수종으로 날짜 및 시간 설정 아래 <strong>변경</strong> 버튼을 클릭한다. </li>
+<li>날짜를 변경해 <strong>변경</strong> 버튼을 눌러 날짜를 바꾼다. </li>
+</ol>
+<h2>날짜 기한 제거</h2>
+<p>위에서 말 했듯 pdf에는 대단한 기능 제한을 걸기 어렵다. 날짜 제한 역시 대부분 JAVA로 인한 설정이다. </p>
+<ol>
+<li>어도비 아크로뱃(Acrobat pro, 유료)로 파일을 연다. </li>
+<li>도구에서 사용자정의 항목에 JavaScript에 들어간다. </li>
+<li>모든 JavaScript로 들어간다. </li>
+<li>적힌 스크립트 중 funtion포함 이하 구문을 삭제 한다. </li>
+</ol>
+<p>저장한다. </p>
+<h2>아크로벳에서만 화면 보이는 파일 수정</h2>
+<p>Pdf 중에서 아크로뱃 리더로만 화면이 보이고 크롬이나 타 프로그램으로는 내용 확인이 안되는 PDF 가 있다. PDF는 대단한 보안 설정이 있는게 아니라 단지 화면이 다른 화면으로 가려져 있을 뿐이다. 이 가려진 화면을 삭제 해 주면 된다. </p>
+<ol>
+<li>어도비 아크로뱃(Acrobat pro, 유료)로 프로그램을 연다. </li>
+<li>왼쪽 툴을 보면 클립모양 아래 사각형 여러겹 있는 아이콘을 클릭한다. (레이어 편집, 레이어가 없으면 보이지 않음)</li>
+<li>마우스 우클릭으로 속성에 들어간 뒤 잠겨 있으면 잠금을 풀고 인쇄 &quot;가시성,인쇄,내보내기&quot; 모두<strong> 항상숨기기</strong>로 설정한다. </li>
+<li>확인을 누르고 레이어 설정창에서 &quot;레이어결합&quot;을 해서 숨겨진 상태의 레이어가 PDF 파일로 결합되게 한다. </li>
+</ol>
+<p>이렇게 되면 타 프로그램에서 레이어가 가려지는 현상없이 파일을 오픈 할 수 있다. </p>
+<p>좋은 방향으로만 활용하기 바랍니다. </p>
+	</div>
+<!-- .entry-content -->
+
+	
+</article><!-- #post-258 -->
+
 <article id="post-138" class="post-138 post type-post status-publish format-standard hentry category-web">
 		<header class="entry-header">
 		<div class="entry-meta">
-<span class="screen-reader-text">작성일자</span> <a href="./../../2021/02/12/138/index.html" rel="bookmark"><time class="entry-date published" datetime="2021-02-12T16:26:53+09:00">2021년 02월 12일</time><time class="updated" datetime="2021-02-14T01:35:21+09:00">2021년 02월 14일</time></a>
+<span class="screen-reader-text">작성일자</span> <a href="./../../2021/05/19/138/index.html" rel="bookmark"><time class="entry-date published" datetime="2021-05-19T16:26:53+09:00">2021년 05월 19일</time><time class="updated" datetime="2022-04-27T20:52:43+09:00">2022년 04월 27일</time></a>
 </div>
-<!-- .entry-meta --><h2 class="entry-title"><a href="./../../2021/02/12/138/index.html" rel="bookmark">정적 페이지도 결국은 워드프레스</a></h2>	</header><!-- .entry-header -->
+<!-- .entry-meta --><h2 class="entry-title"><a href="./../../2021/05/19/138/index.html" rel="bookmark">정적 페이지도 결국은 워드프레스</a></h2>	</header><!-- .entry-header -->
 
 	
 	<div class="entry-content">
@@ -255,7 +304,10 @@ simply static plugin이 zip 내보내기가 안될 때가 있다. 링크를 클�
 <nav aria-label="최신 글">
 		<ul>
 											<li>
-					<a href="./../../2021/02/12/138/index.html">정적 페이지도 결국은 워드프레스</a>
+					<a href="./../../2022/04/27/258/index.html">PDF 날짜 지난 파일 열기 및 날짜 제한 삭제</a>
+									</li>
+											<li>
+					<a href="./../../2021/05/19/138/index.html">정적 페이지도 결국은 워드프레스</a>
 									</li>
 					</ul>
 
