@@ -12,7 +12,7 @@
 	<atom:link href="http://192.168.100.11/author/hmyeom/feed/" rel="self" type="application/rss+xml" />
 	<link>./../../../index.html</link>
 	<description></description>
-	<lastBuildDate>Wed, 27 Apr 2022 13:24:31 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 27 Apr 2022 13:33:18 +0000</lastBuildDate>
 	<language>ko-KR</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -33,7 +33,7 @@
 		
 		<dc:creator><![CDATA[hmyeom]]></dc:creator>
 		<pubDate>Wed, 27 Apr 2022 13:24:31 +0000</pubDate>
-				<category><![CDATA[미분류]]></category>
+				<category><![CDATA[WEB]]></category>
 		<guid isPermaLink="false">./../../../index.html?p=260</guid>
 
 					<description><![CDATA[<p>홈페이지 제작 공장장이 되었다. 요즘 홈페이지를 공장처럼 만들기 시작했다. 어렵게 만드는 건 아니고 도커로 워드프레스 기본 폼 만든다음 복사해놨다가 여행이나 행사 사진 정리용으로 홈페이지 하나 만들어서 정적 페이지로 내보내고 끝!!!(나중에 한번에 정리해서 블로깅 할까??) 보관용으로 내보내면 제작된 여행후기 홈페이지를 usb에 넣어서 선물로 줄수도 있어서 유용하게 사용하고 있다. 하루 이틀에 홈페이지 하나씩 만들어서 찍어 내다보니 몇가지 &#8230; </p>
