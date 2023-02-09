@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	wizardofoz의 댓글	</title>
-	<atom:link href="http://192.168.100.11/comments/feed/" rel="self" type="application/rss+xml" />
-	<link>https://wdofoz.qhop.org/wp-static/</link>
+	<atom:link href="http://192.168.100.11/comments/feed/?simply_static_page=41" rel="self" type="application/rss+xml" />
+	<link>/wp-static/</link>
 	<description></description>
 	<lastBuildDate>Wed, 27 Apr 2022 14:07:21 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=5.9.3</generator>
+	<generator>https://wordpress.org/?v=6.1.1</generator>
 </channel>
 </rss>

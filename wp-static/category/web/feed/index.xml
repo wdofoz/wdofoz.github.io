@@ -9,8 +9,8 @@
 
 <channel>
 	<title>WEB Archives - wizardofoz</title>
-	<atom:link href="http://192.168.100.11/category/web/feed/" rel="self" type="application/rss+xml" />
-	<link>https://wdofoz.qhop.org/wp-static/</link>
+	<atom:link href="http://192.168.100.11/category/web/feed/?simply_static_page=124" rel="self" type="application/rss+xml" />
+	<link>/wp-static/category/web/</link>
 	<description></description>
 	<lastBuildDate>Wed, 27 Apr 2022 13:56:34 +0000</lastBuildDate>
 	<language>ko-KR</language>
@@ -18,27 +18,27 @@
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=5.9.3</generator>
+	<generator>https://wordpress.org/?v=6.1.1</generator>
 
 <image>
-	<url>https://wdofoz.qhop.org/wp-static/wp-content/uploads/2021/02/cropped-logonav-32x32.png</url>
+	<url>/wp-static/wp-content/uploads/2021/02/cropped-logonav-32x32.png</url>
 	<title>WEB Archives - wizardofoz</title>
-	<link>https://wdofoz.qhop.org/wp-static/</link>
+	<link>/wp-static/category/web/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상</title>
-		<link>https://wdofoz.qhop.org/wp-static/2022/04/27/260/</link>
+		<link>/wp-static/2022/04/27/260/</link>
 		
 		<dc:creator><![CDATA[wdofoz]]></dc:creator>
 		<pubDate>Wed, 27 Apr 2022 13:24:31 +0000</pubDate>
 				<category><![CDATA[WEB]]></category>
-		<guid isPermaLink="false">https://wdofoz.qhop.org/wp-static/?p=260</guid>
+		<guid isPermaLink="false">/wp-static/?p=260</guid>
 
 					<description><![CDATA[<p>홈페이지 제작 공장장이 되었다. 요즘 홈페이지를 공장처럼 만들기 시작했다. 어렵게 만드는 건 아니고 도커로 워드프레스 기본 폼 만든다음 복사해놨다가 여행이나 행사 사진 정리용으로 홈페이지 하나 만들어서 정적 페이지로 내보내고 끝!!!(나중에 한번에 정리해서 블로깅 할까??) 보관용으로 내보내면 제작된 여행후기 홈페이지를 usb에 넣어서 선물로 줄수도 있어서 유용하게 사용하고 있다. 하루 이틀에 홈페이지 하나씩 만들어서 찍어 내다보니 몇가지 &#8230; </p>
-<p class="link-more"><a href="https://wdofoz.qhop.org/wp-static/2022/04/27/260/" class="more-link">더 보기<span class="screen-reader-text"> "워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상"</span></a></p>
-<p>The post <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/2022/04/27/260/">워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상</a> appeared first on <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/">wizardofoz</a>.</p>
+<p class="link-more"><a href="/wp-static/2022/04/27/260/" class="more-link">더 보기<span class="screen-reader-text"> "워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상"</span></a></p>
+<p>The post <a rel="nofollow" href="/wp-static/2022/04/27/260/">워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상</a> appeared first on <a rel="nofollow" href="/wp-static/">wizardofoz</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[<h2>홈페이지 제작 공장장이 되었다.</h2>
 <p>요즘 홈페이지를 공장처럼 만들기 시작했다.<br />
@@ -68,7 +68,7 @@
 <li>주소가 한글이면 간혹 깨진다. 이거는 지킬도 그렇고 여기저기 다 그렇다고 하니까 패스</li>
 </ol>
 <p>혹시 나처럼 워드프레스로 정적페이지 만드는 사람이 있다면 참고하세요. </p>
-<p>The post <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/2022/04/27/260/">워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상</a> appeared first on <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/">wizardofoz</a>.</p>
+<p>The post <a rel="nofollow" href="/wp-static/2022/04/27/260/">워드프레스(WordPress)에서 엘레멘터(Elementor)로 작성한 정적페이지(Simply Static)내 보낼 때 깨지는 현상</a> appeared first on <a rel="nofollow" href="/wp-static/">wizardofoz</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -76,16 +76,16 @@
 			</item>
 		<item>
 		<title>PDF 날짜 지난 파일 열기 및 날짜 제한 삭제</title>
-		<link>https://wdofoz.qhop.org/wp-static/2022/04/27/258/</link>
+		<link>/wp-static/2022/04/27/258/</link>
 		
 		<dc:creator><![CDATA[wdofoz]]></dc:creator>
 		<pubDate>Wed, 27 Apr 2022 06:38:41 +0000</pubDate>
 				<category><![CDATA[WEB]]></category>
-		<guid isPermaLink="false">https://wdofoz.qhop.org/wp-static/?p=258</guid>
+		<guid isPermaLink="false">/wp-static/?p=258</guid>
 
 					<description><![CDATA[<p>서론 PDF는 편집을 위한 파일이 아니다. 완성본이다. 그렇기 때문에 PDF를 편집한다는 건 수많은 에러와 마주할 각오를 하고 진행 해야 한다. 거래처에서 오는 파일 보고용으로 돌리는 파일 등 업무에서 많은 부분의 파일이 PDF로 만들어 진다. 이유는 간단. 인쇄용이기 때문이다. 한글,워드 파워포인트는 폰트를 첨부해야 하는데 이것이 버전에 따라 읽히기도 아니기도 한다. 그러나 pdf는 언제나 비슷한 퀄리티로 페이지를 &#8230; </p>
-<p class="link-more"><a href="https://wdofoz.qhop.org/wp-static/2022/04/27/258/" class="more-link">더 보기<span class="screen-reader-text"> "PDF 날짜 지난 파일 열기 및 날짜 제한 삭제"</span></a></p>
-<p>The post <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/2022/04/27/258/">PDF 날짜 지난 파일 열기 및 날짜 제한 삭제</a> appeared first on <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/">wizardofoz</a>.</p>
+<p class="link-more"><a href="/wp-static/2022/04/27/258/" class="more-link">더 보기<span class="screen-reader-text"> "PDF 날짜 지난 파일 열기 및 날짜 제한 삭제"</span></a></p>
+<p>The post <a rel="nofollow" href="/wp-static/2022/04/27/258/">PDF 날짜 지난 파일 열기 및 날짜 제한 삭제</a> appeared first on <a rel="nofollow" href="/wp-static/">wizardofoz</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[<h2>서론</h2>
 <p>PDF는 편집을 위한 파일이 아니다. 완성본이다. 그렇기 때문에 PDF를 편집한다는 건 수많은 에러와 마주할 각오를 하고 진행 해야 한다. </p>
@@ -121,7 +121,7 @@
 </ol>
 <p>이렇게 되면 타 프로그램에서 레이어가 가려지는 현상없이 파일을 오픈 할 수 있다. </p>
 <p>좋은 방향으로만 활용하기 바랍니다. </p>
-<p>The post <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/2022/04/27/258/">PDF 날짜 지난 파일 열기 및 날짜 제한 삭제</a> appeared first on <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/">wizardofoz</a>.</p>
+<p>The post <a rel="nofollow" href="/wp-static/2022/04/27/258/">PDF 날짜 지난 파일 열기 및 날짜 제한 삭제</a> appeared first on <a rel="nofollow" href="/wp-static/">wizardofoz</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -129,16 +129,16 @@
 			</item>
 		<item>
 		<title>정적 페이지도 결국은 워드프레스</title>
-		<link>https://wdofoz.qhop.org/wp-static/2021/05/19/138/</link>
+		<link>/wp-static/2021/05/19/138/</link>
 		
 		<dc:creator><![CDATA[wdofoz]]></dc:creator>
 		<pubDate>Wed, 19 May 2021 07:26:53 +0000</pubDate>
 				<category><![CDATA[WEB]]></category>
-		<guid isPermaLink="false">http://192.168.100.54:28088/?p=138</guid>
+		<guid isPermaLink="false">/wp-static/?p=138</guid>
 
 					<description><![CDATA[<p>도루묵 워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비... 무료로 하려면 집에서 구동중인 서버 대용 pc로 돌려야 하는데 리눅스를 설치해도 마음에 드는 속도가 나오지 않는다. 무료로 사이트 운용할 수 있는 깃허브를 쓰자니 정적 사이트가 아니라서 어렵다. 깃허브를 이용하면 정적 사이트 유지 비용은 사실상 제로... 속도도 php를 사용한 사이트와 비교 불가할 정도.. 마크다운을 활용한 편리한 &#8230; </p>
-<p class="link-more"><a href="https://wdofoz.qhop.org/wp-static/2021/05/19/138/" class="more-link">더 보기<span class="screen-reader-text"> "정적 페이지도 결국은 워드프레스"</span></a></p>
-<p>The post <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/2021/05/19/138/">정적 페이지도 결국은 워드프레스</a> appeared first on <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/">wizardofoz</a>.</p>
+<p class="link-more"><a href="/wp-static/2021/05/19/138/" class="more-link">더 보기<span class="screen-reader-text"> "정적 페이지도 결국은 워드프레스"</span></a></p>
+<p>The post <a rel="nofollow" href="/wp-static/2021/05/19/138/">정적 페이지도 결국은 워드프레스</a> appeared first on <a rel="nofollow" href="/wp-static/">wizardofoz</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[<h2>도루묵</h2>
 <p>워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비...<br />
@@ -183,7 +183,7 @@ simply static plugin이 zip 내보내기가 안될 때가 있다. 링크를 클�
 <p>많은 단점에도 불구하고 워드프레스의 장점은 명확하다. 쉽게 예쁜 사이트를 구축할 수 있다. (물론 난 디자인감각이 없어서 남의 이야기지만...) 쓰던거라 편하다. 배우고 까먹고를 반복하지 않아도 된다. 잘모르는 루비 설치며 버전에러에 고민할 필요 없다. 원인을 알수 없는 에러메시지에 불안해 하지 않아도 된다. 사진 등 미디어 첨부하는데 골머리를 썩지 않아도 된다.</p>
 <p>워드프레스의 단 하나의 단점은 정적 페이지가 아닌것... 그로인해속도도 느리고 구축 자체가 어렵다. </p>
 <p>물론 코드를 보는것이 익숙해지고 이런저런 에러를 풀어가며 공부를 하기 위해선 지킬도 좋긴 하겠다. 그러나 나에겐 너무 복잡하고 개발자가 아닌 단순 유저인 나로서는 워드프레스를 정적 페이지로 변환하는게 정신 건강에 좋았다.</p>
-<p>The post <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/2021/05/19/138/">정적 페이지도 결국은 워드프레스</a> appeared first on <a rel="nofollow" href="https://wdofoz.qhop.org/wp-static/">wizardofoz</a>.</p>
+<p>The post <a rel="nofollow" href="/wp-static/2021/05/19/138/">정적 페이지도 결국은 워드프레스</a> appeared first on <a rel="nofollow" href="/wp-static/">wizardofoz</a>.</p>
 ]]></content:encoded>
 					
 		

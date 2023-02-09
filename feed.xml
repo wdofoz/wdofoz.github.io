@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2021-05-31T10:51:35+00:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">갑자기 꺼지는 노트북 100% 해결</title><link href="https://wdofoz.qhop.org/blog/2021/05/31/Laptop-Shuts-Off.html" rel="alternate" type="text/html" title="갑자기 꺼지는 노트북 100% 해결" /><published>2021-05-31T00:00:00+00:00</published><updated>2021-05-31T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2021/05/31/Laptop-Shuts-Off</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/05/31/Laptop-Shuts-Off.html">&lt;h1 id=&quot;갑자기-꺼지는-노트북-100-해결&quot;&gt;갑자기 꺼지는 노트북 100% 해결&lt;/h1&gt;
-
-&lt;p&gt;회사 노트북 중에서 처분할 녀석들이 생겨서 상태 점검 및 옆그레이드(?)를 하는 중이다. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2023-02-09T14:52:47+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">갑자기 꺼지는 노트북 100% 해결</title><link href="https://wdofoz.qhop.org/blog/2021/05/31/Laptop-Shuts-Off.html" rel="alternate" type="text/html" title="갑자기 꺼지는 노트북 100% 해결" /><published>2021-05-31T00:00:00+09:00</published><updated>2021-05-31T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/05/31/Laptop-Shuts-Off</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/05/31/Laptop-Shuts-Off.html">&lt;p&gt;회사 노트북 중에서 처분할 녀석들이 생겨서 상태 점검 및 옆그레이드(?)를 하는 중이다. 
 그런데 이상하게 같은 회사 노트북에서 픽하고 꺼지는 현상이 반복적으로 발생했다. 
 여러대의 노트북이 왜 같은 증상을 일으키는 걸까??&lt;/p&gt;
 
@@ -40,16 +38,16 @@
   &lt;li&gt;발열문제&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;1번은 수리비가 노트북비용보다 비싸고
-2.번은 정품 어뎁터인데 보다 높은 사제를 써야하나??
-3.번은 식혀주랴?&lt;/p&gt;
+&lt;p&gt;1 번은 수리비가 노트북비용보다 비싸고
+2 번은 정품 어뎁터인데 보다 높은 사제를 써야하나??
+3 번은 식혀주랴?&lt;/p&gt;
 
 &lt;h2 id=&quot;의외로-간단한-해결-방법&quot;&gt;의외로 간단한 해결 방법&lt;/h2&gt;
 
 &lt;p&gt;서핑중 어떤 분이 오버클럭에 의한 전원 소모 및 과열을 문제 제기하면서 cpu의 사용량을 95%에서 최대 80%까지 제한할 것을 제안했다.
 의외로 먹히면서 그 후로 한번도 전원 종료 이슈가 발생하지 않았다. (혹시 사용하다 회사 자료 날라가면 난몰러… 노인 학대 그만하고 새 노트북삽시다.)&lt;/p&gt;
 
-&lt;h3 id=&quot;방법-윈도우-10-기준&quot;&gt;방법 (윈도우 10 기준)&lt;/h3&gt;
+&lt;h2 id=&quot;방법-윈도우-10-기준&quot;&gt;방법 (윈도우 10 기준)&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;좌측 아래 윈도우 모양(시작버튼)에서 마우스 우클릭을 해서 &lt;strong&gt;전원 옵션&lt;/strong&gt; 선택한다.&lt;/li&gt;
@@ -69,7 +67,7 @@
 &lt;p&gt;프로세서 제한으로 발열이 해결 된건지 전원이 해결 된건지는 모르겠다. (USB나 외장하드를 추가해서 사용하는데도 전원 종료 이슈가 없는걸로는 전원 문제가 아닌가??)
 먼지 제거도 해보고 전원도 바꿔보고 배터리도 신형으로 교체해 봤지만 증상이 같아서 정확한 원인은 추측으로만 남아있다. (발열 문제 예상)&lt;/p&gt;
 
-&lt;p&gt;모두다 노인학대 그만하고 어여어여 노트북을 바꾸길 바라지만 난 1주일째 안꺼도 꺼짐 현상이 없었으니 참고하기 바란다. (90%로 제한)&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">갑자기 꺼지는 노트북 100% 해결</summary></entry><entry><title type="html">정적 페이지도 결국은 워드프레스</title><link href="https://wdofoz.qhop.org/blog/2021/05/18/wordpress-static-%EB%B3%B5%EC%82%AC%EB%B3%B8.html" rel="alternate" type="text/html" title="정적 페이지도 결국은 워드프레스" /><published>2021-05-18T00:00:00+00:00</published><updated>2021-05-18T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2021/05/18/wordpress-static%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/05/18/wordpress-static-%EB%B3%B5%EC%82%AC%EB%B3%B8.html">&lt;h2 id=&quot;도루묵&quot;&gt;도루묵&lt;/h2&gt;
+&lt;p&gt;모두다 노인학대 그만하고 어여어여 노트북을 바꾸길 바라지만 난 1주일째 안꺼도 꺼짐 현상이 없었으니 참고하기 바란다. (90%로 제한)&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">회사 노트북 중에서 처분할 녀석들이 생겨서 상태 점검 및 옆그레이드(?)를 하는 중이다. 그런데 이상하게 같은 회사 노트북에서 픽하고 꺼지는 현상이 반복적으로 발생했다. 여러대의 노트북이 왜 같은 증상을 일으키는 걸까??</summary></entry><entry><title type="html">정적 페이지도 결국은 워드프레스</title><link href="https://wdofoz.qhop.org/blog/2021/05/18/wordpress-static-%EB%B3%B5%EC%82%AC%EB%B3%B8.html" rel="alternate" type="text/html" title="정적 페이지도 결국은 워드프레스" /><published>2021-05-18T00:00:00+09:00</published><updated>2021-05-18T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/05/18/wordpress-static%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/05/18/wordpress-static-%EB%B3%B5%EC%82%AC%EB%B3%B8.html">&lt;h2 id=&quot;도루묵&quot;&gt;도루묵&lt;/h2&gt;
 &lt;p&gt;워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비…
 무료로 하려면 집에서 구동중인 서버 대용 pc로 돌려야 하는데 리눅스를 설치해도 마음에 드는 속도가 나오지 않는다. 무료로 사이트 운용할 수 있는 깃허브를 쓰자니 정적 사이트가 아니라서 어렵다.&lt;/p&gt;
 
@@ -122,7 +120,7 @@ simply static plugin이 zip 내보내기가 안될 때가 있다. 링크를 클�
 
 &lt;p&gt;워드프레스의 단 하나의 단점은 정적 페이지가 아닌것… 그로인해속도도 느리고 구축 자체가 어렵다.&lt;/p&gt;
 
-&lt;p&gt;물론 코드를 보는것이 익숙해지고 이런저런 에러를 풀어가며 공부를 하기 위해선 지킬도 좋긴 하겠다. 그러나 나에겐 너무 복잡하고 개발자가 아닌 단순 유저인 나로서는 워드프레스를 정적 페이지로 변환하는게 정신 건강에 좋았다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">도루묵 워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비… 무료로 하려면 집에서 구동중인 서버 대용 pc로 돌려야 하는데 리눅스를 설치해도 마음에 드는 속도가 나오지 않는다. 무료로 사이트 운용할 수 있는 깃허브를 쓰자니 정적 사이트가 아니라서 어렵다.</summary></entry><entry><title type="html">마크다운 이미지 링그걸기 (클릭시 원본 뜨기)</title><link href="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html" rel="alternate" type="text/html" title="마크다운 이미지 링그걸기 (클릭시 원본 뜨기)" /><published>2021-02-16T00:00:00+00:00</published><updated>2021-02-16T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html">&lt;p&gt;의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.&lt;/p&gt;
+&lt;p&gt;물론 코드를 보는것이 익숙해지고 이런저런 에러를 풀어가며 공부를 하기 위해선 지킬도 좋긴 하겠다. 그러나 나에겐 너무 복잡하고 개발자가 아닌 단순 유저인 나로서는 워드프레스를 정적 페이지로 변환하는게 정신 건강에 좋았다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">도루묵 워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비… 무료로 하려면 집에서 구동중인 서버 대용 pc로 돌려야 하는데 리눅스를 설치해도 마음에 드는 속도가 나오지 않는다. 무료로 사이트 운용할 수 있는 깃허브를 쓰자니 정적 사이트가 아니라서 어렵다.</summary></entry><entry><title type="html">마크다운 이미지 링그걸기 (클릭시 원본 뜨기)</title><link href="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html" rel="alternate" type="text/html" title="마크다운 이미지 링그걸기 (클릭시 원본 뜨기)" /><published>2021-02-16T00:00:00+09:00</published><updated>2021-02-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html">&lt;p&gt;의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.&lt;/p&gt;
 
 &lt;p&gt;나도 예전에 검색해 봤는데 아무리 찾아도 없길래 잔머리를 좀 썼더니 되었다. 
 모든 환경에서 다 된다고 보장할 수는 없다.&lt;/p&gt;
@@ -153,7 +151,7 @@ simply static plugin이 zip 내보내기가 안될 때가 있다. 링크를 클�
 
 &lt;h2 id=&quot;찾아보니-다음과-같이-같은-방법을-제시하는-사람도-있었다&quot;&gt;찾아보니 다음과 같이 같은 방법을 제시하는 사람도 있었다.&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&quot;&gt;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&lt;/a&gt;&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.</summary></entry><entry><title type="html">kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]</title><link href="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html" rel="alternate" type="text/html" title="kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]" /><published>2021-02-15T00:00:00+00:00</published><updated>2021-02-15T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html">&lt;p&gt;운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&quot;&gt;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&lt;/a&gt;&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.</summary></entry><entry><title type="html">kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]</title><link href="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html" rel="alternate" type="text/html" title="kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]" /><published>2021-02-15T00:00:00+09:00</published><updated>2021-02-15T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html">&lt;p&gt;운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)&lt;/p&gt;
 
 &lt;p&gt;어떤 사이트는 브라우저 상단에 글의 제목이 들어가 있는 반면 (kboard로 작성한 제목이 검색 노출 제목으로 됨)&lt;/p&gt;
 
@@ -181,7 +179,7 @@ simply static plugin이 zip 내보내기가 안될 때가 있다. 링크를 클�
 
 &lt;p&gt;원인은 모르겠지만 elementor  전체너비가 아닌 다른 설정을 하면 seo 설정에서 KBOARD설정이  아닌 PAGE 설정이 먹히는데 왠지 앞으로도 해결되지 않을 것만 같은 느낌이다.&lt;/p&gt;
 
-&lt;p&gt;나와 같은 고민으로 kboard 구글 검색에 골머리를 썩었다면 시도해 보기 바란다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)</summary></entry><entry><title type="html">가볼만한 글루텐프리 숨은? 맛집 메종데쎄종</title><link href="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html" rel="alternate" type="text/html" title="가볼만한 글루텐프리 숨은? 맛집 메종데쎄종" /><published>2021-02-14T00:00:00+00:00</published><updated>2021-02-14T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/14/Gluten</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html">&lt;h2 id=&quot;갑자기-몸이-않좋다&quot;&gt;갑자기 몸이 않좋다.&lt;/h2&gt;
+&lt;p&gt;나와 같은 고민으로 kboard 구글 검색에 골머리를 썩었다면 시도해 보기 바란다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)</summary></entry><entry><title type="html">가볼만한 글루텐프리 숨은? 맛집 메종데쎄종</title><link href="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html" rel="alternate" type="text/html" title="가볼만한 글루텐프리 숨은? 맛집 메종데쎄종" /><published>2021-02-14T00:00:00+09:00</published><updated>2021-02-14T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/14/Gluten</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html">&lt;h2 id=&quot;갑자기-몸이-않좋다&quot;&gt;갑자기 몸이 않좋다.&lt;/h2&gt;
 &lt;p&gt;건강검진에서는 늘 있던 지방간에 만성 위염이 추가되었단다. 
 갑자기?? 갑자기는 무슨. 그동안 일한다고 맨날 컴터 앞에 앉아 운동 안한 결과지… 먼저 운동을 해 다이어트를 해야 겠지만… 자꾸만 몸에 생기는 이상증상이 심상치 않아 나의 영원의 단짝 구글에게 물어놨다.&lt;/p&gt;
 
@@ -531,14 +529,14 @@ simply static plugin이 zip 내보내기가 안될 때가 있다. 링크를 클�
 
   
 
-&lt;/div&gt;</content><author><name>wizardofoz</name></author><category term="Diary" /><summary type="html">갑자기 몸이 않좋다. 건강검진에서는 늘 있던 지방간에 만성 위염이 추가되었단다. 갑자기?? 갑자기는 무슨. 그동안 일한다고 맨날 컴터 앞에 앉아 운동 안한 결과지… 먼저 운동을 해 다이어트를 해야 겠지만… 자꾸만 몸에 생기는 이상증상이 심상치 않아 나의 영원의 단짝 구글에게 물어놨다.</summary></entry><entry><title type="html">지킬에서 글작성시 미리보기에만 글이 보이는 경우</title><link href="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html" rel="alternate" type="text/html" title="지킬에서 글작성시 미리보기에만 글이 보이는 경우" /><published>2020-06-21T00:00:00+00:00</published><updated>2020-06-21T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html">&lt;h2 id=&quot;미리보기에서는-글이-모이는데-jekyll-serve-빌드해서-깃허브에-올리면-없는-페이지로-나와서-황당황당&quot;&gt;미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당…&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>wizardofoz</name></author><category term="Diary" /><summary type="html">갑자기 몸이 않좋다. 건강검진에서는 늘 있던 지방간에 만성 위염이 추가되었단다. 갑자기?? 갑자기는 무슨. 그동안 일한다고 맨날 컴터 앞에 앉아 운동 안한 결과지… 먼저 운동을 해 다이어트를 해야 겠지만… 자꾸만 몸에 생기는 이상증상이 심상치 않아 나의 영원의 단짝 구글에게 물어놨다.</summary></entry><entry><title type="html">지킬에서 글작성시 미리보기에만 글이 보이는 경우</title><link href="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html" rel="alternate" type="text/html" title="지킬에서 글작성시 미리보기에만 글이 보이는 경우" /><published>2020-06-21T00:00:00+09:00</published><updated>2020-06-21T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/21/jekyll-Bs.html">&lt;h2 id=&quot;미리보기에서는-글이-모이는데-jekyll-serve-빌드해서-깃허브에-올리면-없는-페이지로-나와서-황당황당&quot;&gt;미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당…&lt;/h2&gt;
 &lt;p&gt;할때가 간혹 있다. 왜 그럴까?&lt;br /&gt;
 문제는 파일명의 대소문자 차이에 있다. &lt;br /&gt;
 jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로 바뀌면서 내가 쓸 글이 반영 된다. 그런데 깃허브로 푸시할 경우 폴더나 파일명이 대소문자로 바뀔 경우 바뀐 버전을 인식하지 않고 기존의 형식대로 진행 되는 경우가 있다. 서버 주소는 대소문자를 구분해서 불러 들이는데 정작 서버에 올라간 폴더는 이전 대소문자 그대로 유지되어서 없는 페이지가 된다. &lt;br /&gt;
 그럴때 두가지 해결 방법이 있다. 하나는 수동으로 대 소문자를 변경해 주던지 &lt;br /&gt;
 간단한 방법은 삭제 푸시후 다시 재업 푸시하는 방법이다.&lt;/p&gt;
 
-&lt;p&gt;이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당… 할때가 간혹 있다. 왜 그럴까? 문제는 파일명의 대소문자 차이에 있다. jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로 바뀌면서 내가 쓸 글이 반영 된다. 그런데 깃허브로 푸시할 경우 폴더나 파일명이 대소문자로 바뀔 경우 바뀐 버전을 인식하지 않고 기존의 형식대로 진행 되는 경우가 있다. 서버 주소는 대소문자를 구분해서 불러 들이는데 정작 서버에 올라간 폴더는 이전 대소문자 그대로 유지되어서 없는 페이지가 된다. 그럴때 두가지 해결 방법이 있다. 하나는 수동으로 대 소문자를 변경해 주던지 간단한 방법은 삭제 푸시후 다시 재업 푸시하는 방법이다. 이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.</summary></entry><entry><title type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 맥할아버지 심폐소생기 - 5만원</title><link href="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html" rel="alternate" type="text/html" title="윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 맥할아버지 심폐소생기 - 5만원" /><published>2020-06-16T00:00:00+00:00</published><updated>2020-06-16T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html">&lt;p&gt;흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다.  이런 걸 되살릴 수 있을 까? 했지만…  살려내어 기쁘기에  이 기쁨을 나누고자 포스트를 작성한다.&lt;/p&gt;
+&lt;p&gt;이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">미리보기에서는 글이 모이는데 (jekyll serve) 빌드해서 깃허브에 올리면 없는 페이지로 나와서 황당황당… 할때가 간혹 있다. 왜 그럴까? 문제는 파일명의 대소문자 차이에 있다. jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로 바뀌면서 내가 쓸 글이 반영 된다. 그런데 깃허브로 푸시할 경우 폴더나 파일명이 대소문자로 바뀔 경우 바뀐 버전을 인식하지 않고 기존의 형식대로 진행 되는 경우가 있다. 서버 주소는 대소문자를 구분해서 불러 들이는데 정작 서버에 올라간 폴더는 이전 대소문자 그대로 유지되어서 없는 페이지가 된다. 그럴때 두가지 해결 방법이 있다. 하나는 수동으로 대 소문자를 변경해 주던지 간단한 방법은 삭제 푸시후 다시 재업 푸시하는 방법이다. 이것 때문에 빌드를 수십번, 페이지 폴더를 수십번 지우다 실수로 블로그를 통째로 지우기도 하고…. 삽질 여러번 했다.</summary></entry><entry><title type="html">윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기 - 맥할아버지 심폐소생기 - 5만원</title><link href="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html" rel="alternate" type="text/html" title="윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 맥할아버지 심폐소생기 - 5만원" /><published>2020-06-16T00:00:00+09:00</published><updated>2020-06-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/16/macos-highsierrapatcher.html">&lt;p&gt;흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다.  이런 걸 되살릴 수 있을 까? 했지만…  살려내어 기쁘기에  이 기쁨을 나누고자 포스트를 작성한다.&lt;/p&gt;
 
 &lt;p&gt;이미 성공한 뒤 기억을 더듬어 적는 거라 혹여 미흡할 순 있지만 지금 은 성공 후 잘 사용하고 있다.&lt;/p&gt;
 
@@ -596,7 +594,7 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 
 &lt;p&gt;위의 USB로 처음과 같이 진행하면 맥북 흰둥이에서 high Sierra를 설치할 수 있다. 나같은 경우는 다시 하드를 갈아야 될 경우를 대비해서 snow leopard USB 1개와 high Sierra patcher 로 만든 USB 총 2개를 완성본 상태로 사장 시켜 두었다. 일반적으로는  high Sierra patcher 로 만든 USB 만 있으면 하드를 교체하는 상황에서도 쉽게 설치가 가능할 것 같다.&lt;/p&gt;
 
-&lt;p&gt;여전히 의문으로 남는 점은 high Sierra patcher이전 버전의 순정 os는 트랜스맥으로 작업했을 때 부팅이 안되었는데 맥에서 high Sierra patcher 로 만든 USB 는 부팅이 되는가 하는 의문점이 아직 남지만… 뭐 앞으로 하드가 돌아가셔도 high Sierra patcher 로 만든 USB 로 재설치해서 사용할 것 같으니까  그따위 영양가 없는 호기심은 처박아 두고 맘편하지 지내기로 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다. 이런 걸 되살릴 수 있을 까? 했지만… 살려내어 기쁘기에 이 기쁨을 나누고자 포스트를 작성한다.</summary></entry><entry><title type="html">벌써 일년 전 - 라오스 여름</title><link href="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html" rel="alternate" type="text/html" title="벌써 일년 전 - 라오스 여름" /><published>2020-06-12T00:00:00+00:00</published><updated>2020-06-12T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html">&lt;style&gt;
+&lt;p&gt;여전히 의문으로 남는 점은 high Sierra patcher이전 버전의 순정 os는 트랜스맥으로 작업했을 때 부팅이 안되었는데 맥에서 high Sierra patcher 로 만든 USB 는 부팅이 되는가 하는 의문점이 아직 남지만… 뭐 앞으로 하드가 돌아가셔도 high Sierra patcher 로 만든 USB 로 재설치해서 사용할 것 같으니까  그따위 영양가 없는 호기심은 처박아 두고 맘편하지 지내기로 했다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">흰둥이를 오다 주었다. 완전 구형이고 하드는 깡통이었다. 이런 걸 되살릴 수 있을 까? 했지만… 살려내어 기쁘기에 이 기쁨을 나누고자 포스트를 작성한다.</summary></entry><entry><title type="html">벌써 일년 전 - 라오스 여름</title><link href="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html" rel="alternate" type="text/html" title="벌써 일년 전 - 라오스 여름" /><published>2020-06-12T00:00:00+09:00</published><updated>2020-06-12T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/12/lastyear-laos.html">&lt;style&gt;
   .image-gallery {overflow: auto; margin-left: -1%!important;}
   .image-gallery a {float: left; display: block; margin: 0 0 1% 1%; width: 19%; text-align: center; text-decoration: none!important;}
   .image-gallery a span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 3px 0;}
@@ -937,7 +935,7 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 
 &lt;/div&gt;
 
-&lt;p&gt;아주 오랜 추억처럼… 이제 겨우 일년전이라니….&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Portfolio" /><summary type="html">IMG_1347 IMG_1427 IMG_1429 IMG_20190511_190144 IMG_20190512_183931 PANO_20190511_133445</summary></entry><entry><title type="html">무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기</title><link href="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html" rel="alternate" type="text/html" title="무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기" /><published>2020-06-06T00:00:00+00:00</published><updated>2020-06-06T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/06/Publii</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html">&lt;h2 id=&quot;솔루션-찾아-헤매기&quot;&gt;솔루션 찾아 헤매기&lt;/h2&gt;
+&lt;p&gt;아주 오랜 추억처럼… 이제 겨우 일년전이라니….&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Portfolio" /><summary type="html">IMG_1347 IMG_1427 IMG_1429 IMG_20190511_190144 IMG_20190512_183931 PANO_20190511_133445</summary></entry><entry><title type="html">무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기</title><link href="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html" rel="alternate" type="text/html" title="무료 웹페이지 제작 프로그램 publii 을 활용한 초간단 홈페이지 제작하기" /><published>2020-06-06T00:00:00+09:00</published><updated>2020-06-06T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/06/06/Publii</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/06/06/Publii.html">&lt;h2 id=&quot;솔루션-찾아-헤매기&quot;&gt;솔루션 찾아 헤매기&lt;/h2&gt;
 &lt;p&gt;코로나가 심각해 지면서 모든 사람이 가내 수공업을 하게 되었다.&lt;/p&gt;
 
 &lt;p&gt;나도 반 강제 가네수공업자가 되었다.&lt;/p&gt;
@@ -1032,7 +1030,7 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 몇가지 아쉬운 기능 (page build, side bar)등 완전 커스텀하기 쉽지 않지만 Tool 에 있는 Custom HTML 기능을 활용하면 무궁무진한 적용이 가능할 듯 하다. 
 물론 아직 베타버전이라 저장하지 않으면 가끔 오류를 뿜뿜 하지만 현재 상황으로도 충분하고도 남을 만큼 쓸만하다.&lt;/p&gt;
 
-&lt;p&gt;잘쓰세요.!&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">솔루션 찾아 헤매기 코로나가 심각해 지면서 모든 사람이 가내 수공업을 하게 되었다.</summary></entry><entry><title type="html">사랑의 모양</title><link href="https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove.html" rel="alternate" type="text/html" title="사랑의 모양" /><published>2020-02-29T00:00:00+00:00</published><updated>2020-02-29T00:00:00+00:00</updated><id>https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove.html">&lt;p&gt;사랑은 액체다.&lt;/p&gt;
+&lt;p&gt;잘쓰세요.!&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">솔루션 찾아 헤매기 코로나가 심각해 지면서 모든 사람이 가내 수공업을 하게 되었다.</summary></entry><entry><title type="html">사랑의 모양</title><link href="https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove.html" rel="alternate" type="text/html" title="사랑의 모양" /><published>2020-02-29T00:00:00+09:00</published><updated>2020-02-29T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2020/02/29/shapeoflove.html">&lt;p&gt;사랑은 액체다.&lt;/p&gt;
 
 &lt;p&gt;따라서 그 담기는 모양에 따라 사랑의 모습도 달라진다.&lt;/p&gt;
 
@@ -1046,4 +1044,4 @@ jekyll serve로 미리보기를 빌드할 때는 대소문자가 실시간으로
 
 &lt;p&gt;이성으로 결정한 사랑은 실체가 없기 때문에…&lt;/p&gt;
 
-&lt;p&gt;사랑이 가득 차기 전까지는 그 모양을 알 수 없다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Essay" /><summary type="html">사랑은 액체다.</summary></entry></feed>
+&lt;p&gt;사랑이 가득 차기 전까지는 그 모양을 알 수 없다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Essay" /><summary type="html">사랑은 액체다. 따라서 그 담기는 모양에 따라 사랑의 모습도 달라진다. 어떤 그릇에도 담길 수 있기 때문에 어떤 모습도 될 수 있다. 사랑은 농도와 양을 결정할 수 있지만… 사랑의 모양은 사랑으로 결정할 수 없다. 사랑의 모양은 이성으로 결정 된다. 이성으로 결정한 사랑은 실체가 없기 때문에… 사랑이 가득 차기 전까지는 그 모양을 알 수 없다.</summary></entry></feed>

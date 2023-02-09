@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://wdofoz.qhop.org/wp-static/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/wp-static/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://wdofoz.qhop.org/wp-static/2022/04/27/258/</loc>
+		<loc>/wp-static/2022/04/27/258/</loc>
 		<lastmod>2022-04-27T06:39:40+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://wdofoz.qhop.org/wp-static/2021/05/19/138/</loc>
+		<loc>/wp-static/2021/05/19/138/</loc>
 		<lastmod>2022-04-27T11:52:43+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://wdofoz.qhop.org/wp-static/2022/04/27/260/</loc>
+		<loc>/wp-static/2022/04/27/260/</loc>
 		<lastmod>2022-04-27T13:56:34+00:00</lastmod>
 	</url>
 </urlset>
