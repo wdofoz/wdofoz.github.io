@@ -1,32 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/wp-static/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://wdofoz.qhop.org/wp-static/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>/wp-static/</loc>
-		<lastmod>2022-04-27T14:07:21+00:00</lastmod>
+		<loc>https://wdofoz.qhop.org/wp-static/</loc>
+		<lastmod>2021-05-19T14:52:36+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-static/wp-content/uploads/2021/02/logo3.png</image:loc>
+			<image:loc>https://wdofoz.qhop.org/wp-static/wp-content/uploads/2021/02/logo3.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-static/wp-content/uploads/2021/02/kakaotalk_20200207_142531172_16_11EC8B9C15EBB684_-e1612453521840-150x150.jpg</image:loc>
+			<image:loc>https://wdofoz.qhop.org/wp-static/wp-content/uploads/2021/02/img_20200207_111732_11EC8B9C17EBB684_.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-static/wp-content/uploads/2021/02/kakaotalk_20200207_083442636_08_20EC8B9C34EBB684_-150x150.jpg</image:loc>
+			<image:loc>https://wdofoz.qhop.org/wp-static/wp-content/uploads/2021/02/kakaotalk_20200207_083442636_08_20EC8B9C34EBB684_.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-static/wp-content/uploads/2021/02/img_20200207_111732_11EC8B9C17EBB684_-150x150.jpg</image:loc>
+			<image:loc>https://wdofoz.qhop.org/wp-static/wp-content/uploads/2021/02/kakaotalk_20200207_142531172_16_11EC8B9C15EBB684_-e1612453521840.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-static/wp-content/uploads/elementor/thumbs/kakaotalk_20200207_142531172_16_11EC8B9C15EBB684_-e1612453521840-p2dibksrkktid6pjcwkcpy5ucwhmyllzgg038k6jt0.jpg</image:loc>
+			<image:loc>https://wdofoz.qhop.org/wp-static/wp-content/uploads/elementor/thumbs/kakaotalk_20200207_142531172_16_11EC8B9C15EBB684_-e1612453521840-p2dibksrkktid6pjcwkcpy5ucwhmyllzgg038k6jt0.jpg</image:loc>
+			<image:caption><![CDATA[kakaotalk_20200207_142531172_16_1115_]]></image:caption>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-static/wp-content/uploads/elementor/thumbs/kakaotalk_20200207_083442636_08_20EC8B9C34EBB684_-p2di9hlodtykkdqrk0276h4yu2s9utbgi3t8ufa1ms.jpg</image:loc>
+			<image:loc>https://wdofoz.qhop.org/wp-static/wp-content/uploads/elementor/thumbs/kakaotalk_20200207_083442636_08_20EC8B9C34EBB684_-p2di9hlodtykkdqrk0276h4yu2s9utbgi3t8ufa1ms.jpg</image:loc>
+			<image:caption><![CDATA[kakaotalk_20200207_083442636_08_2034_]]></image:caption>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-static/wp-content/uploads/elementor/thumbs/img_20200207_111732_11EC8B9C17EBB684_-p2di9dubmhtf9xw85yfowi34gjat00wj5l7axbfmbo.jpg</image:loc>
+			<image:loc>https://wdofoz.qhop.org/wp-static/wp-content/uploads/elementor/thumbs/img_20200207_111732_11EC8B9C17EBB684_-p2di9dubmhtf9xw85yfowi34gjat00wj5l7axbfmbo.jpg</image:loc>
+			<image:caption><![CDATA[img_20200207_111732_1117_]]></image:caption>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wp-static/post/</loc>
+		<loc>https://wdofoz.qhop.org/wp-static/post/</loc>
 		<lastmod>2021-02-04T16:10:37+00:00</lastmod>
 	</url>
 </urlset>
