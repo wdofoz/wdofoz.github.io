@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2023-02-18T20:55:21+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">매주 직원들에서 물어봐야 하는 질문 가볍게 물어보기</title><link href="https://wdofoz.qhop.org/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html" rel="alternate" type="text/html" title="매주 직원들에서 물어봐야 하는 질문 가볍게 물어보기" /><published>2023-02-18T00:00:00+09:00</published><updated>2023-02-18T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/02/18/Top%2010%20must-ask%20questions%20for%20easy%20employee%20interviews</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html">&lt;p&gt;조직을 관리 하려면 정보가 필요하다. 지금 상황이나 팀원들의 현황들. 즉 진단이다. 그러나 이런 질물들을 팀원이나 부하 직원들에게 한다면 진솔한 답변을 얻기 힘들다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2023-02-19T13:55:52+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">직원들에서 물어봐야 하는 질문 가볍게 물어보기</title><link href="https://wdofoz.qhop.org/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html" rel="alternate" type="text/html" title="직원들에서 물어봐야 하는 질문 가볍게 물어보기" /><published>2023-02-18T00:00:00+09:00</published><updated>2023-02-18T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/02/18/Top%2010%20must-ask%20questions%20for%20easy%20employee%20interviews</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html">&lt;p&gt;조직을 관리 하려면 정보가 필요하다. 지금 상황이나 팀원들의 현황들. 즉 진단이다. 그러나 이런 질물들을 팀원이나 부하 직원들에게 한다면 진솔한 답변을 얻기 힘들다.&lt;/p&gt;
 
 &lt;p&gt;이럴 때 가벼운 대화 속에 간단한 질문으로 진솔한 답변을 이끌어 낼 수 있다면??? 팀원이나 직원들이 그저 가벼운 대화나 잡담 정도 했을 뿐인데 직원 면담이 끝났다면 얼마나 효과적인 직원 면담이 되겠는가?&lt;/p&gt;
 
@@ -239,7 +239,9 @@
 &lt;p&gt;직접 보고 쓰자니 오타 날 것 같고…&lt;/p&gt;
 
 &lt;p&gt;이럴 때 사용할 수 있는 긴급할 때 간단하게 쓸 방법이 세 가지 있다.&lt;/p&gt;
-&lt;h2 id=&quot;1-첫번째는-프린트-모드-들어가서-드래그-하기다&quot;&gt;1. 첫번째는 프린트 모드 들어가서 드래그 하기다.&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-첫번째는-프린트-모드-들어가서-드래그-하기다&quot;&gt;1. 첫번째는 프린트 모드 들어가서 드래그 하기다.&lt;/h3&gt;
+
 &lt;ol&gt;
   &lt;li&gt;프린트 모드(Ctrl+P)로 들어간다.&lt;/li&gt;
   &lt;li&gt;미리 보기 항목에서 원하는 구문을 드래그 &amp;amp; 카피한다. (추천)
@@ -249,20 +251,27 @@
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;2-두번째는-애매한-개발자-모드-들어가기다&quot;&gt;2. 두번째는 애매한 개발자 모드 들어가기다.&lt;/h2&gt;
+&lt;h3 id=&quot;2-두번째는-애매한-개발자-모드-들어가기다&quot;&gt;2. 두번째는 애매한 개발자 모드 들어가기다.&lt;/h3&gt;
+
 &lt;ol&gt;
   &lt;li&gt;F12른 눌러 개발자 모드로 들어간다.&lt;/li&gt;
   &lt;li&gt;오른쪽에 생긴 톱니바퀴를 클릭&lt;/li&gt;
-  &lt;li&gt;스크롤 내리면 Debugger  아래 Disable JavaScript 에 체크를 해준다.&lt;/li&gt;
+  &lt;li&gt;스크롤 내리면 Debugger  아래 Disable JavaScript 에 체크를 해준다.
+    &lt;ul&gt;
+      &lt;li&gt;막아 놓는 방법에 따라 가끔 안될 경우도 있음&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;3-세번째는-페이지-소스-보기로-들어가-소스-코드-찾아-복사하기&quot;&gt;3. 세번째는 페이지 소스 보기로 들어가 소스 코드 찾아 복사하기&lt;/h2&gt;
+&lt;h3 id=&quot;3-세번째는-페이지-소스-보기로-들어가-소스-코드-찾아-복사하기&quot;&gt;3. 세번째는 페이지 소스 보기로 들어가 소스 코드 찾아 복사하기&lt;/h3&gt;
+
 &lt;p&gt;파이어폭스도 가능파이어폭스도가능&lt;/p&gt;
+
 &lt;ol&gt;
   &lt;li&gt;단축키 Ctrl+u를 누르거나 홈페이지 주소 (http) 앞에 view-source: 붙인다.&lt;/li&gt;
   &lt;li&gt;소스 코드에서 내가 원하던 구문을 찾아 드래그 한다. (찾기 기능 사용하는게 정신건강에 좋음)
     &lt;ul&gt;
-      &lt;li&gt;단, 소스 코드를 보고 찾는 것이기 때문에 간단한 단어는 가능하지만, 문장이나 특수기호의 경우 유니코드로 인해 깨질 수 있다.&lt;/li&gt;
+      &lt;li&gt;모든 브라우저, 모든 사이트 가능. 단, 소스 코드를 보고 찾는 것이기 때문에 간단한 단어는 가능하지만, 문장이나 특수기호의 경우 유니코드로 인해 깨질 수 있다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
