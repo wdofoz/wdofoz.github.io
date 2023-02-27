@@ -321,6 +321,38 @@ document.addEventListener('scroll', function() {
 <p>원인은 모르겠지만 elementor  전체너비가 아닌 다른 설정을 하면 seo 설정에서 KBOARD설정이  아닌 PAGE 설정이 먹히는데 왠지 앞으로도 해결되지 않을 것만 같은 느낌이다.</p>
 
 <p>나와 같은 고민으로 kboard 구글 검색에 골머리를 썩었다면 시도해 보기 바란다.</p>
+
+<h2 id="추후-같은-증상이-다른-사이트에서-발생-했는데-해결했다">추후 같은 증상이 다른 사이트에서 발생 했는데 해결했다.</h2>
+
+<p>해결 방법은 <a href="https://www.cosmosfarm.com/threads/document/55149#document-answer-55251">elementor플러그인 SEO와 케이보드 SEO중 케이보드 SEO기능을 이용하고 싶습니다. - Cosmosfarm</a> 에서 얻은 정보로 했더니 해결되었다.</p>
+
+<h3 id="상황-설명--">상황 설명 -</h3>
+
+<ul>
+  <li>
+    <p>elementor pro 사용, yoast 사용, kboard 사용</p>
+  </li>
+  <li>
+    <p>kboard의 내용이 홈페이지 타이틀로 올라 가지 않는다.</p>
+  </li>
+  <li>
+    <p>3 개의 플러그인 간의 알력다툼으로 인해 꼬이는 듯하다.</p>
+  </li>
+</ul>
+
+<h3 id="해결-방안">해결 방안</h3>
+
+<ul>
+  <li>
+    <p>kboard플러그인의 index.html에서 다음 내용을 수정해 준다. (파일의 정확한 위치 : /wp-content/plugins/kboard/index.php)</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">add_action('get_header', 'kboard_get_header', 999);</code>를 찾아서 뒤의 999 를 숫자 1 로 변경해 준다.  변경한 값은 다음과 같다. <code class="highlighter-rouge">add_action('get_header', 'kboard_get_header', 1);</code></p>
+  </li>
+  <li>
+    <p>워드프레스 내에서 편집하기 어려우니 ftp로 변경 해도 되지만 file manager 플러그인을 설치후 code에이터 이용해서 변경하길 추천한다.  file manager는 워드프레스 내의 모든 파일에 접근 할 수 있기 때문에 코드 수정이나 파일 업로드 다운로드등을 간편하게 할 수 있는 필수 템이다.</p>
+  </li>
+</ul>
 </div>
             <div style="clear:both;">
               <p class="text-center">
