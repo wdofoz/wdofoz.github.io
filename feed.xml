@@ -1,5 +1,388 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2023-02-24T11:21:14+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">직원들에서 물어봐야 하는 질문 가볍게 물어보기</title><link href="https://wdofoz.qhop.org/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html" rel="alternate" type="text/html" title="직원들에서 물어봐야 하는 질문 가볍게 물어보기" /><published>2023-02-18T00:00:00+09:00</published><updated>2023-02-18T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/02/18/Top%2010%20must-ask%20questions%20for%20easy%20employee%20interviews</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html">&lt;p&gt;조직을 관리 하려면 정보가 필요하다. 지금 상황이나 팀원들의 현황들. 즉 진단이다. 그러나 이런 질물들을 팀원이나 부하 직원들에게 한다면 진솔한 답변을 얻기 힘들다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2023-09-07T16:05:54+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들</title><link href="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.md.bak" rel="alternate" type="text/html" title="웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들" /><published>2023-09-07T00:00:00+09:00</published><updated>2023-09-07T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/09/07/web%20monitoring%20docker%20python.md</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.md.bak">재미 삼아 &amp;개인적 용도로 웹 페이지를 몇개 테스트로 운용하고 있다.  문제는 클라우드서버가 아니라 버리는 컴퓨터 몇대를 짜집기 해서 한대를 돌리고 있다는 거다. 이로 발생되는 문제는 당연하게도 간헐적 다운... 이 비정기적 이벤트로 인해 고통 받던 중에 서버나 웹페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다. 
+
+참고로 이미 서버에 설치해서 이벤트를 알려주는 서비스 들은 니미 나온게 있다. (ex. 와탭) 그런데 이런 서비스는 웹페이지만 감시하는 것이 아니고 서버 자체를 모니터링 해주는 거라 너무 많은 정보와 적당히 많은 홍보성 안내 메일로 인해 오히려 모니터링을 모니터링 하게 된다. 나에게 필요한건 웹페이지 다운되면 이메일로 !니 서버 죽었음! 하고 간단히 알려주는 것 되시겠다. 
+
+
+
+진행은 다음과 같다. 
+
+1. 도커 설치 (생초보라 도커 부터 설치해야 하는 분은 여기서 부터 시작)
+
+2. 도커 이미지 빌드 (도커가 이미 설치된 분은 이리로 바로 가면 됨)
+
+3. 파이선 파일 이식 (파이썬을 그냥 돌리거나 코드만 필요한 분은 여기로 바로 가면 됨)
+
+
+
+당연히 모니터링 하는 서버는 24시간 풀로 돌아가야 하니까 나는 아마존에 무료 계정 하나 파서 구동해 주고 있다. 1달 31일 기준으로 1개만 돌리면 무료로 사용가능하다. (처음엔 이 계념을 잘몰라서 바가지 쓸뻔!!!)
+
+
+
+## 도커 설치
+
+인터넷에 가끔 보면 sudo apt-get install docker.io 같은 간단한 설치법이 있는데 이것은 공식 지원이 아니므로 삭제 하고 설치 하라는 식의 안내가 나와 있다.  설치 방법은 다음과 같다. 
+
+1. 기존에 설치된 비공식 도커 삭제
+   
+   ```console
+   $ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+   ```
+
+2. 도커 저장소 설치 (docker official GPG key:)
+   
+   ```
+   sudo apt-get update
+   sudo apt-get install ca-certificates curl gnupg
+   sudo install -m 0755 -d /etc/apt/keyrings
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   sudo apt-get update
+   ```
+   
+   
+
+3. 도커 설치 
+   
+   ```console
+   $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
+
+
+
+## 도커 이미지 빌드
+
+도커를 설치 했으면 도커 이미지를 만들어 보자 .
+
+별건아니고 파이선 설치된 이미지를 불러와서 우리가 만든 파이선 파일을 구동 시킬 환경을 만들 뿐이다. 
+
+1. docker 파일을 만든다. 
+   ```
+   sudo nano dockerfile
+   ```
+
+2. dockerfile 안에 다음 내용을 붙여 넣고 저장한다. 
+   
+   
+   ```
+   FROM python:3.9-slim-bookworm
+   
+   WORKDIR /app
+   
+   RUN pip install --no-cache-dir requests
+   
+   CMD [ &quot;python&quot;, &quot;./monitor.py&quot; ]
+   ```
+파일 안의 내용은 간단하다. 
+이미지는 python:3.9-slim-bookworm 로 해라 , /app 폴더가 메인 작업장이다. ,  pip install --no-cache-dir requests 이라는 명령어 실행해라 컨테이너 실행하면 &quot;python&quot; 실행하고 app폴더에 있는 &quot;monitor.py&quot; 파이선 파일 실행해라.
+참고로 저 파이선 이미지는 이루로 나온 3.10 이후 버전을 모두 테스트해 봤는데 메일 서버의 ssl 인증관련 문제가 있어서 메일 발송이 안되었다. (보안 없는 25포트는 실행 가능) 이메일의 ssl인증 관련 이슈가 발생할 경우 파이선 이미지 버전을 지켜 주기 바란다(이전 버전 가능). 
+
+3. 도커 이미지를 monitor란 이름으로 만들어 준다. 
+```
+docker build -t monitor .
+```
+
+## 파이선 파일 만들기 
+이 부분은 고민을 좀 했는데 python 안에 메일 계정 및 설정을 넣는 방법과 별도 파일을 만들어서 넣는 방법 가운데 나는 별도 계정 정보를 넣어서 보관하는 방법을 선택했다. 
+
+1. 도커 이미지에서 설정한대로  monitor.py라는 이름의 파이선 파일을 만들어 준다. 
+```
+sudo nano monitor.py
+```
+2. 파일 안에 다음 내용을 그대로 복사해서 붙여 넣고 저장한다. 
+```
+import time
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import requests
+import configparser
+
+# config.ini 파일을 읽어오자. 
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+# 구성 파일 안의 설정을 추출해오자. 
+SMTP_SERVER=config.get('SMTP','server')  # SMTP 서버 주소 가져오기
+SMTP_PORT=config.getint('SMTP','port')  # SMTP 포트 번호 가져오기
+GMAIL_USERNAME=config.get('SMTP','username')  # Gmail 계정 사용자 이름 가져오기
+GMAIL_PASSWORD=config.get('SMTP','password')  # Gmail 계정 비밀번호 가져오기
+USE_SSL=config.getboolean('SMTP', 'ssl')  # SSL 사용 여부 가져오기 (True 또는 False)
+
+SITES=[site.strip() for site in config.get('SITES', 'urls').split(',')] # 모니터링할 웹사이트 URL 목록 가져오기
+CHECK_INTERVAL=config.getint('MONITORING', 'interval') # 체크 간격 설정 (초 단위)
+ERROR_PERSISTENCE=config.getint('MONITORING', 'errors_before_alert') # 에러 발생 횟수 설정
+
+RECIPIENT_ADDRESS=config.get(&quot;EMAIL&quot;, &quot;recipient_address&quot;).split(',') # 이메일 수신자 주소 목록 가져오기
+
+def send_email(site):
+    msg=MIMEMultipart()
+    msg['From']=GMAIL_USERNAME # 발신자 메일 계정 설정
+    msg['To'] = &quot;, &quot;.join(RECIPIENT_ADDRESS)  # 수신자 설정 (여러 수신자에게 메일 보내기 위해 쉼표로 구분하여 합침)
+    msg['Subject']=f&quot;Website Down Alert: {site}&quot;  # 이메일 제목 설정
+    message_body_content=f&quot;Hello,{site} is down.Thanks&quot;  # 이메일 내용 설정
+
+    msg.attach(MIMEText(message_body_content,'plain'))  # 이메일 내용을 MIME 형식으로 추가
+
+    server=smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) if USE_SSL else smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+    
+    server.login(GMAIL_USERNAME,GMAIL_PASSWORD)  # SMTP 서버에 로그인하기
+
+    text=msg.as_string()  # 메시지를 문자열로 변환
+
+    server.sendmail(GMAIL_USERNAME, RECIPIENT_ADDRESS, text)  # 메일 전송
+    
+
+
+error_counts={site:0 for site in SITES}  # 각 사이트의 에러 카운트를 저장하는 딕셔너리 초기화
+    
+# 사이트에 GET 요청 보내고 응답 받아옴
+while True:  
+        for site in SITES:
+                try:
+                        response=requests.get(site)
+                        if response.status_code !=200:
+                                error_counts[site]+=1
+                                if error_counts[site]&gt;=ERROR_PERSISTENCE:
+                                        send_email(site)
+                                        error_counts[site]=0
+                        else:
+                                error_counts[site]=0
+                        
+                except requests.exceptions.RequestException as err:
+                        print (&quot;OOps: Something Else Happened&quot;,err)
+
+        time.sleep(CHECK_INTERVAL) # 지정된 시간만큼 대기 후 다음 반복 실행
+
+
+```
+
+3. 구성 파일을 만든다. 
+```
+sudo nano config.ini
+```
+4. 구성 파일 안에 내용을 붙여 넣기 하고 구성 내용을 자신의 계정에 맞게 수정하여 저장한다. 
+```
+[SMTP]
+server = smtp.server.URL
+port = 465
+username = yourmail@mail.mail
+password = yourmailpassword
+ssl = yes   # 'yes' for SSL, 'no' for non-SSL.
+[SITES]
+urls = http://monitorring1.site.com,http://monitorring2.site.com,http://monitorring3.site.com,
+
+[MONITORING]
+interval = 600  #600 초마다 한번씩
+errors_before_alert = 2 #에러 감지 횟수
+
+[EMAIL]
+recipient_address=recipient@mail.mail,recipient2@mail.mail,recipient3@mail.mail
+```</content><author><name>wizardofoz</name></author><category term="It" /><summary type="html">재미 삼아 &amp;개인적 용도로 웹 페이지를 몇개 테스트로 운용하고 있다. 문제는 클라우드서버가 아니라 버리는 컴퓨터 몇대를 짜집기 해서 한대를 돌리고 있다는 거다. 이로 발생되는 문제는 당연하게도 간헐적 다운... 이 비정기적 이벤트로 인해 고통 받던 중에 서버나 웹페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.</summary></entry><entry><title type="html">웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들</title><link href="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html" rel="alternate" type="text/html" title="웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들" /><published>2023-09-07T00:00:00+09:00</published><updated>2023-09-07T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/09/07/web%20monitoring%20docker%20python</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html">&lt;p&gt;재미 삼아 &amp;amp;개인적 용도로 웹 페이지를 몇개 테스트로 운용하고 있다.  문제는 클라우드서버가 아니라 버리는 컴퓨터 몇대를 짜집기 해서 한대를 돌리고 있다는 거다. 이로 발생되는 문제는 당연하게도 간헐적 다운… 이 비정기적 이벤트로 인해 고통 받던 중에 서버나 웹페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.&lt;/p&gt;
+
+&lt;p&gt;참고로 이미 서버에 설치해서 이벤트를 알려주는 서비스 들은 니미 나온게 있다. (ex. 와탭) 그런데 이런 서비스는 웹페이지만 감시하는 것이 아니고 서버 자체를 모니터링 해주는 거라 너무 많은 정보와 적당히 많은 홍보성 안내 메일로 인해 오히려 모니터링을 모니터링 하게 된다. 나에게 필요한건 웹페이지 다운되면 이메일로 !니 서버 죽었음! 하고 간단히 알려주는 것 되시겠다.&lt;/p&gt;
+
+&lt;p&gt;진행은 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;도커 설치 (생초보라 도커 부터 설치해야 하는 분은 여기서 부터 시작)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;도커 이미지 빌드 (도커가 이미 설치된 분은 이리로 바로 가면 됨)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;파이선 파일 이식 (파이썬을 그냥 돌리거나 코드만 필요한 분은 여기로 바로 가면 됨)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;당연히 모니터링 하는 서버는 24시간 풀로 돌아가야 하니까 나는 아마존에 무료 계정 하나 파서 구동해 주고 있다. 1달 31일 기준으로 1개만 돌리면 무료로 사용가능하다. (처음엔 이 계념을 잘몰라서 바가지 쓸뻔!!!)&lt;/p&gt;
+
+&lt;h2 id=&quot;도커-설치&quot;&gt;도커 설치&lt;/h2&gt;
+
+&lt;p&gt;인터넷에 가끔 보면 sudo apt-get install docker.io 같은 간단한 설치법이 있는데 이것은 공식 지원이 아니므로 삭제 하고 설치 하라는 식의 안내가 나와 있다.  설치 방법은 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;기존에 설치된 비공식 도커 삭제&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;pkg &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;docker.io docker-doc docker-compose podman-docker containerd runc&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get remove &lt;span class=&quot;nv&quot;&gt;$pkg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;도커 저장소 설치 (docker official GPG key:)&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+sudo apt-get update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;도커 설치&lt;/p&gt;
+
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;도커-이미지-빌드&quot;&gt;도커 이미지 빌드&lt;/h2&gt;
+
+&lt;p&gt;도커를 설치 했으면 도커 이미지를 만들어 보자 .&lt;/p&gt;
+
+&lt;p&gt;별건아니고 파이선 설치된 이미지를 불러와서 우리가 만든 파이선 파일을 구동 시킬 환경을 만들 뿐이다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;docker 파일을 만든다.
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo nano dockerfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;dockerfile 안에 다음 내용을 붙여 넣고 저장한다.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM python:3.9-slim-bookworm
+   
+WORKDIR /app
+   
+RUN pip install --no-cache-dir requests
+   
+CMD [ &quot;python&quot;, &quot;./monitor.py&quot; ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;파일 안의 내용은 간단하다. 
+이미지는 python:3.9-slim-bookworm 로 해라 , /app 폴더가 메인 작업장이다. ,  pip install –no-cache-dir requests 이라는 명령어 실행해라 컨테이너 실행하면 “python” 실행하고 app폴더에 있는 “monitor.py” 파이선 파일 실행해라.
+참고로 저 파이선 이미지는 이루로 나온 3.10 이후 버전을 모두 테스트해 봤는데 메일 서버의 ssl 인증관련 문제가 있어서 메일 발송이 안되었다. (보안 없는 25포트는 실행 가능) 이메일의 ssl인증 관련 이슈가 발생할 경우 파이선 이미지 버전을 지켜 주기 바란다(이전 버전 가능).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;도커 이미지를 monitor란 이름으로 만들어 준다.
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t monitor .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;파이선-파일-만들기&quot;&gt;파이선 파일 만들기&lt;/h2&gt;
+&lt;p&gt;이 부분은 고민을 좀 했는데 python 안에 메일 계정 및 설정을 넣는 방법과 별도 파일을 만들어서 넣는 방법 가운데 나는 별도 계정 정보를 넣어서 보관하는 방법을 선택했다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;도커 이미지에서 설정한대로  monitor.py라는 이름의 파이선 파일을 만들어 준다.
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo nano monitor.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;파일 안에 다음 내용을 그대로 복사해서 붙여 넣고 저장한다.
+```
+import time
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import requests
+import configparser&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;configini-파일을-읽어오자&quot;&gt;config.ini 파일을 읽어오자.&lt;/h1&gt;
+&lt;p&gt;config = configparser.ConfigParser()
+config.read(‘config.ini’)&lt;/p&gt;
+
+&lt;h1 id=&quot;구성-파일-안의-설정을-추출해오자&quot;&gt;구성 파일 안의 설정을 추출해오자.&lt;/h1&gt;
+&lt;p&gt;SMTP_SERVER=config.get(‘SMTP’,’server’)  # SMTP 서버 주소 가져오기
+SMTP_PORT=config.getint(‘SMTP’,’port’)  # SMTP 포트 번호 가져오기
+GMAIL_USERNAME=config.get(‘SMTP’,’username’)  # Gmail 계정 사용자 이름 가져오기
+GMAIL_PASSWORD=config.get(‘SMTP’,’password’)  # Gmail 계정 비밀번호 가져오기
+USE_SSL=config.getboolean(‘SMTP’, ‘ssl’)  # SSL 사용 여부 가져오기 (True 또는 False)&lt;/p&gt;
+
+&lt;p&gt;SITES=[site.strip() for site in config.get(‘SITES’, ‘urls’).split(‘,’)] # 모니터링할 웹사이트 URL 목록 가져오기
+CHECK_INTERVAL=config.getint(‘MONITORING’, ‘interval’) # 체크 간격 설정 (초 단위)
+ERROR_PERSISTENCE=config.getint(‘MONITORING’, ‘errors_before_alert’) # 에러 발생 횟수 설정&lt;/p&gt;
+
+&lt;p&gt;RECIPIENT_ADDRESS=config.get(“EMAIL”, “recipient_address”).split(‘,’) # 이메일 수신자 주소 목록 가져오기&lt;/p&gt;
+
+&lt;p&gt;def send_email(site):
+    msg=MIMEMultipart()
+    msg[‘From’]=GMAIL_USERNAME # 발신자 메일 계정 설정
+    msg[‘To’] = “, “.join(RECIPIENT_ADDRESS)  # 수신자 설정 (여러 수신자에게 메일 보내기 위해 쉼표로 구분하여 합침)
+    msg[‘Subject’]=f”Website Down Alert: {site}”  # 이메일 제목 설정
+    message_body_content=f”Hello,{site} is down.Thanks”  # 이메일 내용 설정&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;msg.attach(MIMEText(message_body_content,'plain'))  # 이메일 내용을 MIME 형식으로 추가
+
+server=smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) if USE_SSL else smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+
+server.login(GMAIL_USERNAME,GMAIL_PASSWORD)  # SMTP 서버에 로그인하기
+
+text=msg.as_string()  # 메시지를 문자열로 변환
+
+server.sendmail(GMAIL_USERNAME, RECIPIENT_ADDRESS, text)  # 메일 전송
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;error_counts={site:0 for site in SITES}  # 각 사이트의 에러 카운트를 저장하는 딕셔너리 초기화&lt;/p&gt;
+
+&lt;h1 id=&quot;사이트에-get-요청-보내고-응답-받아옴&quot;&gt;사이트에 GET 요청 보내고 응답 받아옴&lt;/h1&gt;
+&lt;p&gt;while True:&lt;br /&gt;
+        for site in SITES:
+                try:
+                        response=requests.get(site)
+                        if response.status_code !=200:
+                                error_counts[site]+=1
+                                if error_counts[site]&amp;gt;=ERROR_PERSISTENCE:
+                                        send_email(site)
+                                        error_counts[site]=0
+                        else:
+                                error_counts[site]=0&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;            except requests.exceptions.RequestException as err:
+                    print (&quot;OOps: Something Else Happened&quot;,err)
+
+    time.sleep(CHECK_INTERVAL) # 지정된 시간만큼 대기 후 다음 반복 실행
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+3. 구성 파일을 만든다. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;sudo nano config.ini&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;4. 구성 파일 안에 내용을 붙여 넣기 하고 구성 내용을 자신의 계정에 맞게 수정하여 저장한다. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;[SMTP]
+server = smtp.server.url
+port = 465
+username = yourmail@mail.mail
+password = yourmailpassword
+ssl = yes   # ‘yes’ for SSL, ‘no’ for non-SSL.
+[SITES]
+urls = http://monitorring1.site.com,http://monitorring2.site.com,http://monitorring3.site.com,&lt;/p&gt;
+
+&lt;p&gt;[MONITORING]
+interval = 600  #600 초마다 한번씩
+errors_before_alert = 2 #에러 감지 횟수&lt;/p&gt;
+
+&lt;p&gt;[EMAIL]
+recipient_address=recipient@mail.mail,recipient2@mail.mail,recipient3@mail.mail&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;smtp.server.url 에는 자신의 메일 smtp 서버 주소를 입력한다. 
+port에는 smtp 메일 발송할 포트를 입력한다. (보통 보안 없으년 25, 보안 있으면 465, 최근엔 587)
+yourmail@mail.mail 에는 발송할 smtp 메일 계정을 입력한다. 
+yourmailpassword 는 smtp 메일 계정의 비밀번호를 입력한다
+ssl 사용 여부를 입력한다. 25에 보안 없을땐 no로 ,ssl 보안 사용시엔 yes로 입력한다. 
+감시할 url은  urls에 입력한다. 여러개일 경우 쉽표(,)로 구분한다. 
+interval 은 몇초에 한번씩 검사 할지 입력한다. 600은 600초 (10분이다.)
+errors_before_alert 에는 위에서 에러 감지 횟수를 입력한다. 600초 감지에 2회 면 20 에러 발생후 10분~20분 사이에 메일이 온다. 
+recipient_address 는 에러메일 수신할 메일 주소를 입력한다. , 발신자에게 수신하면 가장 오류가 적었다. 
+
+5. 도커 이미지를 사용해 도커 컨테이너를 실행해 보자. 실행할 땐 꼭 /app 을 마운트 해주자. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;sudo docker –name web-monitor -v $pwd:/app -d monitor
+```
+$pwd 부분은 monitor.py 파일과 config.ini 파일이 있는 폴더의 경로를 입력해 주면 된다. 
+혹시 코드 복사후 오류가 생기면 monitor.py의 주석 부분을 제거하고 다시 시도해 보자.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="It" /><summary type="html">재미 삼아 &amp;amp;개인적 용도로 웹 페이지를 몇개 테스트로 운용하고 있다. 문제는 클라우드서버가 아니라 버리는 컴퓨터 몇대를 짜집기 해서 한대를 돌리고 있다는 거다. 이로 발생되는 문제는 당연하게도 간헐적 다운… 이 비정기적 이벤트로 인해 고통 받던 중에 서버나 웹페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.</summary></entry><entry><title type="html">무인 점포가 사회에 미치는 비용적 영향</title><link href="https://wdofoz.qhop.org/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html" rel="alternate" type="text/html" title="무인 점포가 사회에 미치는 비용적 영향" /><published>2023-03-10T00:00:00+09:00</published><updated>2023-03-10T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/03/10/The%20cost%20impact%20of%20unmanned%20stores%20on%20society</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html">&lt;p&gt;요즘 무인점이 늘어나고 있는데, 이는 카메라 기술과 인터넷 기술의 발전으로 인해 인력을 배치하지 않아도 충분한 감시와 견제가 가능해졌기 때문이다. 이에 따라 인건비가 줄어들면서 저렴한 가격으로 아이스크림을 구매할 수 있어서 합리적인 것으로 보일 수 있다.&lt;/p&gt;
+
+&lt;p&gt;하지만 이러한 무인점의 등장은 일자리 감소와 사회적 비용 발생이라는 두 가지 문제를 야기한다. 일자리 감소는 무인점으로 인해 고용인원이 줄어들어 생기는 문제이다. 두 명이 일하던 곳을 이젠 주인 혼자서 맡아야 한다거나, 한 사람이 여러 무인점포를 경영하여 여러 명이 일했던 일을 이제 한 사람이 모두 맡아야 한다는 것이다. 이는 일자리 감소로 인한 사회적 문제를 야기할 가능성이 있다.&lt;/p&gt;
+
+&lt;p&gt;무인점이 범죄에 노출될 가능성이 높다는 것도 문제다. 무인점은 유혹을 받기 쉬운 대상이기 때문에 범죄에 노출될 가능성이 높아진다. 이로 인해 발생하는 범죄는 일반적으로 사람이 있을 때는 저지르지 못했던 범죄도 일어날 가능성이 높아진다. 이는 유혹에 약한 사람들이 쉽게 범죄자의 유혹에 빠져 범죄자의 공범이 되는 효과, 즉 “마약의 유행성 효과”라고도 알려져 있다.&lt;/p&gt;
+
+&lt;p&gt;게다가 범죄 조사를 위한 경찰 병력도 필요하다. 무인점으로 인해 발생하는 범죄에 대한 조사와 대응을 위해 더 많은 경찰 병력이 동원되어야 한다. 이는 무인점과는 전혀 상관없는 제 3자도 함께 비용적 부담을 지게 만들어 사회적 비용을 야기한다.&lt;/p&gt;
+
+&lt;p&gt;따라서, 무인점이 등장하면서 생기는 이러한 문제들을 고려하여 적극적인 대책이 필요하다. 무인점의 등장으로 인한 일자리 감소 문제를 해결하고, 범죄로부터 사회를 보호하기 위한 적극적인 대책이 필요하다. 예를 들어, 일자리 감소 문제를 해결하기 위해서는 무인점포 운영과 관련된 새로운 일자리 창출이나 교육, 재취업 지원 등의 대책이 필요하다. 또한, 범죄 예방을 위해서는 무인점포 주변에 CCTV나 경비원 등의 보안 시스템을 강화하고, 범죄가 발생했을 때는 빠른 대처와 범죄자 검거를 위한 경찰 병력을 동원하는 것이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;무인점포 운영자들에게는 적극적인 사회적 책임이 요구된다. 무인점포가 상대적으로 쉬운 범죄 대상임을 인지하고, 보안 시스템의 강화나 범죄 예방 교육 등에 적극적으로 참여해야 한다. 또한, 범죄가 발생했을 때는 적극적인 협조와 빠른 신고가 필요하다.&lt;/p&gt;
+
+&lt;p&gt;마지막으로, 무인점포 등장으로 인한 사회적 비용 문제를 해결하기 위해서는 정부 차원에서의 적극적인 대책이 필요하다. 무인점포 운영자들에게 범죄 예방 교육과 보안 시스템 강화를 권고하고, 일자리 창출과 교육, 재취업 지원 등의 제반 대책을 마련해야 한다. 또한, 범죄 예방을 위한 경찰 병력과 범죄 조사를 위한 예산 확보도 필요하다. 이러한 종합적인 대책이 시급하다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Leadership" /><summary type="html">요즘 무인점이 늘어나고 있는데, 이는 카메라 기술과 인터넷 기술의 발전으로 인해 인력을 배치하지 않아도 충분한 감시와 견제가 가능해졌기 때문이다. 이에 따라 인건비가 줄어들면서 저렴한 가격으로 아이스크림을 구매할 수 있어서 합리적인 것으로 보일 수 있다.</summary></entry><entry><title type="html">직원들에서 물어봐야 하는 질문 가볍게 물어보기</title><link href="https://wdofoz.qhop.org/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html" rel="alternate" type="text/html" title="직원들에서 물어봐야 하는 질문 가볍게 물어보기" /><published>2023-02-18T00:00:00+09:00</published><updated>2023-02-18T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/02/18/Top%2010%20must-ask%20questions%20for%20easy%20employee%20interviews</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html">&lt;p&gt;조직을 관리 하려면 정보가 필요하다. 지금 상황이나 팀원들의 현황들. 즉 진단이다. 그러나 이런 질물들을 팀원이나 부하 직원들에게 한다면 진솔한 답변을 얻기 힘들다.&lt;/p&gt;
 
 &lt;p&gt;이럴 때 가벼운 대화 속에 간단한 질문으로 진솔한 답변을 이끌어 낼 수 있다면??? 팀원이나 직원들이 그저 가벼운 대화나 잡담 정도 했을 뿐인데 직원 면담이 끝났다면 얼마나 효과적인 직원 면담이 되겠는가?&lt;/p&gt;
 
@@ -399,445 +782,4 @@ simply static plugin이 zip 내보내기가 안될 때가 있다. 링크를 클�
 
 &lt;p&gt;워드프레스의 단 하나의 단점은 정적 페이지가 아닌것… 그로인해속도도 느리고 구축 자체가 어렵다.&lt;/p&gt;
 
-&lt;p&gt;물론 코드를 보는것이 익숙해지고 이런저런 에러를 풀어가며 공부를 하기 위해선 지킬도 좋긴 하겠다. 그러나 나에겐 너무 복잡하고 개발자가 아닌 단순 유저인 나로서는 워드프레스를 정적 페이지로 변환하는게 정신 건강에 좋았다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">도루묵 워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비… 무료로 하려면 집에서 구동중인 서버 대용 pc로 돌려야 하는데 리눅스를 설치해도 마음에 드는 속도가 나오지 않는다. 무료로 사이트 운용할 수 있는 깃허브를 쓰자니 정적 사이트가 아니라서 어렵다.</summary></entry><entry><title type="html">마크다운 이미지 링그걸기 (클릭시 원본 뜨기)</title><link href="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html" rel="alternate" type="text/html" title="마크다운 이미지 링그걸기 (클릭시 원본 뜨기)" /><published>2021-02-16T00:00:00+09:00</published><updated>2021-02-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html">&lt;p&gt;의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.&lt;/p&gt;
-
-&lt;p&gt;나도 예전에 검색해 봤는데 아무리 찾아도 없길래 잔머리를 좀 썼더니 되었다. 
-모든 환경에서 다 된다고 보장할 수는 없다.&lt;/p&gt;
-
-&lt;h2 id=&quot;먼저-우리가-보통-알고-있는-링크형식은-다음과-같다&quot;&gt;먼저 우리가 보통 알고 있는 링크형식은 다음과 같다.&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot;&gt;시베리아 횡단 열차&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;우리가-아는-이미지-삽입은-다음과-같다&quot;&gt;우리가 아는 이미지 삽입은 다음과 같다.&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot; alt=&quot;시베리아 횡단 열차&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;이를-합쳐서-사용해-다음과-같이-쓴다&quot;&gt;이를 합쳐서 사용해 다음과 같이 쓴다.&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[![시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)](/assets/img/Trans-Siberian Railway Network.jpg)
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot;&gt;&lt;img src=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot; alt=&quot;시베리아 횡단 열차&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;찾아보니-다음과-같이-같은-방법을-제시하는-사람도-있었다&quot;&gt;찾아보니 다음과 같이 같은 방법을 제시하는 사람도 있었다.&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&quot;&gt;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&lt;/a&gt;&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.</summary></entry><entry><title type="html">kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]</title><link href="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html" rel="alternate" type="text/html" title="kboard 제목 브라우저 타이틀로 보내기[엘레멘터 에디터 사용시]" /><published>2021-02-15T00:00:00+09:00</published><updated>2021-02-15T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/15/kboard-tip1.html">&lt;p&gt;운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)&lt;/p&gt;
-
-&lt;p&gt;어떤 사이트는 브라우저 상단에 글의 제목이 들어가 있는 반면 (kboard로 작성한 제목이 검색 노출 제목으로 됨)&lt;/p&gt;
-
-&lt;p&gt;어떤 사이트는 kboard가 어떤 글이던지간에 브라우저 상단에 페이지의 타이틀이 들어가 있다.&lt;/p&gt;
-
-&lt;p&gt;이는 엘레멘터에디터 사용해서 숏코드를 삽입시 나오는 문제로 일반적인 숏코드 사용시 문제 없었다.&lt;/p&gt;
-
-&lt;p&gt;숏코드로 넣은 kboard 상단 타이틀이 페이지로 되어있을 경우 검색 노출은 물론 같은 이름의 페이지가 너무 많아지면 구글에서 크롤링을 제대로 해줄 지 모르겠다.&lt;/p&gt;
-
-&lt;p&gt;원인을 찾아 여러번 설정을 변경한 가운데 한가지 해답을 찾았는데 원인도 모르겠고 왜 그런지도 모르겠다.&lt;/p&gt;
-
-&lt;p&gt;나같은 경우 코드를 전혀 볼줄 모르기 때문에 엘레멘터에디터를 설치해 사용하는데 
-엘레멘터 편집이 아닌 페이지 편집에 들어가면 페이지 속성에 3가지가 나온다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;기본템플릿&lt;/li&gt;
-  &lt;li&gt;elementor  전체너비&lt;/li&gt;
-  &lt;li&gt;elementor 캔버스&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;순서는 바뀔 수 있음
-이 중 2번의 &lt;strong&gt;elementor  전체너비&lt;/strong&gt;를 선택했을 때만 kborad 제목이 브라우저 타이틀로 올라간다. (왜그러지??)&lt;/p&gt;
-
-&lt;p&gt;1,3번을 선택했을 경우는 페이지 제목이 브라우저 타이틀로 올라간다.&lt;/p&gt;
-
-&lt;p&gt;원인은 모르겠지만 elementor  전체너비가 아닌 다른 설정을 하면 seo 설정에서 KBOARD설정이  아닌 PAGE 설정이 먹히는데 왠지 앞으로도 해결되지 않을 것만 같은 느낌이다.&lt;/p&gt;
-
-&lt;p&gt;나와 같은 고민으로 kboard 구글 검색에 골머리를 썩었다면 시도해 보기 바란다.&lt;/p&gt;
-
-&lt;h2 id=&quot;추후-같은-증상이-다른-사이트에서-발생-했는데-해결했다&quot;&gt;추후 같은 증상이 다른 사이트에서 발생 했는데 해결했다.&lt;/h2&gt;
-
-&lt;p&gt;해결 방법은 &lt;a href=&quot;https://www.cosmosfarm.com/threads/document/55149#document-answer-55251&quot;&gt;elementor플러그인 SEO와 케이보드 SEO중 케이보드 SEO기능을 이용하고 싶습니다. - Cosmosfarm&lt;/a&gt; 에서 얻은 정보로 했더니 해결되었다.&lt;/p&gt;
-
-&lt;h3 id=&quot;상황-설명--&quot;&gt;상황 설명 -&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;elementor pro 사용, yoast 사용, kboard 사용&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;kboard의 내용이 홈페이지 타이틀로 올라 가지 않는다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;3 개의 플러그인 간의 알력다툼으로 인해 꼬이는 듯하다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;해결-방안&quot;&gt;해결 방안&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;kboard플러그인의 index.html에서 다음 내용을 수정해 준다. (파일의 정확한 위치 : /wp-content/plugins/kboard/index.php)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;add_action('get_header', 'kboard_get_header', 999);&lt;/code&gt;를 찾아서 뒤의 999 를 숫자 1 로 변경해 준다.  변경한 값은 다음과 같다. &lt;code class=&quot;highlighter-rouge&quot;&gt;add_action('get_header', 'kboard_get_header', 1);&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;워드프레스 내에서 편집하기 어려우니 ftp로 변경 해도 되지만 file manager 플러그인을 설치후 code에이터 이용해서 변경하길 추천한다.  file manager는 워드프레스 내의 모든 파일에 접근 할 수 있기 때문에 코드 수정이나 파일 업로드 다운로드등을 간편하게 할 수 있는 필수 템이다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">운영 중인 워드프레스 사이트 몇개에 kboard를 넣어 사용하는데 (숏코드 사용)</summary></entry><entry><title type="html">가볼만한 글루텐프리 숨은? 맛집 메종데쎄종</title><link href="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html" rel="alternate" type="text/html" title="가볼만한 글루텐프리 숨은? 맛집 메종데쎄종" /><published>2021-02-14T00:00:00+09:00</published><updated>2021-02-14T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/14/Gluten</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/14/Gluten.html">&lt;h2 id=&quot;갑자기-몸이-않좋다&quot;&gt;갑자기 몸이 않좋다.&lt;/h2&gt;
-&lt;p&gt;건강검진에서는 늘 있던 지방간에 만성 위염이 추가되었단다. 
-갑자기?? 갑자기는 무슨. 그동안 일한다고 맨날 컴터 앞에 앉아 운동 안한 결과지… 먼저 운동을 해 다이어트를 해야 겠지만… 자꾸만 몸에 생기는 이상증상이 심상치 않아 나의 영원의 단짝 구글에게 물어놨다.&lt;/p&gt;
-
-&lt;p&gt;그랬더니 의외로..
-밀가루가 염증의 원인이라는 놀라운 (믿어도 돼?) 자료들이 쏟아져 나왔다. 라면, 국수, 햄버거, 토스트, 과자, 빵, 떡볶이 내가 사랑하는 모든것이 밀가룬데…&lt;/p&gt;
-
-&lt;p&gt;그래서 글루텐을 좀 줄여보고자 식습관을 좀 바꿔 보기로 했다. (운동은???)&lt;/p&gt;
-
-&lt;h2 id=&quot;글루텐이란&quot;&gt;글루텐이란?&lt;/h2&gt;
-&lt;p&gt;(글루텐(gluten)은 밀, 보리, 귀리 등에 들어 있는 글루테닌(glutenin)과 글리아딘(gliadin)이 결합하여 만들어지는 성분으로, 물에 용해되어 풀어지지 않는 성질을 갖는 불용성 단백질의 일종이다.)&lt;a href=&quot;https://ko.wikipedia.org/wiki/글루텐&quot;&gt;출처-위키&lt;/a&gt;
-쉽게 말해 밀가루에서 쫄깃한 성분이다. 
-반죽을 치대면 생기는 성분… 이걸 생성하기 위해 요리인들은 그렇게들 반죽을 후두려 팼다지?&lt;/p&gt;
-
-&lt;h2 id=&quot;뭐-안먹겠다는-건-아니고-좀-줄여-보자는-거다&quot;&gt;뭐… 안먹겠다는 건 아니고 좀 줄여 보자는 거다.&lt;/h2&gt;
-
-&lt;p&gt;아에 안먹으면 좋겠지만 쫄깃을 어떻게 포기하냐… 했더니 글루텐 프리 음식이 있단다. 글루텐이 안들어간 음식… 맛있겠냐?? 아무리 검색해봐도 글루텐프리는 맛이 없단다. 
-맛있는 글루텐 프리 맛집을 검색해봤는데… 특이하고 재미있는데가 블로그에 나왔다. 
-나의 친구 구글에게 “서촌 글루텐프리”라고 물어봤더니 알려주었다. 
-가게 이름은 “메종 데 쎄종”
-가게 주인도 글루텐에 알러지 같은게 있어서 글루텐 프리 음식을 먹는다고 한다. 
-블로그 내용이 이상하게 자세해서 지인일까 싶었는데 사진 보고 꼭 가봐야 겠다 생각했다.&lt;/p&gt;
-
-&lt;p&gt;나는 먹을때 사진 몇장 안찍었고 남의 블로그 사진을 함부로 퍼올 수 없어서 &lt;a href=&quot;https://m.blog.naver.com/seonhee0203/221810918390&quot;&gt;https://m.blog.naver.com/seonhee0203/221810918390&lt;/a&gt; 링크로 대신한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;킬링포인트&quot;&gt;킬링포인트!&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;내가 알던 빵집이 아니다. - bar형식 카페 같이 주인을 보면서  먹야야 한다.&lt;/li&gt;
-  &lt;li&gt;내가 알던 대문이 아니다. - 흔히 보던 빵집이나 카페 입구는 아니다.&lt;/li&gt;
-  &lt;li&gt;숨은 맛집인지는 모르겠는데… 확실히 숨어 있다. - 2번 그냥 지나쳤다.&lt;/li&gt;
-  &lt;li&gt;인테리어가 내 취향 - 우리가 흔히 아는 카페 인테리어가 아니다. 바 형식으로 되어 있어서 여친이 앞이 아니라 옆에 있다. 테이블을 사이에 두고 앞뒤로 앉는것 보다 테이블 없이 옆에 앉아 있는게 더 좋았다. 우리나라 어디에서도 볼수 없는 빵집 느낌인데… 가게 사진을 안찍어 뭐라 설명할 수 없다.  아래 내가 찍은 사진만 봐도 색다름이 느껴지긴 할 거다. 
-물론 화려하거나 갖춰진 걸 좋아 하는 사람은 별로일 수 있지만 2~30대 보통사람은 색다름을 즐길 수 있을 것이다.&lt;/li&gt;
-  &lt;li&gt;글루텐 프리라는데 … 엄청 맛있다. - 물론 좀 건강한 맛은 있다. 내가 아는 완전 촉촉하고 졸긴한 단빵은 아닌데 유럽에서 먹는 빵느낌이다.(가보긴 했고??) 가게 이름 때문인가??&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;나는 단순히 아는 동내라 갔을 뿐인데 썸타는 사이에 데이트로 가기에 
-색다른 느낌이 있을거다.&lt;/p&gt;
-
-&lt;p&gt;글루텐 프리 식당의 특성상 금방 망하기 때문에 없어지기 전에 가보길 추천한다.&lt;/p&gt;
-
-&lt;p&gt;구글에 &lt;strong&gt;메종 데 쎄종&lt;/strong&gt;이라고 치면 나오는듯 하다.&lt;/p&gt;
-
-&lt;p&gt;아래는 내가 찍은 사진…&lt;/p&gt;
-
-&lt;style&gt;
-  .image-gallery {overflow: auto; margin-left: -1%!important;}
-  .image-gallery a {float: left; display: block; margin: 0 0 1% 1%; width: 19%; text-align: center; text-decoration: none!important;}
-  .image-gallery a span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 3px 0;}
-  .image-gallery a img {width: 100%; display: block;}
-&lt;/style&gt;
-
-&lt;div class=&quot;image-gallery&quot;&gt;
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-
-      
-      
-
-      &lt;a href=&quot;/assets/posts/gluten/0412E309-7B94-483D-8C36-0652AB362BC9.JPEG&quot; title=&quot;0412E309-7B94-483D-8C36-0652AB362BC9&quot;&gt;
-        &lt;img src=&quot;//images.weserv.nl/?url=https://wdofoz.qhop.org/assets/posts/gluten/0412E309-7B94-483D-8C36-0652AB362BC9.JPEG&amp;amp;w=300&amp;amp;h=300&amp;amp;output=jpg&amp;amp;q=50&amp;amp;t=square&quot; alt=&quot;0412E309-7B94-483D-8C36-0652AB362BC9&quot; /&gt;
-        &lt;span&gt;0412E309-7B94-483D-8C36-0652AB362BC9&lt;/span&gt;
-      &lt;/a&gt;
-    
-  
-
-  
-    
-
-      
-      
-
-      &lt;a href=&quot;/assets/posts/gluten/3CE6360B-C819-42CD-9D6F-AC64A4AD0606.JPEG&quot; title=&quot;3CE6360B-C819-42CD-9D6F-AC64A4AD0606&quot;&gt;
-        &lt;img src=&quot;//images.weserv.nl/?url=https://wdofoz.qhop.org/assets/posts/gluten/3CE6360B-C819-42CD-9D6F-AC64A4AD0606.JPEG&amp;amp;w=300&amp;amp;h=300&amp;amp;output=jpg&amp;amp;q=50&amp;amp;t=square&quot; alt=&quot;3CE6360B-C819-42CD-9D6F-AC64A4AD0606&quot; /&gt;
-        &lt;span&gt;3CE6360B-C819-42CD-9D6F-AC64A4AD0606&lt;/span&gt;
-      &lt;/a&gt;
-    
-  
-
-  
-    
-
-      
-      
-
-      &lt;a href=&quot;/assets/posts/gluten/93A4D312-D2B4-42EC-AFAA-44219E16E010.JPEG&quot; title=&quot;93A4D312-D2B4-42EC-AFAA-44219E16E010&quot;&gt;
-        &lt;img src=&quot;//images.weserv.nl/?url=https://wdofoz.qhop.org/assets/posts/gluten/93A4D312-D2B4-42EC-AFAA-44219E16E010.JPEG&amp;amp;w=300&amp;amp;h=300&amp;amp;output=jpg&amp;amp;q=50&amp;amp;t=square&quot; alt=&quot;93A4D312-D2B4-42EC-AFAA-44219E16E010&quot; /&gt;
-        &lt;span&gt;93A4D312-D2B4-42EC-AFAA-44219E16E010&lt;/span&gt;
-      &lt;/a&gt;
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-&lt;/div&gt;</content><author><name>wizardofoz</name></author><category term="Diary" /><summary type="html">갑자기 몸이 않좋다. 건강검진에서는 늘 있던 지방간에 만성 위염이 추가되었단다. 갑자기?? 갑자기는 무슨. 그동안 일한다고 맨날 컴터 앞에 앉아 운동 안한 결과지… 먼저 운동을 해 다이어트를 해야 겠지만… 자꾸만 몸에 생기는 이상증상이 심상치 않아 나의 영원의 단짝 구글에게 물어놨다.</summary></entry></feed>
+&lt;p&gt;물론 코드를 보는것이 익숙해지고 이런저런 에러를 풀어가며 공부를 하기 위해선 지킬도 좋긴 하겠다. 그러나 나에겐 너무 복잡하고 개발자가 아닌 단순 유저인 나로서는 워드프레스를 정적 페이지로 변환하는게 정신 건강에 좋았다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">도루묵 워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비… 무료로 하려면 집에서 구동중인 서버 대용 pc로 돌려야 하는데 리눅스를 설치해도 마음에 드는 속도가 나오지 않는다. 무료로 사이트 운용할 수 있는 깃허브를 쓰자니 정적 사이트가 아니라서 어렵다.</summary></entry></feed>
