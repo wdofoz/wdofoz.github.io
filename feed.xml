@@ -1,206 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2023-09-07T16:05:54+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
-</subtitle><entry><title type="html">웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들</title><link href="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.md.bak" rel="alternate" type="text/html" title="웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들" /><published>2023-09-07T00:00:00+09:00</published><updated>2023-09-07T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/09/07/web%20monitoring%20docker%20python.md</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.md.bak">재미 삼아 &amp;개인적 용도로 웹 페이지를 몇개 테스트로 운용하고 있다.  문제는 클라우드서버가 아니라 버리는 컴퓨터 몇대를 짜집기 해서 한대를 돌리고 있다는 거다. 이로 발생되는 문제는 당연하게도 간헐적 다운... 이 비정기적 이벤트로 인해 고통 받던 중에 서버나 웹페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://wdofoz.qhop.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wdofoz.qhop.org/" rel="alternate" type="text/html" hreflang="ko-KR" /><updated>2023-09-08T10:37:39+09:00</updated><id>https://wdofoz.qhop.org/feed.xml</id><title type="html">WizardOfOz</title><subtitle>Anyone who will accept me without trying to hide my poor soul.
+</subtitle><entry><title type="html">웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들기</title><link href="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html" rel="alternate" type="text/html" title="웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들기" /><published>2023-09-07T00:00:00+09:00</published><updated>2023-09-07T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/09/07/web%20monitoring%20docker%20python</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html">&lt;p&gt;재미 삼아 개인적 용도로 웹 페이지를 몇 개 테스트로 운용하고 있다. 문제는 클라우드 서버가 아니라 버리는 컴퓨터 몇 대를 짜집기 해서 한 대를 돌리고 있다는 것이다. 이로 발생되는 문제는 당연하게도 간헐적인 다운… 이 비정기적인 이벤트로 인해 고통 받던 중에 서버나 웹 페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.&lt;/p&gt;
 
-참고로 이미 서버에 설치해서 이벤트를 알려주는 서비스 들은 니미 나온게 있다. (ex. 와탭) 그런데 이런 서비스는 웹페이지만 감시하는 것이 아니고 서버 자체를 모니터링 해주는 거라 너무 많은 정보와 적당히 많은 홍보성 안내 메일로 인해 오히려 모니터링을 모니터링 하게 된다. 나에게 필요한건 웹페이지 다운되면 이메일로 !니 서버 죽었음! 하고 간단히 알려주는 것 되시겠다. 
-
-
-
-진행은 다음과 같다. 
-
-1. 도커 설치 (생초보라 도커 부터 설치해야 하는 분은 여기서 부터 시작)
-
-2. 도커 이미지 빌드 (도커가 이미 설치된 분은 이리로 바로 가면 됨)
-
-3. 파이선 파일 이식 (파이썬을 그냥 돌리거나 코드만 필요한 분은 여기로 바로 가면 됨)
-
-
-
-당연히 모니터링 하는 서버는 24시간 풀로 돌아가야 하니까 나는 아마존에 무료 계정 하나 파서 구동해 주고 있다. 1달 31일 기준으로 1개만 돌리면 무료로 사용가능하다. (처음엔 이 계념을 잘몰라서 바가지 쓸뻔!!!)
-
-
-
-## 도커 설치
-
-인터넷에 가끔 보면 sudo apt-get install docker.io 같은 간단한 설치법이 있는데 이것은 공식 지원이 아니므로 삭제 하고 설치 하라는 식의 안내가 나와 있다.  설치 방법은 다음과 같다. 
-
-1. 기존에 설치된 비공식 도커 삭제
-   
-   ```console
-   $ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
-   ```
-
-2. 도커 저장소 설치 (docker official GPG key:)
-   
-   ```
-   sudo apt-get update
-   sudo apt-get install ca-certificates curl gnupg
-   sudo install -m 0755 -d /etc/apt/keyrings
-   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-   sudo chmod a+r /etc/apt/keyrings/docker.gpg
-   sudo apt-get update
-   ```
-   
-   
-
-3. 도커 설치 
-   
-   ```console
-   $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-   ```
-
-
-
-## 도커 이미지 빌드
-
-도커를 설치 했으면 도커 이미지를 만들어 보자 .
-
-별건아니고 파이선 설치된 이미지를 불러와서 우리가 만든 파이선 파일을 구동 시킬 환경을 만들 뿐이다. 
-
-1. docker 파일을 만든다. 
-   ```
-   sudo nano dockerfile
-   ```
-
-2. dockerfile 안에 다음 내용을 붙여 넣고 저장한다. 
-   
-   
-   ```
-   FROM python:3.9-slim-bookworm
-   
-   WORKDIR /app
-   
-   RUN pip install --no-cache-dir requests
-   
-   CMD [ &quot;python&quot;, &quot;./monitor.py&quot; ]
-   ```
-파일 안의 내용은 간단하다. 
-이미지는 python:3.9-slim-bookworm 로 해라 , /app 폴더가 메인 작업장이다. ,  pip install --no-cache-dir requests 이라는 명령어 실행해라 컨테이너 실행하면 &quot;python&quot; 실행하고 app폴더에 있는 &quot;monitor.py&quot; 파이선 파일 실행해라.
-참고로 저 파이선 이미지는 이루로 나온 3.10 이후 버전을 모두 테스트해 봤는데 메일 서버의 ssl 인증관련 문제가 있어서 메일 발송이 안되었다. (보안 없는 25포트는 실행 가능) 이메일의 ssl인증 관련 이슈가 발생할 경우 파이선 이미지 버전을 지켜 주기 바란다(이전 버전 가능). 
-
-3. 도커 이미지를 monitor란 이름으로 만들어 준다. 
-```
-docker build -t monitor .
-```
-
-## 파이선 파일 만들기 
-이 부분은 고민을 좀 했는데 python 안에 메일 계정 및 설정을 넣는 방법과 별도 파일을 만들어서 넣는 방법 가운데 나는 별도 계정 정보를 넣어서 보관하는 방법을 선택했다. 
-
-1. 도커 이미지에서 설정한대로  monitor.py라는 이름의 파이선 파일을 만들어 준다. 
-```
-sudo nano monitor.py
-```
-2. 파일 안에 다음 내용을 그대로 복사해서 붙여 넣고 저장한다. 
-```
-import time
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import requests
-import configparser
-
-# config.ini 파일을 읽어오자. 
-config = configparser.ConfigParser()
-config.read('config.ini')
-
-# 구성 파일 안의 설정을 추출해오자. 
-SMTP_SERVER=config.get('SMTP','server')  # SMTP 서버 주소 가져오기
-SMTP_PORT=config.getint('SMTP','port')  # SMTP 포트 번호 가져오기
-GMAIL_USERNAME=config.get('SMTP','username')  # Gmail 계정 사용자 이름 가져오기
-GMAIL_PASSWORD=config.get('SMTP','password')  # Gmail 계정 비밀번호 가져오기
-USE_SSL=config.getboolean('SMTP', 'ssl')  # SSL 사용 여부 가져오기 (True 또는 False)
-
-SITES=[site.strip() for site in config.get('SITES', 'urls').split(',')] # 모니터링할 웹사이트 URL 목록 가져오기
-CHECK_INTERVAL=config.getint('MONITORING', 'interval') # 체크 간격 설정 (초 단위)
-ERROR_PERSISTENCE=config.getint('MONITORING', 'errors_before_alert') # 에러 발생 횟수 설정
-
-RECIPIENT_ADDRESS=config.get(&quot;EMAIL&quot;, &quot;recipient_address&quot;).split(',') # 이메일 수신자 주소 목록 가져오기
-
-def send_email(site):
-    msg=MIMEMultipart()
-    msg['From']=GMAIL_USERNAME # 발신자 메일 계정 설정
-    msg['To'] = &quot;, &quot;.join(RECIPIENT_ADDRESS)  # 수신자 설정 (여러 수신자에게 메일 보내기 위해 쉼표로 구분하여 합침)
-    msg['Subject']=f&quot;Website Down Alert: {site}&quot;  # 이메일 제목 설정
-    message_body_content=f&quot;Hello,{site} is down.Thanks&quot;  # 이메일 내용 설정
-
-    msg.attach(MIMEText(message_body_content,'plain'))  # 이메일 내용을 MIME 형식으로 추가
-
-    server=smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) if USE_SSL else smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-    
-    server.login(GMAIL_USERNAME,GMAIL_PASSWORD)  # SMTP 서버에 로그인하기
-
-    text=msg.as_string()  # 메시지를 문자열로 변환
-
-    server.sendmail(GMAIL_USERNAME, RECIPIENT_ADDRESS, text)  # 메일 전송
-    
-
-
-error_counts={site:0 for site in SITES}  # 각 사이트의 에러 카운트를 저장하는 딕셔너리 초기화
-    
-# 사이트에 GET 요청 보내고 응답 받아옴
-while True:  
-        for site in SITES:
-                try:
-                        response=requests.get(site)
-                        if response.status_code !=200:
-                                error_counts[site]+=1
-                                if error_counts[site]&gt;=ERROR_PERSISTENCE:
-                                        send_email(site)
-                                        error_counts[site]=0
-                        else:
-                                error_counts[site]=0
-                        
-                except requests.exceptions.RequestException as err:
-                        print (&quot;OOps: Something Else Happened&quot;,err)
-
-        time.sleep(CHECK_INTERVAL) # 지정된 시간만큼 대기 후 다음 반복 실행
-
-
-```
-
-3. 구성 파일을 만든다. 
-```
-sudo nano config.ini
-```
-4. 구성 파일 안에 내용을 붙여 넣기 하고 구성 내용을 자신의 계정에 맞게 수정하여 저장한다. 
-```
-[SMTP]
-server = smtp.server.URL
-port = 465
-username = yourmail@mail.mail
-password = yourmailpassword
-ssl = yes   # 'yes' for SSL, 'no' for non-SSL.
-[SITES]
-urls = http://monitorring1.site.com,http://monitorring2.site.com,http://monitorring3.site.com,
-
-[MONITORING]
-interval = 600  #600 초마다 한번씩
-errors_before_alert = 2 #에러 감지 횟수
-
-[EMAIL]
-recipient_address=recipient@mail.mail,recipient2@mail.mail,recipient3@mail.mail
-```</content><author><name>wizardofoz</name></author><category term="It" /><summary type="html">재미 삼아 &amp;개인적 용도로 웹 페이지를 몇개 테스트로 운용하고 있다. 문제는 클라우드서버가 아니라 버리는 컴퓨터 몇대를 짜집기 해서 한대를 돌리고 있다는 거다. 이로 발생되는 문제는 당연하게도 간헐적 다운... 이 비정기적 이벤트로 인해 고통 받던 중에 서버나 웹페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.</summary></entry><entry><title type="html">웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들</title><link href="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html" rel="alternate" type="text/html" title="웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들" /><published>2023-09-07T00:00:00+09:00</published><updated>2023-09-07T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/09/07/web%20monitoring%20docker%20python</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html">&lt;p&gt;재미 삼아 &amp;amp;개인적 용도로 웹 페이지를 몇개 테스트로 운용하고 있다.  문제는 클라우드서버가 아니라 버리는 컴퓨터 몇대를 짜집기 해서 한대를 돌리고 있다는 거다. 이로 발생되는 문제는 당연하게도 간헐적 다운… 이 비정기적 이벤트로 인해 고통 받던 중에 서버나 웹페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.&lt;/p&gt;
-
-&lt;p&gt;참고로 이미 서버에 설치해서 이벤트를 알려주는 서비스 들은 니미 나온게 있다. (ex. 와탭) 그런데 이런 서비스는 웹페이지만 감시하는 것이 아니고 서버 자체를 모니터링 해주는 거라 너무 많은 정보와 적당히 많은 홍보성 안내 메일로 인해 오히려 모니터링을 모니터링 하게 된다. 나에게 필요한건 웹페이지 다운되면 이메일로 !니 서버 죽었음! 하고 간단히 알려주는 것 되시겠다.&lt;/p&gt;
+&lt;p&gt;참고로 이미 서버에 설치해서 이벤트를 알려주는 서비스들은 이미 나온 게 있다. (예: 와탭) 그런데 이런 서비스들은 웹 페이지만 감시하는 것이 아니라 서버 자체를 모니터링 해주기 때문에 너무 많은 정보와 적당히 많은 홍보성 안내 메일로 인해 오히려 모니터링을 모니터링하게 된다. 나에게 필요한 건 웹 페이지 다운되면 이메일로 “니 서버 죽었음!” 하고 간단히 알려주는 것이 되시겠다.&lt;/p&gt;
 
 &lt;p&gt;진행은 다음과 같다.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;도커 설치 (생초보라 도커 부터 설치해야 하는 분은 여기서 부터 시작)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;도커 이미지 빌드 (도커가 이미 설치된 분은 이리로 바로 가면 됨)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;파이선 파일 이식 (파이썬을 그냥 돌리거나 코드만 필요한 분은 여기로 바로 가면 됨)&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;도커 설치 (생초보라 도커부터 설치해야 하는 분은 여기서부터 시작)&lt;/li&gt;
+  &lt;li&gt;도커 이미지 빌드 (도커가 이미 설치된 분은 이리로 바로 가면 됨)&lt;/li&gt;
+  &lt;li&gt;파이선 파일 이식 (파이썬을 그냥 돌리거나 코드만 필요한 분은 여기로 바로 가면 됨)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;당연히 모니터링 하는 서버는 24시간 풀로 돌아가야 하니까 나는 아마존에 무료 계정 하나 파서 구동해 주고 있다. 1달 31일 기준으로 1개만 돌리면 무료로 사용가능하다. (처음엔 이 계념을 잘몰라서 바가지 쓸뻔!!!)&lt;/p&gt;
+&lt;p&gt;당연히 모니터링하는 서버는 24시간 풀로 돌아가야 하니까 나는 아마존에 무료 계정 하나 파서 구동해 주고 있다. 1달 31일 기준으로 1개만 돌리면 무료로 사용 가능하다. (처음엔 이 개념을 잘 몰라서 바가지 쓸뻔!!!)&lt;/p&gt;
 
 &lt;h2 id=&quot;도커-설치&quot;&gt;도커 설치&lt;/h2&gt;
 
-&lt;p&gt;인터넷에 가끔 보면 sudo apt-get install docker.io 같은 간단한 설치법이 있는데 이것은 공식 지원이 아니므로 삭제 하고 설치 하라는 식의 안내가 나와 있다.  설치 방법은 다음과 같다.&lt;/p&gt;
+&lt;p&gt;인터넷에서 가끔 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install docker.io&lt;/code&gt; 같은 간단한 설치법이 있는데, 이것은 공식 지원이 아니므로 삭제하고 설치하라는 식의 안내가 나와 있다. 설치 방법은 다음과 같다.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -210,7 +25,7 @@ recipient_address=recipient@mail.mail,recipient2@mail.mail,recipient3@mail.mail
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;도커 저장소 설치 (docker official GPG key:)&lt;/p&gt;
+    &lt;p&gt;도커 저장소 설치 (Docker official GPG key:)&lt;/p&gt;
 
     &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
@@ -230,147 +45,157 @@ sudo apt-get update
 
 &lt;h2 id=&quot;도커-이미지-빌드&quot;&gt;도커 이미지 빌드&lt;/h2&gt;
 
-&lt;p&gt;도커를 설치 했으면 도커 이미지를 만들어 보자 .&lt;/p&gt;
+&lt;p&gt;도커를 설치했다면 도커 이미지를 만들어 보자.&lt;/p&gt;
 
-&lt;p&gt;별건아니고 파이선 설치된 이미지를 불러와서 우리가 만든 파이선 파일을 구동 시킬 환경을 만들 뿐이다.&lt;/p&gt;
+&lt;p&gt;별 건 아니고 파이선이 설치된 이미지를 불러와서 우리가 만든 파이선 파일을 구동시킬 환경을 만들 뿐이다.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;docker 파일을 만든다.
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo nano dockerfile
+  &lt;li&gt;
+    &lt;p&gt;Docker 파일을 만든다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano Dockerfile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;dockerfile 안에 다음 내용을 붙여 넣고 저장한다.&lt;/p&gt;
+    &lt;p&gt;Dockerfile 안에 다음 내용을 붙여 넣고 저장한다.&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM python:3.9-slim-bookworm
-   
+    &lt;pre&gt;&lt;code class=&quot;language-Dockerfile&quot;&gt;FROM python:3.9-slim-bookworm
+
 WORKDIR /app
-   
+
 RUN pip install --no-cache-dir requests
-   
+
 CMD [ &quot;python&quot;, &quot;./monitor.py&quot; ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;파일 안의 내용은 간단하다. 
-이미지는 python:3.9-slim-bookworm 로 해라 , /app 폴더가 메인 작업장이다. ,  pip install –no-cache-dir requests 이라는 명령어 실행해라 컨테이너 실행하면 “python” 실행하고 app폴더에 있는 “monitor.py” 파이선 파일 실행해라.
-참고로 저 파이선 이미지는 이루로 나온 3.10 이후 버전을 모두 테스트해 봤는데 메일 서버의 ssl 인증관련 문제가 있어서 메일 발송이 안되었다. (보안 없는 25포트는 실행 가능) 이메일의 ssl인증 관련 이슈가 발생할 경우 파이선 이미지 버전을 지켜 주기 바란다(이전 버전 가능).&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;파일 안의 내용은 간단하다. 이미지는 &lt;code class=&quot;highlighter-rouge&quot;&gt;python:3.9-slim-bookworm&lt;/code&gt;으로 해라, &lt;code class=&quot;highlighter-rouge&quot;&gt;/app&lt;/code&gt; 폴더가 메인 작업장이다, &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install --no-cache-dir requests&lt;/code&gt;라는 명령어를 실행해라, 컨테이너를 실행하면 “python”을 실행하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt; 폴더에 있는 “monitor.py” 파이선 파일을 실행해라.&lt;/p&gt;
+
+    &lt;p&gt;참고로 저 파이선 이미지는 이루로 나온 3.10 이후 버전을 모두 테스트해 봤는데 메일 서버의 ssl 인증관련 문제가 있어서 메일 발송이 안되었다. (보안 없는 25포트는 실행 가능) 이메일의 ssl인증 관련 이슈가 발생할 경우 파이선 이미지 버전을 지켜 주기 바란다(이전 버전 가능).&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;도커 이미지를 monitor란 이름으로 만들어 준다.
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t monitor .
+  &lt;li&gt;
+    &lt;p&gt;도커 이미지를 &lt;code class=&quot;highlighter-rouge&quot;&gt;monitor&lt;/code&gt;란 이름으로 만들어 준다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; monitor &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;파이선-파일-만들기&quot;&gt;파이선 파일 만들기&lt;/h2&gt;
+
 &lt;p&gt;이 부분은 고민을 좀 했는데 python 안에 메일 계정 및 설정을 넣는 방법과 별도 파일을 만들어서 넣는 방법 가운데 나는 별도 계정 정보를 넣어서 보관하는 방법을 선택했다.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;도커 이미지에서 설정한대로  monitor.py라는 이름의 파이선 파일을 만들어 준다.
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo nano monitor.py
+  &lt;li&gt;
+    &lt;p&gt;도커 이미지에서 설정한 대로 &lt;code class=&quot;highlighter-rouge&quot;&gt;monitor.py&lt;/code&gt;라는 이름의 파이선 파일을 만들어 준다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano monitor.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;파일 안에 다음 내용을 그대로 복사해서 붙여 넣고 저장한다.
-```
-import time
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import requests
-import configparser&lt;/li&gt;
-&lt;/ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;파일 안에 다음 내용을 그대로 복사해서 붙여 넣고 저장한다.&lt;/p&gt;
 
-&lt;h1 id=&quot;configini-파일을-읽어오자&quot;&gt;config.ini 파일을 읽어오자.&lt;/h1&gt;
-&lt;p&gt;config = configparser.ConfigParser()
-config.read(‘config.ini’)&lt;/p&gt;
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;smtplib&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;email.mime.multipart&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MIMEMultipart&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;email.mime.text&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MIMEText&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;configparser&lt;/span&gt;
 
-&lt;h1 id=&quot;구성-파일-안의-설정을-추출해오자&quot;&gt;구성 파일 안의 설정을 추출해오자.&lt;/h1&gt;
-&lt;p&gt;SMTP_SERVER=config.get(‘SMTP’,’server’)  # SMTP 서버 주소 가져오기
-SMTP_PORT=config.getint(‘SMTP’,’port’)  # SMTP 포트 번호 가져오기
-GMAIL_USERNAME=config.get(‘SMTP’,’username’)  # Gmail 계정 사용자 이름 가져오기
-GMAIL_PASSWORD=config.get(‘SMTP’,’password’)  # Gmail 계정 비밀번호 가져오기
-USE_SSL=config.getboolean(‘SMTP’, ‘ssl’)  # SSL 사용 여부 가져오기 (True 또는 False)&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;# config.ini 파일을 읽어오자.
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;configparser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'config.ini'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;p&gt;SITES=[site.strip() for site in config.get(‘SITES’, ‘urls’).split(‘,’)] # 모니터링할 웹사이트 URL 목록 가져오기
-CHECK_INTERVAL=config.getint(‘MONITORING’, ‘interval’) # 체크 간격 설정 (초 단위)
-ERROR_PERSISTENCE=config.getint(‘MONITORING’, ‘errors_before_alert’) # 에러 발생 횟수 설정&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;# 구성 파일 안의 설정을 추출해오자.
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SMTP_SERVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SMTP'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'server'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# SMTP 서버 주소 가져오기
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SMTP_PORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SMTP'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'port'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# SMTP 포트 번호 가져오기
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GMAIL_USERNAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SMTP'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'username'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Gmail 계정 사용자 이름 가져오기
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GMAIL_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SMTP'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'password'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Gmail 계정 비밀번호 가져오기
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;USE_SSL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getboolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SMTP'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'ssl'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# SSL 사용 여부 가져오기 (True 또는 False)
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SITES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SITES'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'urls'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;','&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 모니터링할 웹사이트 URL 목록 가져오기
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CHECK_INTERVAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'MONITORING'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'interval'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 체크 간격 설정 (초 단위)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ERROR_PERSISTENCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'MONITORING'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'errors_before_alert'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 에러 발생 횟수 설정
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;RECIPIENT_ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;EMAIL&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;recipient_address&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;','&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 이메일 수신자 주소 목록 가져오기
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;send_email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MIMEMultipart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'From'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GMAIL_USERNAME&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 발신자 메일 계정 설정
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'To'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RECIPIENT_ADDRESS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 수신자 설정 (여러 수신자에게 메일 보내기 위해 쉼표로 구분하여 합침)
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Subject'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Website Down Alert: {site}&quot;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 이메일 제목 설정
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;message_body_content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello,{site} is down.Thanks&quot;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 이메일 내용 설정
+&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MIMEText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message_body_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'plain'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 이메일 내용을 MIME 형식으로 추가
+&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;smtplib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SMTP_SSL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SMTP_SERVER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SMTP_PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;USE_SSL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtplib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SMTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SMTP_SERVER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SMTP_PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;p&gt;RECIPIENT_ADDRESS=config.get(“EMAIL”, “recipient_address”).split(‘,’) # 이메일 수신자 주소 목록 가져오기&lt;/p&gt;
+    &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;login&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GMAIL_USERNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GMAIL_PASSWORD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# SMTP 서버에 로그인하기
+&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;as_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 메시지를 문자열로 변환
+&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GMAIL_USERNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RECIPIENT_ADDRESS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 메일 전송
+&lt;/span&gt;   
+&lt;span class=&quot;n&quot;&gt;error_counts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SITES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 각 사이트의 에러 카운트를 저장하는 딕셔너리 초기화
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 사이트에 GET 요청 보내고 응답 받아옴
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SITES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;error_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ERROR_PERSISTENCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;send_email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;error_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;error_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
 
-&lt;p&gt;def send_email(site):
-    msg=MIMEMultipart()
-    msg[‘From’]=GMAIL_USERNAME # 발신자 메일 계정 설정
-    msg[‘To’] = “, “.join(RECIPIENT_ADDRESS)  # 수신자 설정 (여러 수신자에게 메일 보내기 위해 쉼표로 구분하여 합침)
-    msg[‘Subject’]=f”Website Down Alert: {site}”  # 이메일 제목 설정
-    message_body_content=f”Hello,{site} is down.Thanks”  # 이메일 내용 설정&lt;/p&gt;
+        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exceptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestException&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OOps: Something Else Happened&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;msg.attach(MIMEText(message_body_content,'plain'))  # 이메일 내용을 MIME 형식으로 추가
+    &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CHECK_INTERVAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 지정된 시간만큼 대기 후 다음 반복 실행
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
-server=smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) if USE_SSL else smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+    &lt;p&gt;위의 코드는 파이썬 파일 &lt;code class=&quot;highlighter-rouge&quot;&gt;monitor.py&lt;/code&gt;에 들어갈 내용입니다. 이 코드는 다운된 웹사이트를 모니터링하고, 에러가 발생할 경우 설정한 이메일 주소로 알림을 보내는 기능을 수행합니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;구성 파일을 만든다.&lt;/p&gt;
 
-server.login(GMAIL_USERNAME,GMAIL_PASSWORD)  # SMTP 서버에 로그인하기
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano config.ini
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;구성 파일 안에 내용을 붙여 넣고, 구성 내용을 자신의 계정에 맞게 수정하여 저장한다.&lt;/p&gt;
 
-text=msg.as_string()  # 메시지를 문자열로 변환
+    &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[SMTP]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;smtp.server.url  # SMTP 서버 주소 설정 (자신의 메일 서버 주소 입력)&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;465  # SMTP 포트 번호 설정 (보안 없으면 25, 보안 있으면 465 또는 587)&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;yourmail@mail.mail  # Gmail 계정 사용자 이름 또는 발신자 메일 계정 설정 (자신의 메일 계정 입력)&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;yourmailpassword  # Gmail 계정 비밀번호 또는 발신자 메일 계정 비밀번호 설정 (자신의 메일 계정 비밀번호 입력)&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;ssl&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;yes  # SSL 사용 여부 설정 ('yes' for SSL, 'no' for non-SSL)&lt;/span&gt;
 
-server.sendmail(GMAIL_USERNAME, RECIPIENT_ADDRESS, text)  # 메일 전송
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;span class=&quot;nn&quot;&gt;[SITES]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://monitorring1.site.com,http://monitorring2.site.com,http://monitorring3.site.com  # 모니터링할 웹사이트 URL 목록 설정 (여러 개일 경우 쉼표로 구분)&lt;/span&gt;
 
-&lt;p&gt;error_counts={site:0 for site in SITES}  # 각 사이트의 에러 카운트를 저장하는 딕셔너리 초기화&lt;/p&gt;
+&lt;span class=&quot;nn&quot;&gt;[MONITORING]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;interval&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;600  # 체크 간격 설정 (초 단위)&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;errors_before_alert&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2  # 에러 발생 횟수 설정&lt;/span&gt;
 
-&lt;h1 id=&quot;사이트에-get-요청-보내고-응답-받아옴&quot;&gt;사이트에 GET 요청 보내고 응답 받아옴&lt;/h1&gt;
-&lt;p&gt;while True:&lt;br /&gt;
-        for site in SITES:
-                try:
-                        response=requests.get(site)
-                        if response.status_code !=200:
-                                error_counts[site]+=1
-                                if error_counts[site]&amp;gt;=ERROR_PERSISTENCE:
-                                        send_email(site)
-                                        error_counts[site]=0
-                        else:
-                                error_counts[site]=0&lt;/p&gt;
+&lt;span class=&quot;nn&quot;&gt;[EMAIL]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;recipient_address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;recipient@mail.mail,recipient2@mail.mail,recipient3@mail.mail  # 이메일 수신자 주소 목록 설정 (여러 개일 경우 쉼표로 구분)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;            except requests.exceptions.RequestException as err:
-                    print (&quot;OOps: Something Else Happened&quot;,err)
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;smtp.server.url&lt;/code&gt;에는 자신의 메일 SMTP 서버 주소를 입력합니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;port&lt;/code&gt;에는 SMTP 메일을 발송할 포트를 입력한다. (보안 없으면 25, 보안 있으면 465 또는 587) &lt;code class=&quot;highlighter-rouge&quot;&gt;yourmail@mail.mail&lt;/code&gt;은 발신할 SMTP 메일 계정을 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;yourmailpassword&lt;/code&gt;는 해당 계정의 비밀번호를 입력한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;ssl&lt;/code&gt;은 SSL 사용 여부를 설정하며 ‘yes’로 설정하면 SSL을 사용하고, ‘no’로 설정하면 SSL을 사용하지 않는다. &lt;code class=&quot;highlighter-rouge&quot;&gt;urls&lt;/code&gt;에는 모니터링할 웹사이트의 URL 목록을 입력한다. 여러 개의 URL일 경우 쉼표(,)로 구분하여 입력한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;은 체크 간격을 초 단위로 설정하며, &lt;code class=&quot;highlighter-rouge&quot;&gt;errors_before_alert&lt;/code&gt;는 에러 발생 횟수를 설정한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;도커 이미지를 사용해 도커 컨테이너를 실행해 보자. 실행할 때 꼭 &lt;code class=&quot;highlighter-rouge&quot;&gt;/app&lt;/code&gt;을 마운트 해주어야 한다.&lt;/p&gt;
 
-    time.sleep(CHECK_INTERVAL) # 지정된 시간만큼 대기 후 다음 반복 실행
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; web-monitor &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$pwd&lt;/span&gt;:/app &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; monitor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-3. 구성 파일을 만든다. 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;sudo nano config.ini&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;4. 구성 파일 안에 내용을 붙여 넣기 하고 구성 내용을 자신의 계정에 맞게 수정하여 저장한다. 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;[SMTP]
-server = smtp.server.url
-port = 465
-username = yourmail@mail.mail
-password = yourmailpassword
-ssl = yes   # ‘yes’ for SSL, ‘no’ for non-SSL.
-[SITES]
-urls = http://monitorring1.site.com,http://monitorring2.site.com,http://monitorring3.site.com,&lt;/p&gt;
-
-&lt;p&gt;[MONITORING]
-interval = 600  #600 초마다 한번씩
-errors_before_alert = 2 #에러 감지 횟수&lt;/p&gt;
-
-&lt;p&gt;[EMAIL]
-recipient_address=recipient@mail.mail,recipient2@mail.mail,recipient3@mail.mail&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;smtp.server.url 에는 자신의 메일 smtp 서버 주소를 입력한다. 
-port에는 smtp 메일 발송할 포트를 입력한다. (보통 보안 없으년 25, 보안 있으면 465, 최근엔 587)
-yourmail@mail.mail 에는 발송할 smtp 메일 계정을 입력한다. 
-yourmailpassword 는 smtp 메일 계정의 비밀번호를 입력한다
-ssl 사용 여부를 입력한다. 25에 보안 없을땐 no로 ,ssl 보안 사용시엔 yes로 입력한다. 
-감시할 url은  urls에 입력한다. 여러개일 경우 쉽표(,)로 구분한다. 
-interval 은 몇초에 한번씩 검사 할지 입력한다. 600은 600초 (10분이다.)
-errors_before_alert 에는 위에서 에러 감지 횟수를 입력한다. 600초 감지에 2회 면 20 에러 발생후 10분~20분 사이에 메일이 온다. 
-recipient_address 는 에러메일 수신할 메일 주소를 입력한다. , 발신자에게 수신하면 가장 오류가 적었다. 
-
-5. 도커 이미지를 사용해 도커 컨테이너를 실행해 보자. 실행할 땐 꼭 /app 을 마운트 해주자. 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;sudo docker –name web-monitor -v $pwd:/app -d monitor
-```
-$pwd 부분은 monitor.py 파일과 config.ini 파일이 있는 폴더의 경로를 입력해 주면 된다. 
-혹시 코드 복사후 오류가 생기면 monitor.py의 주석 부분을 제거하고 다시 시도해 보자.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="It" /><summary type="html">재미 삼아 &amp;amp;개인적 용도로 웹 페이지를 몇개 테스트로 운용하고 있다. 문제는 클라우드서버가 아니라 버리는 컴퓨터 몇대를 짜집기 해서 한대를 돌리고 있다는 거다. 이로 발생되는 문제는 당연하게도 간헐적 다운… 이 비정기적 이벤트로 인해 고통 받던 중에 서버나 웹페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.</summary></entry><entry><title type="html">무인 점포가 사회에 미치는 비용적 영향</title><link href="https://wdofoz.qhop.org/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html" rel="alternate" type="text/html" title="무인 점포가 사회에 미치는 비용적 영향" /><published>2023-03-10T00:00:00+09:00</published><updated>2023-03-10T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/03/10/The%20cost%20impact%20of%20unmanned%20stores%20on%20society</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html">&lt;p&gt;요즘 무인점이 늘어나고 있는데, 이는 카메라 기술과 인터넷 기술의 발전으로 인해 인력을 배치하지 않아도 충분한 감시와 견제가 가능해졌기 때문이다. 이에 따라 인건비가 줄어들면서 저렴한 가격으로 아이스크림을 구매할 수 있어서 합리적인 것으로 보일 수 있다.&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$pwd&lt;/code&gt; 부분은 &lt;code class=&quot;highlighter-rouge&quot;&gt;monitor.py&lt;/code&gt; 파일과 &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt; 파일이 있는 폴더의 경로를 입력해야 한다. 만약 코드 복사 후 오류가 발생한다면, &lt;code class=&quot;highlighter-rouge&quot;&gt;monitor.py&lt;/code&gt;의 주석 부분을 제거하고 다시 시도해 보자.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">재미 삼아 개인적 용도로 웹 페이지를 몇 개 테스트로 운용하고 있다. 문제는 클라우드 서버가 아니라 버리는 컴퓨터 몇 대를 짜집기 해서 한 대를 돌리고 있다는 것이다. 이로 발생되는 문제는 당연하게도 간헐적인 다운… 이 비정기적인 이벤트로 인해 고통 받던 중에 서버나 웹 페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.</summary></entry><entry><title type="html">무인 점포가 사회에 미치는 비용적 영향</title><link href="https://wdofoz.qhop.org/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html" rel="alternate" type="text/html" title="무인 점포가 사회에 미치는 비용적 영향" /><published>2023-03-10T00:00:00+09:00</published><updated>2023-03-10T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2023/03/10/The%20cost%20impact%20of%20unmanned%20stores%20on%20society</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html">&lt;p&gt;요즘 무인점이 늘어나고 있는데, 이는 카메라 기술과 인터넷 기술의 발전으로 인해 인력을 배치하지 않아도 충분한 감시와 견제가 가능해졌기 때문이다. 이에 따라 인건비가 줄어들면서 저렴한 가격으로 아이스크림을 구매할 수 있어서 합리적인 것으로 보일 수 있다.&lt;/p&gt;
 
 &lt;p&gt;하지만 이러한 무인점의 등장은 일자리 감소와 사회적 비용 발생이라는 두 가지 문제를 야기한다. 일자리 감소는 무인점으로 인해 고용인원이 줄어들어 생기는 문제이다. 두 명이 일하던 곳을 이젠 주인 혼자서 맡아야 한다거나, 한 사람이 여러 무인점포를 경영하여 여러 명이 일했던 일을 이제 한 사람이 모두 맡아야 한다는 것이다. 이는 일자리 감소로 인한 사회적 문제를 야기할 가능성이 있다.&lt;/p&gt;
 
@@ -782,4 +607,35 @@ simply static plugin이 zip 내보내기가 안될 때가 있다. 링크를 클�
 
 &lt;p&gt;워드프레스의 단 하나의 단점은 정적 페이지가 아닌것… 그로인해속도도 느리고 구축 자체가 어렵다.&lt;/p&gt;
 
-&lt;p&gt;물론 코드를 보는것이 익숙해지고 이런저런 에러를 풀어가며 공부를 하기 위해선 지킬도 좋긴 하겠다. 그러나 나에겐 너무 복잡하고 개발자가 아닌 단순 유저인 나로서는 워드프레스를 정적 페이지로 변환하는게 정신 건강에 좋았다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">도루묵 워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비… 무료로 하려면 집에서 구동중인 서버 대용 pc로 돌려야 하는데 리눅스를 설치해도 마음에 드는 속도가 나오지 않는다. 무료로 사이트 운용할 수 있는 깃허브를 쓰자니 정적 사이트가 아니라서 어렵다.</summary></entry></feed>
+&lt;p&gt;물론 코드를 보는것이 익숙해지고 이런저런 에러를 풀어가며 공부를 하기 위해선 지킬도 좋긴 하겠다. 그러나 나에겐 너무 복잡하고 개발자가 아닌 단순 유저인 나로서는 워드프레스를 정적 페이지로 변환하는게 정신 건강에 좋았다.&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="IT" /><summary type="html">도루묵 워드프레스를 사용하다 지킬로 갈아탔다. 이유는 사이트 로딩 속도와 유지비… 무료로 하려면 집에서 구동중인 서버 대용 pc로 돌려야 하는데 리눅스를 설치해도 마음에 드는 속도가 나오지 않는다. 무료로 사이트 운용할 수 있는 깃허브를 쓰자니 정적 사이트가 아니라서 어렵다.</summary></entry><entry><title type="html">마크다운 이미지 링그걸기 (클릭시 원본 뜨기)</title><link href="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html" rel="alternate" type="text/html" title="마크다운 이미지 링그걸기 (클릭시 원본 뜨기)" /><published>2021-02-16T00:00:00+09:00</published><updated>2021-02-16T00:00:00+09:00</updated><id>https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link</id><content type="html" xml:base="https://wdofoz.qhop.org/blog/2021/02/16/markdown-img-link.html">&lt;p&gt;의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.&lt;/p&gt;
+
+&lt;p&gt;나도 예전에 검색해 봤는데 아무리 찾아도 없길래 잔머리를 좀 썼더니 되었다. 
+모든 환경에서 다 된다고 보장할 수는 없다.&lt;/p&gt;
+
+&lt;h2 id=&quot;먼저-우리가-보통-알고-있는-링크형식은-다음과-같다&quot;&gt;먼저 우리가 보통 알고 있는 링크형식은 다음과 같다.&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot;&gt;시베리아 횡단 열차&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;우리가-아는-이미지-삽입은-다음과-같다&quot;&gt;우리가 아는 이미지 삽입은 다음과 같다.&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot; alt=&quot;시베리아 횡단 열차&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;이를-합쳐서-사용해-다음과-같이-쓴다&quot;&gt;이를 합쳐서 사용해 다음과 같이 쓴다.&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[![시베리아 횡단 열차](/assets/img/Trans-Siberian Railway Network.jpg)](/assets/img/Trans-Siberian Railway Network.jpg)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot;&gt;&lt;img src=&quot;/assets/img/Trans-Siberian Railway Network.jpg&quot; alt=&quot;시베리아 횡단 열차&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;찾아보니-다음과-같이-같은-방법을-제시하는-사람도-있었다&quot;&gt;찾아보니 다음과 같이 같은 방법을 제시하는 사람도 있었다.&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&quot;&gt;https://heropy.blog/2017/09/30/markdown/59013e21-0546-4a39-8fba-8d2403d3bb50&lt;/a&gt;&lt;/p&gt;</content><author><name>wizardofoz</name></author><category term="Cms" /><summary type="html">의외로 마크다운 이미지에 링크 거는 법을 모르는 사람들이 많아서 글을 올린다.</summary></entry></feed>
