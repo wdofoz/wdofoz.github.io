@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" href="/favicon.ico?1">
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Cockpit을 SSL 없이 HTTP로 접속하거나 Cloudflare를 통한 HTTPS로 접속해보자. | WizardOfOz</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Cockpit을 SSL 없이 HTTP로 접속하거나 Cloudflare를 통한 HTTPS로 접속해보자." />
+<meta name="author" content="wizardofoz" />
+<meta property="og:locale" content="ko_KR" />
+<meta name="description" content="인증 기능을 꺼서 Cockpit 외부 접속하기 지극히 개인적인 용도로 개인 서버를 운용하고 있는데, 관리하기 위한 모니터링 서비스가 필요했다. 여러 가지 모니터링 시스템들이 있지만 (ex. Webmin, Cockpit, Nagios, Zabbix, Cacti, Netdata) Cockpit만큼 좋은 것은 발견하지 못했다. (가장 예쁜 것은 아니다. Netdata가 예쁨) 선택의 이유는 다음과 같다. 남은 용량을 확인하기 쉽다. 모니터링 프로그램 내에서 터미널 접속이 가능하다. 간단히 재부팅 기능을 제공한다. 로그 확인이 쉽다. 하지만 문제가 한 가지 있다. 외부 접속이 어렵다는 것이다. HTTPS 사용을 강제하기 때문에 VirtualHost로 외부에서 접속하기 어렵다. 내부에서는 http://&lt;아이피:9090&gt;로 접속하면 자동으로 https://&lt;아이피:9090&gt;으로 접속된다. 이 과정에서 인증서 경고가 한 번 뜨고 인증서 없는 HTTPS로 접속이 된다. 그러나 외부에서 접속하려면 접속이 잘 안 될 때가 많다. Nginx로 가상 도메인을 사용해 접속할 경우는 의외로 접속이 잘 된다. 참고 그러나 나는 서버의 80번 포트만 열어 놓고 Apache를 사용하며 Cloudflare를 통해 HTTPS에 접속하는 사람으로서 (Apache에 SSL은 설치조차 하지 않았음) HTTPS가 아닌 오직 HTTP로만 접속해야만 했다. (물론 보안상 위험이 있음을 경고한다.) 여러 번의 시행착오를 거친 뒤에 첫 화면은 로그인이 되는데, 그 뒤로 발생되는 다음 메시지에 여러 번의 삽질 끝에 접속에 성공하였다. Connection failed There was an unexpected error while connecting to the machine. Messages related to the failure might be found in the journal: journalctl -u cockpit 핵심은 HTTPS 인증서를 끄는 것과 RewriteEngine On 하는 것에 있었다. 다음 순서로 진행했다. 서버에 Cockpit을 설치한다. 서버 내부에 cockpit.conf 파일을 생성해서 접속 환경을 수동으로 설정해 준다. Apache에 호스트네임을 지정해서 특정 도메인으로만 접속 가능하게 설정한다. Cloudflare에 도메인을 지정해서 접속하게 해준다. (HTTPS 프록싱 사용 가능) 자세한 셋팅 방법은 이렇다. 서버에 Cockpit을 설치한다. sudo apt-get update sudo apt-get install cockpit 서버 내부에 cockpit.conf 파일을 생성해서 접속 환경을 수동으로 설정해 준다. sudo nano /etc/cockpit/cockpit.conf 다음 내용을 붙여넣고 myhome.site를 나의 홈페이지로 수정해 준다. [WebService] Origins = http://myhome.site wss://myhome.site https://myhome.site AllowUnencrypted = true Apache에 호스트네임을 지정해서 특정 도메인으로만 접속 가능하게 설정한다. sudo nano /etc/apache2/sites-enabled/000-default.conf 제일 아래 다음 부분을 추가한 뒤 myhome.site 부분을 수정해 준다. &lt;VirtualHost *:80&gt; ServerName myhome.site ProxyPreserveHost On ProxyPass / http://127.0.0.1:9090/ ProxyPassReverse / http://127.0.0.1:9090/ RewriteEngine On RewriteCond %{HTTP:Upgrade} =websocket [NC] RewriteRule /(.*) ws://127.0.0.1:9090/$1 [P,L] RewriteCond %{HTTP:Upgrade} !=websocket [NC] RewriteRule /(.*) http://127.0.0.1:9090/$1 [P,L] &lt;/VirtualHost&gt; Cloudflare에 도메인을 지정해서 접속하게 해준다. (HTTPS 프록싱 사용 가능) Cloudflare로 접속해 myhome.site에 맞는 도메인을 입력해 주거나 Cloudflare가 아닐 경우 자신의 네임서버에서 myhome.site을 자신의 서버 IP에 입력해 준다. 이제 http://myhome.site로 접속하면 Cloudflare에서 HTTPS 프록싱을 했을 경우 자동으로 https://myhome.site로 접속하면서 로그인 화면이 나온다. Apache 부분 설정이 잘못되어 있다면 로그인 후 “Connection failed” 화면과 함께 로그인 실패를 맛보게 되니 Apache 설정에 특히 주의하자. 다만 강제로 ssl사용을 중지 하는 것이기 보안의 문제가 발생할 수는 있다. (딱히 어떤 부분이 문제가 되는지는 모르겠다.)" />
+<meta property="og:description" content="인증 기능을 꺼서 Cockpit 외부 접속하기 지극히 개인적인 용도로 개인 서버를 운용하고 있는데, 관리하기 위한 모니터링 서비스가 필요했다. 여러 가지 모니터링 시스템들이 있지만 (ex. Webmin, Cockpit, Nagios, Zabbix, Cacti, Netdata) Cockpit만큼 좋은 것은 발견하지 못했다. (가장 예쁜 것은 아니다. Netdata가 예쁨) 선택의 이유는 다음과 같다. 남은 용량을 확인하기 쉽다. 모니터링 프로그램 내에서 터미널 접속이 가능하다. 간단히 재부팅 기능을 제공한다. 로그 확인이 쉽다. 하지만 문제가 한 가지 있다. 외부 접속이 어렵다는 것이다. HTTPS 사용을 강제하기 때문에 VirtualHost로 외부에서 접속하기 어렵다. 내부에서는 http://&lt;아이피:9090&gt;로 접속하면 자동으로 https://&lt;아이피:9090&gt;으로 접속된다. 이 과정에서 인증서 경고가 한 번 뜨고 인증서 없는 HTTPS로 접속이 된다. 그러나 외부에서 접속하려면 접속이 잘 안 될 때가 많다. Nginx로 가상 도메인을 사용해 접속할 경우는 의외로 접속이 잘 된다. 참고 그러나 나는 서버의 80번 포트만 열어 놓고 Apache를 사용하며 Cloudflare를 통해 HTTPS에 접속하는 사람으로서 (Apache에 SSL은 설치조차 하지 않았음) HTTPS가 아닌 오직 HTTP로만 접속해야만 했다. (물론 보안상 위험이 있음을 경고한다.) 여러 번의 시행착오를 거친 뒤에 첫 화면은 로그인이 되는데, 그 뒤로 발생되는 다음 메시지에 여러 번의 삽질 끝에 접속에 성공하였다. Connection failed There was an unexpected error while connecting to the machine. Messages related to the failure might be found in the journal: journalctl -u cockpit 핵심은 HTTPS 인증서를 끄는 것과 RewriteEngine On 하는 것에 있었다. 다음 순서로 진행했다. 서버에 Cockpit을 설치한다. 서버 내부에 cockpit.conf 파일을 생성해서 접속 환경을 수동으로 설정해 준다. Apache에 호스트네임을 지정해서 특정 도메인으로만 접속 가능하게 설정한다. Cloudflare에 도메인을 지정해서 접속하게 해준다. (HTTPS 프록싱 사용 가능) 자세한 셋팅 방법은 이렇다. 서버에 Cockpit을 설치한다. sudo apt-get update sudo apt-get install cockpit 서버 내부에 cockpit.conf 파일을 생성해서 접속 환경을 수동으로 설정해 준다. sudo nano /etc/cockpit/cockpit.conf 다음 내용을 붙여넣고 myhome.site를 나의 홈페이지로 수정해 준다. [WebService] Origins = http://myhome.site wss://myhome.site https://myhome.site AllowUnencrypted = true Apache에 호스트네임을 지정해서 특정 도메인으로만 접속 가능하게 설정한다. sudo nano /etc/apache2/sites-enabled/000-default.conf 제일 아래 다음 부분을 추가한 뒤 myhome.site 부분을 수정해 준다. &lt;VirtualHost *:80&gt; ServerName myhome.site ProxyPreserveHost On ProxyPass / http://127.0.0.1:9090/ ProxyPassReverse / http://127.0.0.1:9090/ RewriteEngine On RewriteCond %{HTTP:Upgrade} =websocket [NC] RewriteRule /(.*) ws://127.0.0.1:9090/$1 [P,L] RewriteCond %{HTTP:Upgrade} !=websocket [NC] RewriteRule /(.*) http://127.0.0.1:9090/$1 [P,L] &lt;/VirtualHost&gt; Cloudflare에 도메인을 지정해서 접속하게 해준다. (HTTPS 프록싱 사용 가능) Cloudflare로 접속해 myhome.site에 맞는 도메인을 입력해 주거나 Cloudflare가 아닐 경우 자신의 네임서버에서 myhome.site을 자신의 서버 IP에 입력해 준다. 이제 http://myhome.site로 접속하면 Cloudflare에서 HTTPS 프록싱을 했을 경우 자동으로 https://myhome.site로 접속하면서 로그인 화면이 나온다. Apache 부분 설정이 잘못되어 있다면 로그인 후 “Connection failed” 화면과 함께 로그인 실패를 맛보게 되니 Apache 설정에 특히 주의하자. 다만 강제로 ssl사용을 중지 하는 것이기 보안의 문제가 발생할 수는 있다. (딱히 어떤 부분이 문제가 되는지는 모르겠다.)" />
+<link rel="canonical" href="https://wdofoz.qhop.org/blog/2025/01/20/cockpit-without-https-ssl.html" />
+<meta property="og:url" content="https://wdofoz.qhop.org/blog/2025/01/20/cockpit-without-https-ssl.html" />
+<meta property="og:site_name" content="WizardOfOz" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-01-20T00:00:00+09:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"wizardofoz"},"@type":"BlogPosting","description":"인증 기능을 꺼서 Cockpit 외부 접속하기 지극히 개인적인 용도로 개인 서버를 운용하고 있는데, 관리하기 위한 모니터링 서비스가 필요했다. 여러 가지 모니터링 시스템들이 있지만 (ex. Webmin, Cockpit, Nagios, Zabbix, Cacti, Netdata) Cockpit만큼 좋은 것은 발견하지 못했다. (가장 예쁜 것은 아니다. Netdata가 예쁨) 선택의 이유는 다음과 같다. 남은 용량을 확인하기 쉽다. 모니터링 프로그램 내에서 터미널 접속이 가능하다. 간단히 재부팅 기능을 제공한다. 로그 확인이 쉽다. 하지만 문제가 한 가지 있다. 외부 접속이 어렵다는 것이다. HTTPS 사용을 강제하기 때문에 VirtualHost로 외부에서 접속하기 어렵다. 내부에서는 http://&lt;아이피:9090&gt;로 접속하면 자동으로 https://&lt;아이피:9090&gt;으로 접속된다. 이 과정에서 인증서 경고가 한 번 뜨고 인증서 없는 HTTPS로 접속이 된다. 그러나 외부에서 접속하려면 접속이 잘 안 될 때가 많다. Nginx로 가상 도메인을 사용해 접속할 경우는 의외로 접속이 잘 된다. 참고 그러나 나는 서버의 80번 포트만 열어 놓고 Apache를 사용하며 Cloudflare를 통해 HTTPS에 접속하는 사람으로서 (Apache에 SSL은 설치조차 하지 않았음) HTTPS가 아닌 오직 HTTP로만 접속해야만 했다. (물론 보안상 위험이 있음을 경고한다.) 여러 번의 시행착오를 거친 뒤에 첫 화면은 로그인이 되는데, 그 뒤로 발생되는 다음 메시지에 여러 번의 삽질 끝에 접속에 성공하였다. Connection failed There was an unexpected error while connecting to the machine. Messages related to the failure might be found in the journal: journalctl -u cockpit 핵심은 HTTPS 인증서를 끄는 것과 RewriteEngine On 하는 것에 있었다. 다음 순서로 진행했다. 서버에 Cockpit을 설치한다. 서버 내부에 cockpit.conf 파일을 생성해서 접속 환경을 수동으로 설정해 준다. Apache에 호스트네임을 지정해서 특정 도메인으로만 접속 가능하게 설정한다. Cloudflare에 도메인을 지정해서 접속하게 해준다. (HTTPS 프록싱 사용 가능) 자세한 셋팅 방법은 이렇다. 서버에 Cockpit을 설치한다. sudo apt-get update sudo apt-get install cockpit 서버 내부에 cockpit.conf 파일을 생성해서 접속 환경을 수동으로 설정해 준다. sudo nano /etc/cockpit/cockpit.conf 다음 내용을 붙여넣고 myhome.site를 나의 홈페이지로 수정해 준다. [WebService] Origins = http://myhome.site wss://myhome.site https://myhome.site AllowUnencrypted = true Apache에 호스트네임을 지정해서 특정 도메인으로만 접속 가능하게 설정한다. sudo nano /etc/apache2/sites-enabled/000-default.conf 제일 아래 다음 부분을 추가한 뒤 myhome.site 부분을 수정해 준다. &lt;VirtualHost *:80&gt; ServerName myhome.site ProxyPreserveHost On ProxyPass / http://127.0.0.1:9090/ ProxyPassReverse / http://127.0.0.1:9090/ RewriteEngine On RewriteCond %{HTTP:Upgrade} =websocket [NC] RewriteRule /(.*) ws://127.0.0.1:9090/$1 [P,L] RewriteCond %{HTTP:Upgrade} !=websocket [NC] RewriteRule /(.*) http://127.0.0.1:9090/$1 [P,L] &lt;/VirtualHost&gt; Cloudflare에 도메인을 지정해서 접속하게 해준다. (HTTPS 프록싱 사용 가능) Cloudflare로 접속해 myhome.site에 맞는 도메인을 입력해 주거나 Cloudflare가 아닐 경우 자신의 네임서버에서 myhome.site을 자신의 서버 IP에 입력해 준다. 이제 http://myhome.site로 접속하면 Cloudflare에서 HTTPS 프록싱을 했을 경우 자동으로 https://myhome.site로 접속하면서 로그인 화면이 나온다. Apache 부분 설정이 잘못되어 있다면 로그인 후 “Connection failed” 화면과 함께 로그인 실패를 맛보게 되니 Apache 설정에 특히 주의하자. 다만 강제로 ssl사용을 중지 하는 것이기 보안의 문제가 발생할 수는 있다. (딱히 어떤 부분이 문제가 되는지는 모르겠다.)","headline":"Cockpit을 SSL 없이 HTTP로 접속하거나 Cloudflare를 통한 HTTPS로 접속해보자.","url":"https://wdofoz.qhop.org/blog/2025/01/20/cockpit-without-https-ssl.html","dateModified":"2025-01-20T00:00:00+09:00","datePublished":"2025-01-20T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wdofoz.qhop.org/blog/2025/01/20/cockpit-without-https-ssl.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="alternate" type="application/rss+xml" title="WizardOfOz" href="https://wdofoz.qhop.org/feed.xml" />
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-159937272-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-159937272-1');
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XM0HNFYFWN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XM0HNFYFWN');
+</script>
+
+
+    
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8881525957265363"
+     crossorigin="anonymous"></script>        
+    
+    
+</head>
+
+
+    
+<body>
+<!-- 상단 진행바 시작 -->
+<style>
+.progress-bar {
+    background: linear-gradient(to right, white var(--scroll), transparent 0);
+    background-repeat: no-repeat;
+    width: 100%;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    height: 3px;
+    z-index: 9000;
+}
+</style>
+
+<!-- This is the bar which shows scroll percentage -->
+<div class="progress-bar"></div>
+
+
+<!-- Script used to generate --scroll variable with current scroll percentage value -->
+<script>
+var element = document.documentElement,
+  body = document.body,
+  scrollTop = 'scrollTop',
+  scrollHeight = 'scrollHeight',
+  progress = document.querySelector('.progress-bar'),
+  scroll;
+
+document.addEventListener('scroll', function() {
+  scroll = (element[scrollTop]||body[scrollTop]) / ((element[scrollHeight]||body[scrollHeight]) - element.clientHeight) * 100;
+  progress.style.setProperty('--scroll', scroll + '%');
+});
+</script>
+    
+<!-- 하단 진행바 끝 출처: https://blog.webjeda.com/top-bar-website/#scroll-percentage-top-bar -->    
+    <!-- 모바일 숨은 메뉴 시작 -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>   
+                
+      </button>
+            <a class="navbar-brand" href="/">
+                <span><img src="/img/logonav.png" alt="Logo"></span> WizardOfOz
+            </a>
+        </div>
+<!-- 모바일 숨은 메뉴 끝 -->        
+        
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+<!-- DOCS 메뉴 가져오기 시작 -->      
+     <li><a href="/wp-static">WordPress Static</a></li>   
+              
+     <li ><a href="/docs/it/index/">IT</a></li>
+              
+     <li ><a href="/docs/aboutme/index/">About Me</a></li>
+                  
+
+         
+     <li><a id="catemenu" class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Category <span class="caret"></span></a> 
+ <!-- id="dropdownMenuLink" -->                 
+        <ul class="dropdown-menu" aria-labelledby="catemenu" >
+          
+          
+           <li><a href="/blog/2021/02/14/Gluten.html"> Diary<span class="badge pull-right">3 </span></a> 
+           </li>            
+          
+          
+           <li><a href="/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html"> Leadership<span class="badge pull-right">8 </span></a> 
+           </li>            
+          
+          
+           <li><a href="/blog/2020/06/12/lastyear-laos.html"> Portfolio<span class="badge pull-right">3 </span></a> 
+           </li>            
+          
+          
+           <li><a href="/blog/2020/02/29/shapeoflove.html"> Essay<span class="badge pull-right">1 </span></a> 
+           </li>            
+          
+          
+           <li><a href="/blog/2021/02/16/markdown-img-link.html"> Cms<span class="badge pull-right">4 </span></a> 
+           </li>            
+          
+          
+           <li><a href="/blog/2025/01/20/cockpit-without-https-ssl.html"> IT<span class="badge pull-right">7 </span></a> 
+           </li>            
+            
+        </ul>
+     </li>        
+          
+     <li><a href="/allposts.html">AllPosts</a></li>   
+                          
+<!--     
+         <li  class="active" ><a href="/blog/2025/01/20/cockpit-without-https-ssl.html">AllPosts</a></li>
+            
+-->                    
+
+            </ul>
+            
+            
+    
+            <div class="navbar-right">
+ <!--  
+                <form class="navbar-form navbar-left">
+                    
+
+                    
+                  <div class="form-group has-feedback">
+                        <input id="search-box" type="search" class="form-control" placeholder="Search...">
+                        <i class="fa fa-search form-control-feedback"></i>
+                    </div>
+
+                </form>
+             
+
+                
+                <ul class="nav navbar-nav">
+                    <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                </ul>
+--> 
+                <ul class="nav navbar-nav">
+                    <li><a href="/search.html"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+    
+    <div class="page-content">
+        
+        
+        <div class="wrapper">
+            <div class="container">
+    <div class="row">
+<!-- 사이드바 시작 -->
+        <div class="col-md-3">
+<!-- 숨은 메뉴 시작 --> 
+            <div>
+                <dvi class="list-group-item visible-xs collapsed" data-toggle="collapse" data-target="#catesidebar" aria-expanded="false" aria-controls="catesidebar">
+                    <a>Catetories</a>  
+                    <span class="caret"></span>
+                </dvi>
+            </div>
+            
+            
+
+<!-- 숨은 메뉴 끝 -->    
+            <div id="catesidebar"  class="collapse navbar-collapse catesidebar" >        
+
+ 
+  <span class="name"> Diary </span> <span class="badge">3</span>
+  <ul>
+    
+      <li class="list-group-item"><a href="/blog/2021/02/14/Gluten.html">  가볼만한 글루텐프리 숨...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2019/11/18/why-not.html">  사람이 그렇게 무섭더라</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2019/11/02/first.html">  처음 올리는 글</a> </li>
+    
+  </ul>
+
+  <span class="name"> Leadership </span> <span class="badge">8</span>
+  <ul>
+    
+      <li class="list-group-item"><a href="/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html">  무인 점포가 사회에 미...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html">  직원들에게 물어봐야 하...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2023/02/13/10-List-of-Employee-Interview.html">  가볍게 건네 직원 면담...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2023/02/11/List-of-Employee-Interview-Questions.html">  직원 면담 질문 리스트</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2023/02/10/3-questions-to-ask-team-members-at-weekly-meetings.html">  주간 미팅 시 팀원에게...</a> </li>
+    
+  </ul>
+
+  <span class="name"> Portfolio </span> <span class="badge">3</span>
+  <ul>
+    
+      <li class="list-group-item"><a href="/blog/2020/06/12/lastyear-laos.html">  벌써 일년 전 - 라오...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2020/02/22/Siberian.html">  러시아 밤 기차</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2019/11/15/jebu-island.html">  제부도 별빛</a> </li>
+    
+  </ul>
+
+  <span class="name"> Essay </span> <span class="badge">1</span>
+  <ul>
+    
+      <li class="list-group-item"><a href="/blog/2020/02/29/shapeoflove.html">  사랑의 모양</a> </li>
+    
+  </ul>
+
+  <span class="name"> Cms </span> <span class="badge">4</span>
+  <ul>
+    
+      <li class="list-group-item"><a href="/blog/2021/02/16/markdown-img-link.html">  마크다운 이미지 링그걸...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2021/02/15/kboard-tip1.html">  kboard 제목 브라...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2020/06/21/jekyll-Bs.html">  지킬에서 글작성시 미리...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2020/06/06/Publii.html">  무료 웹페이지 제작 프...</a> </li>
+    
+  </ul>
+
+  <span class="name"> IT </span> <span class="badge">7</span>
+  <ul>
+    
+      <li class="list-group-item"><a href="/blog/2025/01/20/cockpit-without-https-ssl.html"  class="text-warning" >  Cockpit을 SSL...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2025/01/19/slides-with-Bootstrip.html">  바로가기 버튼이 있는 ...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2023/09/07/web-monitoring-docker-python.html">  웹페이지 모니터링 하다...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2023/02/09/right-click-drag.html">  드래그 막아논 사이트 ...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2021/05/31/Laptop-Shuts-Off.html">  갑자기 꺼지는 노트북 ...</a> </li>
+    
+  </ul>
+             
+            </div>       
+        </div>
+
+        <div class="col-md-7">
+            <h1>Cockpit을 SSL 없이 HTTP로 접속하거나 Cloudflare를 통한 HTTPS로 접속해보자.</h1><span class="badge"></span>
+            <div id="markdown-content-container"><h2 id="인증-기능을-꺼서-cockpit-외부-접속하기">인증 기능을 꺼서 Cockpit 외부 접속하기</h2>
+
+<p>지극히 개인적인 용도로 개인 서버를 운용하고 있는데, 관리하기 위한 모니터링 서비스가 필요했다. 
+여러 가지 모니터링 시스템들이 있지만 (ex. Webmin, Cockpit, Nagios, Zabbix, Cacti, Netdata) Cockpit만큼 좋은 것은 발견하지 못했다. (가장 예쁜 것은 아니다. Netdata가 예쁨)</p>
+
+<p>선택의 이유는 다음과 같다.</p>
+<ol>
+  <li>남은 용량을 확인하기 쉽다.</li>
+  <li>모니터링 프로그램 내에서 터미널 접속이 가능하다.</li>
+  <li>간단히 재부팅 기능을 제공한다.</li>
+  <li>로그 확인이 쉽다.</li>
+</ol>
+
+<p>하지만 문제가 한 가지 있다. 외부 접속이 어렵다는 것이다. HTTPS 사용을 강제하기 때문에 VirtualHost로 외부에서 접속하기 어렵다. 내부에서는 <code class="highlighter-rouge">http://&lt;아이피:9090&gt;</code>로 접속하면 자동으로 <code class="highlighter-rouge">https://&lt;아이피:9090&gt;</code>으로 접속된다. 이 과정에서 인증서 경고가 한 번 뜨고 인증서 없는 HTTPS로 접속이 된다. 
+그러나 외부에서 접속하려면 접속이 잘 안 될 때가 많다.</p>
+
+<p>Nginx로 가상 도메인을 사용해 접속할 경우는 의외로 접속이 잘 된다. <a href="https://garrett.github.io/cockpit-project.github.io/external/wiki/Proxying-Cockpit-over-NGINX">참고</a> <br />
+그러나 나는 서버의 80번 포트만 열어 놓고 Apache를 사용하며 Cloudflare를 통해 HTTPS에 접속하는 사람으로서 (Apache에 SSL은 설치조차 하지 않았음) HTTPS가 아닌 오직 HTTP로만 접속해야만 했다. (물론 보안상 위험이 있음을 경고한다.)</p>
+
+<p>여러 번의 시행착오를 거친 뒤에 첫 화면은 로그인이 되는데, 그 뒤로 발생되는 다음 메시지에 여러 번의 삽질 끝에 접속에 성공하였다.</p>
+
+<blockquote>
+  <p>Connection failed <br />
+There was an unexpected error while connecting to the machine.<br />
+Messages related to the failure might be found in the journal:<br />
+journalctl -u cockpit</p>
+</blockquote>
+
+<p>핵심은 HTTPS 인증서를 끄는 것과 <code class="highlighter-rouge">RewriteEngine On</code> 하는 것에 있었다.</p>
+
+<p>다음 순서로 진행했다.</p>
+
+<ol>
+  <li>서버에 Cockpit을 설치한다.</li>
+  <li>서버 내부에 <code class="highlighter-rouge">cockpit.conf</code> 파일을 생성해서 접속 환경을 수동으로 설정해 준다.</li>
+  <li>Apache에 호스트네임을 지정해서 특정 도메인으로만 접속 가능하게 설정한다.</li>
+  <li>Cloudflare에 도메인을 지정해서 접속하게 해준다. (HTTPS 프록싱 사용 가능)</li>
+</ol>
+
+<p>자세한 셋팅 방법은 이렇다.</p>
+
+<h3 id="서버에-cockpit을-설치한다">서버에 Cockpit을 설치한다.</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>cockpit
+</code></pre></div></div>
+
+<h3 id="서버-내부에-cockpitconf-파일을-생성해서-접속-환경을-수동으로-설정해-준다">서버 내부에 <code class="highlighter-rouge">cockpit.conf</code> 파일을 생성해서 접속 환경을 수동으로 설정해 준다.</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>nano /etc/cockpit/cockpit.conf
+</code></pre></div></div>
+
+<p>다음 내용을 붙여넣고 <code class="highlighter-rouge">myhome.site</code>를 나의 홈페이지로 수정해 준다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[WebService]
+Origins = http://myhome.site wss://myhome.site https://myhome.site
+AllowUnencrypted = true
+</code></pre></div></div>
+
+<h3 id="apache에-호스트네임을-지정해서-특정-도메인으로만-접속-가능하게-설정한다">Apache에 호스트네임을 지정해서 특정 도메인으로만 접속 가능하게 설정한다.</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>nano /etc/apache2/sites-enabled/000-default.conf
+</code></pre></div></div>
+
+<p>제일 아래 다음 부분을 추가한 뒤 <code class="highlighter-rouge">myhome.site</code> 부분을 수정해 준다.</p>
+
+<div class="language-apache highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nl">VirtualHost</span><span class="sr"> *:80</span><span class="p">&gt;
+</span>    <span class="nc">ServerName</span> myhome.site
+
+    <span class="nc">ProxyPreserveHost</span> On
+    <span class="nc">ProxyPass</span> / http://127.0.0.1:9090/
+    <span class="nc">ProxyPassReverse</span> / http://127.0.0.1:9090/
+
+    <span class="nc">RewriteEngine</span> On
+    <span class="nc">RewriteCond</span> %{HTTP:Upgrade} =websocket [NC]
+    <span class="nc">RewriteRule</span> /(.*)           ws://127.0.0.1:9090/$1 [P,L]
+    <span class="nc">RewriteCond</span> %{HTTP:Upgrade} !=websocket [NC]
+    <span class="nc">RewriteRule</span> /(.*)           http://127.0.0.1:9090/$1 [P,L]
+<span class="p">&lt;/</span><span class="nl">VirtualHost</span><span class="p">&gt;
+</span></code></pre></div></div>
+
+<h3 id="cloudflare에-도메인을-지정해서-접속하게-해준다-https-프록싱-사용-가능">Cloudflare에 도메인을 지정해서 접속하게 해준다. (HTTPS 프록싱 사용 가능)</h3>
+
+<p>Cloudflare로 접속해 <code class="highlighter-rouge">myhome.site</code>에 맞는 도메인을 입력해 주거나 Cloudflare가 아닐 경우 자신의 네임서버에서 <code class="highlighter-rouge">myhome.site</code>을 자신의 서버 IP에 입력해 준다.</p>
+
+<p>이제 <code class="highlighter-rouge">http://myhome.site</code>로 접속하면 Cloudflare에서 HTTPS 프록싱을 했을 경우 자동으로 <code class="highlighter-rouge">https://myhome.site</code>로 접속하면서 로그인 화면이 나온다. 
+Apache 부분 설정이 잘못되어 있다면 로그인 후 “Connection failed” 화면과 함께 로그인 실패를 맛보게 되니 Apache 설정에 특히 주의하자. 
+다만 강제로 ssl사용을 중지 하는 것이기 보안의 문제가 발생할 수는 있다. (딱히 어떤 부분이 문제가 되는지는 모르겠다.)</p>
+</div>
+            <div style="clear:both;">
+              <p class="text-center">
+                <br />
+                <a href="#" class="btn btn-default" role="button">
+                  <i class="fa fa-pencil fa-lg"></i> Top
+                </a>
+              </p>
+            </div>
+            <hr>
+   <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/blog/2025/01/19/slides-with-Bootstrip.html">
+                        <span aria-hidden="true">&larr;</span> Older
+                    </a>
+                </li>
+                 
+</ul>
+    
+            
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+  <span class="name"> IT </span> <span class="badge">7</span>
+  <ul>
+    
+      <li class="list-group-item"><a href="/blog/2025/01/20/cockpit-without-https-ssl.html"  class="text-warning" >  Cockpit을 SSL 없이 HTTP로 접속하거나 Cloudflare를 통한 HTTP...</a>  <div class="badge">2025. 01. 20</div></li>
+    
+      <li class="list-group-item"><a href="/blog/2025/01/19/slides-with-Bootstrip.html">  바로가기 버튼이 있는 이미지 슬라이드 만들기</a>  <div class="badge">2025. 01. 19</div></li>
+    
+      <li class="list-group-item"><a href="/blog/2023/09/07/web-monitoring-docker-python.html">  웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들기</a>  <div class="badge">2023. 09. 07</div></li>
+    
+      <li class="list-group-item"><a href="/blog/2023/02/09/right-click-drag.html">  드래그 막아논 사이트 확장 프로그램 없이 드래그 하는 3가지 방법</a>  <div class="badge">2023. 02. 09</div></li>
+    
+      <li class="list-group-item"><a href="/blog/2021/05/31/Laptop-Shuts-Off.html">  갑자기 꺼지는 노트북 100% 해결</a>  <div class="badge">2021. 05. 31</div></li>
+    
+      <li class="list-group-item"><a href="/blog/2021/05/18/wordpress-static.html">  정적 페이지도 결국은 워드프레스</a>  <div class="badge">2021. 05. 18</div></li>
+    
+      <li class="list-group-item"><a href="/blog/2020/06/16/macos-highsierrapatcher.html">  윈도우로 구형 흰둥이에 high Sierra(하이시에라 이상) 설치 하기  - 맥할아...</a>  <div class="badge">2020. 06. 16</div></li>
+    
+  </ul>
+    
+                          
+                                    
+
+
+       </div>
+
+    </div>
+</div>
+
+
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+
+        <p class="text-center">
+            WizardOfOz 2025 |
+            Powered by <a href="https://github.com/aksakalli/jekyll-doc-theme">Jekyll Doc Theme</a>
+        </p>
+        <!-- <p class="text-muted">Place sticky footer content here.</p> -->
+    </div>
+</footer>
+
+    <script>
+  var baseurl = ''
+</script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="/js/bootstrap.min.js "></script>
+<script src="/js/typeahead.bundle.min.js "></script>
+
+<script src="/js/main.js "></script>
+
+    
+<script type="text/javascript" src="/js/lightbox.js"></script>
+<link rel="stylesheet" href="/css/lightbox.css">  
+
+
+    
+</body>
+
+</html>

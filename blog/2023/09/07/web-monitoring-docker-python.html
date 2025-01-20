@@ -24,7 +24,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-09-07T00:00:00+09:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"wizardofoz"},"headline":"웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들기","dateModified":"2023-09-07T00:00:00+09:00","datePublished":"2023-09-07T00:00:00+09:00","@type":"BlogPosting","description":"재미 삼아 개인적 용도로 웹 페이지를 몇 개 테스트로 운용하고 있다. 문제는 클라우드 서버가 아니라 버리는 컴퓨터 몇 대를 짜집기 해서 한 대를 돌리고 있다는 것이다. 이로 발생되는 문제는 당연하게도 간헐적인 다운… 이 비정기적인 이벤트로 인해 고통 받던 중에 서버나 웹 페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.","url":"https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"wizardofoz"},"@type":"BlogPosting","description":"재미 삼아 개인적 용도로 웹 페이지를 몇 개 테스트로 운용하고 있다. 문제는 클라우드 서버가 아니라 버리는 컴퓨터 몇 대를 짜집기 해서 한 대를 돌리고 있다는 것이다. 이로 발생되는 문제는 당연하게도 간헐적인 다운… 이 비정기적인 이벤트로 인해 고통 받던 중에 서버나 웹 페이지에 이상이 있어서 다운되면 이메일로 알려주는 도커 이미지를 만들어 볼까? 하고 생각했다.","headline":"웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들기","url":"https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html","dateModified":"2023-09-07T00:00:00+09:00","datePublished":"2023-09-07T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wdofoz.qhop.org/blog/2023/09/07/web-monitoring-docker-python.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -148,7 +148,7 @@ document.addEventListener('scroll', function() {
            </li>            
           
           
-           <li><a href="/blog/2023/09/07/web-monitoring-docker-python.html"> IT<span class="badge pull-right">5 </span></a> 
+           <li><a href="/blog/2025/01/20/cockpit-without-https-ssl.html"> IT<span class="badge pull-right">7 </span></a> 
            </li>            
             
         </ul>
@@ -157,7 +157,7 @@ document.addEventListener('scroll', function() {
      <li><a href="/allposts.html">AllPosts</a></li>   
                           
 <!--     
-         <li  class="active" ><a href="/blog/2023/09/07/web-monitoring-docker-python.html">AllPosts</a></li>
+         <li  class="active" ><a href="/blog/2025/01/20/cockpit-without-https-ssl.html">AllPosts</a></li>
             
 -->                    
 
@@ -233,7 +233,7 @@ document.addEventListener('scroll', function() {
     
       <li class="list-group-item"><a href="/blog/2023/03/10/The-cost-impact-of-unmanned-stores-on-society.html">  무인 점포가 사회에 미...</a> </li>
     
-      <li class="list-group-item"><a href="/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html">  직원들에서 물어봐야 하...</a> </li>
+      <li class="list-group-item"><a href="/blog/2023/02/18/Top-10-must-ask-questions-for-easy-employee-interviews.html">  직원들에게 물어봐야 하...</a> </li>
     
       <li class="list-group-item"><a href="/blog/2023/02/13/10-List-of-Employee-Interview.html">  가볍게 건네 직원 면담...</a> </li>
     
@@ -274,18 +274,18 @@ document.addEventListener('scroll', function() {
     
   </ul>
 
-  <span class="name"> IT </span> <span class="badge">5</span>
+  <span class="name"> IT </span> <span class="badge">7</span>
   <ul>
+    
+      <li class="list-group-item"><a href="/blog/2025/01/20/cockpit-without-https-ssl.html">  Cockpit을 SSL...</a> </li>
+    
+      <li class="list-group-item"><a href="/blog/2025/01/19/slides-with-Bootstrip.html">  바로가기 버튼이 있는 ...</a> </li>
     
       <li class="list-group-item"><a href="/blog/2023/09/07/web-monitoring-docker-python.html"  class="text-warning" >  웹페이지 모니터링 하다...</a> </li>
     
       <li class="list-group-item"><a href="/blog/2023/02/09/right-click-drag.html">  드래그 막아논 사이트 ...</a> </li>
     
       <li class="list-group-item"><a href="/blog/2021/05/31/Laptop-Shuts-Off.html">  갑자기 꺼지는 노트북 ...</a> </li>
-    
-      <li class="list-group-item"><a href="/blog/2021/05/18/wordpress-static.html">  정적 페이지도 결국은 ...</a> </li>
-    
-      <li class="list-group-item"><a href="/blog/2020/06/16/macos-highsierrapatcher.html">  윈도우로 구형 흰둥이에...</a> </li>
     
   </ul>
              
@@ -363,7 +363,10 @@ RUN pip install --no-cache-dir requests
 CMD [ "python", "./monitor.py" ]
 </code></pre>
 
-    <p>파일 안의 내용은 간단하다. 이미지는 <code class="highlighter-rouge">python:3.9-slim-bookworm</code>으로 해라, <code class="highlighter-rouge">/app</code> 폴더가 메인 작업장이다, <code class="highlighter-rouge">pip install --no-cache-dir requests</code>라는 명령어를 실행해라, 컨테이너를 실행하면 “python”을 실행하고 <code class="highlighter-rouge">app</code> 폴더에 있는 “monitor.py” 파이선 파일을 실행해라.</p>
+    <p>파일 안의 내용은 간단하다.<br />
+이미지는 <code class="highlighter-rouge">python:3.9-slim-bookworm</code>으로 해라,<br />
+<code class="highlighter-rouge">/app</code> 폴더가 메인 작업장이다, <code class="highlighter-rouge">pip install --no-cache-dir requests</code>라는 명령어를 실행해라.<br />
+컨테이너를 실행하면 “python”을 실행하고 <code class="highlighter-rouge">app</code> 폴더에 있는 “monitor.py” 파이선 파일을 실행해라.</p>
 
     <p>참고로 저 파이선 이미지는 이루로 나온 3.10 이후 버전을 모두 테스트해 봤는데 메일 서버의 ssl 인증관련 문제가 있어서 메일 발송이 안되었다. (보안 없는 25포트는 실행 가능) 이메일의 ssl인증 관련 이슈가 발생할 경우 파이선 이미지 버전을 지켜 주기 바란다(이전 버전 가능).</p>
   </li>
@@ -478,7 +481,12 @@ CMD [ "python", "./monitor.py" ]
 <span class="py">recipient_address</span><span class="p">=</span><span class="s">recipient@mail.mail,recipient2@mail.mail,recipient3@mail.mail  # 이메일 수신자 주소 목록 설정 (여러 개일 경우 쉼표로 구분)</span>
 </code></pre></div>    </div>
 
-    <p><code class="highlighter-rouge">smtp.server.url</code>에는 자신의 메일 SMTP 서버 주소를 입력한다. <code class="highlighter-rouge">port</code>에는 SMTP 메일을 발송할 포트를 입력한다. (보안 없으면 25, 보안 있으면 465 또는 587) <code class="highlighter-rouge">yourmail@mail.mail</code>은 발신할 SMTP 메일 계정을 입력하고 <code class="highlighter-rouge">yourmailpassword</code>는 해당 계정의 비밀번호를 입력한다. <code class="highlighter-rouge">ssl</code>은 SSL 사용 여부를 설정하며 ‘yes’로 설정하면 SSL을 사용하고, ‘no’로 설정하면 SSL을 사용하지 않는다. <code class="highlighter-rouge">urls</code>에는 모니터링할 웹사이트의 URL 목록을 입력한다. 여러 개의 URL일 경우 쉼표(,)로 구분하여 입력한다. <code class="highlighter-rouge">interval</code>은 체크 간격을 초 단위로 설정하며, <code class="highlighter-rouge">errors_before_alert</code>는 에러 발생 횟수를 설정한다.</p>
+    <p><code class="highlighter-rouge">smtp.server.url</code>에는 자신의 메일 SMTP 서버 주소를 입력한다.<br />
+<code class="highlighter-rouge">port</code>에는 SMTP 메일을 발송할 포트를 입력한다. (보안 없으면 25, 보안 있으면 465 또는 587)<br />
+<code class="highlighter-rouge">yourmail@mail.mail</code>은 발신할 SMTP 메일 계정을 입력하고 <code class="highlighter-rouge">yourmailpassword</code>는 해당 계정의 비밀번호를 입력한다.<br />
+<code class="highlighter-rouge">ssl</code>은 SSL 사용 여부를 설정하며 ‘yes’로 설정하면 SSL을 사용하고, ‘no’로 설정하면 SSL을 사용하지 않는다.<br />
+<code class="highlighter-rouge">urls</code>에는 모니터링할 웹사이트의 URL 목록을 입력한다. 여러 개의 URL일 경우 쉼표(,)로 구분하여 입력한다.<br />
+<code class="highlighter-rouge">interval</code>은 체크 간격을 초 단위로 설정하며, <code class="highlighter-rouge">errors_before_alert</code>는 에러 발생 횟수를 설정한다.</p>
   </li>
   <li>
     <p>도커 이미지를 사용해 도커 컨테이너를 실행해 보자. 실행할 때 꼭 <code class="highlighter-rouge">/app</code>을 마운트 해주어야 한다.</p>
@@ -507,6 +515,12 @@ CMD [ "python", "./monitor.py" ]
                     </a>
                 </li>
                  
+                <li class="next">
+                    <a href="/blog/2025/01/19/slides-with-Bootstrip.html">
+                      Newer <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+                
 </ul>
     
             
@@ -522,8 +536,12 @@ CMD [ "python", "./monitor.py" ]
  
 
  
-  <span class="name"> IT </span> <span class="badge">5</span>
+  <span class="name"> IT </span> <span class="badge">7</span>
   <ul>
+    
+      <li class="list-group-item"><a href="/blog/2025/01/20/cockpit-without-https-ssl.html">  Cockpit을 SSL 없이 HTTP로 접속하거나 Cloudflare를 통한 HTTP...</a>  <div class="badge">2025. 01. 20</div></li>
+    
+      <li class="list-group-item"><a href="/blog/2025/01/19/slides-with-Bootstrip.html">  바로가기 버튼이 있는 이미지 슬라이드 만들기</a>  <div class="badge">2025. 01. 19</div></li>
     
       <li class="list-group-item"><a href="/blog/2023/09/07/web-monitoring-docker-python.html"  class="text-warning" >  웹페이지 모니터링 하다 다운되면 이메일로 알려주는 시스템 만들기</a>  <div class="badge">2023. 09. 07</div></li>
     
@@ -554,7 +572,7 @@ CMD [ "python", "./monitor.py" ]
     <div class="container">
 
         <p class="text-center">
-            WizardOfOz 2023 |
+            WizardOfOz 2025 |
             Powered by <a href="https://github.com/aksakalli/jekyll-doc-theme">Jekyll Doc Theme</a>
         </p>
         <!-- <p class="text-muted">Place sticky footer content here.</p> -->
